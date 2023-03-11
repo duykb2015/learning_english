@@ -39,8 +39,6 @@
 				<div class="navbar  pull-right">
 					<div id="size">
 						<form name="myform">
-
-
 						</form>
 					</div>
 				</div>
@@ -88,7 +86,6 @@
 				<div class="item">
 					<div class="container">
 						<div class="row">
-
 							<div class="span6">
 								<div class="carousel-caption">
 									<h1>Đào tạo chất lượng</h1>
@@ -108,7 +105,7 @@
 				</div>
 			</div>
 			<!-- Carousel nav -->
-			<a class="carousel-control left " href="#myCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a> <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="icon-chevron-right"></i></a>
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a> <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="icon-chevron-right"></i></a>
 			<!-- /.Carousel nav -->
 
 		</div>
@@ -125,7 +122,7 @@
 			</div>
 
 			<div class="span4">
-				<img src="">
+				<img src="../resources/file/images/baiDocId=1.png">
 
 				<h2>Học từ vựng, ngữ pháp</h2>
 				<p>Các bài hướng dẫn đơn giản, dễ hiểu.</p>
@@ -134,14 +131,14 @@
 			</div>
 
 			<div class="span4">
-				<img src="#">
+				<img src="../resources/file/images/baiDocId=21.png">
 				<h2>Bài tập phần nghe, đọc</h2>
 				<p>Sử dụng các dạng bài tập thường xuyên xuất hiện.</p>
 				<a href="#" id="modal2" class="openModalFunction">Chi tiết &rarr;</a>
 			</div>
 
 			<div class="span4">
-				<img src="#" height="170px" width="270px">
+				<img src="../resources/file/images/baiDocId=21.png" height="170px" width="270px">
 				<h2>Đề thi thử</h2>
 				<p>Cập nhật, đổi mới liên tục, sát với đề thi thật nhất.</p>
 				<a href="#" class="doExam" id="doExam">Chi tiết &rarr;</a>
@@ -227,6 +224,6 @@
 	</div>
 	<!-- End Modal -->
 
-<!-- </body>
+</body>
 
-</html> -->
+</html>

@@ -4,9 +4,9 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title> -->
 
-	<!-- <link href="../resources/css/bootstrap.css" rel="stylesheet">
+
+	<link href="../resources/css/bootstrap.css" rel="stylesheet">
     <link href="../resources/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="../resources/css/style.css" rel="stylesheet"> 
     
@@ -16,10 +16,10 @@
     <script src="../resources/js/bootstrap.min.js"></script>
     
 </head>
-<body>
+<body> -->
 <footer>
  <div class="container">
-      <div class="row"> -->
+      <div class="row">
       
       
         <div class="span6" align="center">Copyright &copy; SoICT-HUST 2018-2019 | All Rights Reserved<br>
@@ -39,6 +39,6 @@
       </div>
     </div>
 </footer>
-
+<!-- 
 </body>
-</html>
+</html> -->

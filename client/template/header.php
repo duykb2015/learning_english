@@ -11,12 +11,15 @@
 
 	<link href="../resources/css/bootstrap.css" rel="stylesheet">
 	<link href="../resources/css/bootstrap-responsive.css" rel="stylesheet">
-	<!-- <link href="../resources/css/style.css" rel="stylesheet"> -->
+	<link href="../resources/css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../resources/css/bootstrap-responsive.min.css" />
 	<link rel="stylesheet" href="../resources/css/style.css" />
 	<link href="../resources/font/font.css" rel="stylesheet">
 
+	<link href="../resources/css/bootstrap.css" rel="stylesheet">
+    <link href="../resources/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../resources/css/style.css" rel="stylesheet"> 
 
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<!-- <script src="../resources/js/bootstrap.min.js>"></script> -->
@@ -25,6 +28,13 @@
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="../resources/js/client/home.js"></script>
+<!-- ************ -->
+	
+    
+    <!-- <link href="../resources/font/font.css" rel="stylesheet"> -->
+     
+   
+   
 
 	<style>
 		.radio-inline {
@@ -61,7 +71,7 @@
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
 
-									<li class="active"><a href="/webtoeic">Trang chủ</a></li>
+									<!-- <li class="active"><a href="/webtoeic">Trang chủ</a></li>
 									<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Luyện Tập <b class="caret"></b></a>
 										<ul class="dropdown-menu">
 											<li><a href="/webtoeic/listening/">Luyện bài nghe</a></li>
@@ -71,7 +81,7 @@
 										</ul>
 									</li>
 									<li><a href="#">Đăng nhập</a></li>
-									<li><a href="#">Đăng ký</a></li>
+									<li><a href="#">Đăng ký</a></li> -->
 
 
 
@@ -87,9 +97,9 @@
 													thử</a></li>
 										</ul>
 									</li>
-									<!-- 
-										<li><a href="#">Services</a></li>
 										<li><a href="#">Blog</a></li>
+										<!-- <li><a href="#">Services</a></li>
+										
 										<li><a href="#">Contact</a></li> -->
 
 									<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">HO TEn<b class="caret"></b></a>
