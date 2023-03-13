@@ -30,6 +30,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('admin-login', 'Admin\Login::index');
 
 $routes->group('dashboard', function ($routes) {
     $routes->get('', 'Admin\HomeController::index');
@@ -37,13 +38,22 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('admin', function ($routes) {
         $routes->get('/', 'Admin\AdminController::index');
         $routes->get('detail', 'Admin\AdminController::detail');
-        
     });
+
 
     $routes->group('user', function ($routes) {
         $routes->get('/', 'Admin\AdminController::user');
         $routes->get('detail', 'Admin\AdminController::user_detail');
-        
+    });
+
+    $routes->group('test-listen', function ($routes) {
+        $routes->get('/', 'Admin\ListenController::index');
+        $routes->get('detail', 'Admin\ListenController::detail');
+    });
+
+    $routes->group('test-read', function ($routes) {
+        $routes->get('/', 'Admin\ReadController::index');
+        $routes->get('detail', 'Admin\ReadController::detail');
     });
 });
 

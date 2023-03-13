@@ -12,7 +12,7 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>List Account</h4>
+                                    <h4>Danh sách tài khoản admin</h4>
 
                                 </div>
                             </div>
@@ -31,11 +31,11 @@
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
+                                                <th>Tên</th>
                                                 <th>Email</th>
-                                                <th>Level</th>
-                                                <th style="width: 30px;">Status</th>
-                                                <th style="width: 10px;">Manager</th>
+                                                <th>Quyền truy cập</th>
+                                                <th style="width: 30px;">Trạng thái</th>
+                                                <th style="width: 10px;">Quản lý</th>
 
                                             </tr>
                                         </thead>
@@ -45,9 +45,9 @@
                                                 <td>ad@gmail.com</td>
                                                 <td>Admin</td>
                                                 <td>
-                                                    <select style="width: 60px;" name="" id="" class="form-select">
-                                                        <option value="">Enable</option>
-                                                        <option value="">Disable</option>
+                                                    <select style="width: 100px;" name="" id="" class="form-select">
+                                                        <option value="">Bình thường</option>
+                                                        <option value="">Bị cấm</option>
                                                     </select>
                                                    
                                                 </td>

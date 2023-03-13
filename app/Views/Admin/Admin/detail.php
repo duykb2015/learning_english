@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Add Account</h4>
+                                    <h4>Thêm tài khoản</h4>
                                 </div>
                             </div>
                         </div>

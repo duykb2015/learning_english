@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm người dùng</h4>
+                                    <h4>Thêm câu hỏi nghe </h4>
                                 </div>
                             </div>
                         </div>
@@ -82,8 +82,8 @@
                                                                             <input type="text" class="form-control" value="" name="username" placeholder="Họ ..." required autofocus>
                                                                         </div>
                                                                     </div>
-                                                                   
-                                                                   
+
+
                                                                     <div class="col-md-6">
                                                                         <label for="password">Mật khẩu</label>
                                                                         <div class="input-group">
@@ -92,50 +92,12 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên</label>
-                                                                        <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên ..." required autofocus>
-                                                                        </div>
+                                                                        <label for="password">Upload file</label>  
+                                                                            <input type="file" name="files[]" id="filer_input" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple">                                                                        
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-
-                                                                            <select name="status" class="form-control">
-                                                                                <option value="1" selected>Bình thường</option>
-                                                                                <option value="0">Bị cấm</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- <div class="col-md-6">
-                                                                        <label for="level">Cấp bậc</label>
-                                                                        <div class="input-group">
-                                                                            <select name="level" class="form-control">
-                                                                                <option value="0">
-                                                                                    Admin
-                                                                                </option>
-                                                                                <option value="1">
-                                                                                    Moderator
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div> -->
-                                                                </div>
-                                                                <!-- <div class="row">
                                                                     
-                                                                    <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-
-                                                                            <select name="status" class="form-control">
-                                                                                <option value="1" selected>Bình thường</option>
-                                                                                <option value="0">Bị cấm</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                   
-                                                                </div> -->
-                                                                <!-- end of row -->
+                                                                </div>
+                                                             <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">Lưu</button>

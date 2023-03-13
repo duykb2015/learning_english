@@ -20,12 +20,27 @@ $(document).ready(function(){
 
     //Example 2
     $('#filer_input').filer({
-        limit: 10,
-        maxSize: 5,
-        extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+        limit: null,
+        maxSize: null,
+        // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+        extensions: ['xlsx', 'xls','csv'],
         changeInput: true,
         showThumbs: true,
-        addMore: true
+        addMore: true,
+
+        captions: {
+            button: "Chọn Files Excel",
+            feedback: "Chọn files để Upload",
+            feedback2: "files đã được chọn",
+            drop: "Drop file here to Upload",
+            removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+            errors: {
+                filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                filesType: "Vui lòng chọn đúng định dạng file excel vd: *.xlsx,*.xls !",
+                filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+            }
+        }
     });
 
 	//Example 1
@@ -156,7 +171,7 @@ $(document).ready(function(){
             removeConfirmation: "Are you sure you want to remove this file?",
             errors: {
                 filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
-                filesType: "Only Images are allowed to be uploaded.",
+                filesType: "Vui lòng chọn đúng định dạng file excel vd: *.xlsx,*.xls !",
                 filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
                 filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
             }

@@ -46,18 +46,57 @@ $menu = [
     ],
     [
         'url' => '',
-        'active' => 'dashboard/banner',
-        'name' => 'Quản lý Cau hoi',
+        'active' => 'dashboard/test-listen',
+        'name' => 'Quản lý Câu hỏi',
         'icon' => '<i class="fa fa-photo"></i>',
         'sub_menu' => [
+            
             [
-                'url' => base_url('dashboard/banner'),
-                'name' => 'Danh sách',
+                'url' => '',
+                'name' => 'Câu hỏi nghe',
+                'active' => 'dashboard/test-listen',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/test-listen'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/test-listen/detail'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
             ],
             [
-                'url' => base_url('dashboard/banner/detail'),
-                'name' => 'Thêm mới',
+                'url' => '',
+                'name' => 'Câu hỏi đọc',
+                'active' => 'dashboard/test-read',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/test-read'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/test-read/detail'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
             ],
+            [
+                'url' => '',
+                'name' => 'Đề thi Toeic',
+                'active' => 'dashboard/exam',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/exam'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/exam/detail'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
+            ],
+
         ]
     ],
     [

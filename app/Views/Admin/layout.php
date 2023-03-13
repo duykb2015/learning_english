@@ -123,6 +123,10 @@
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-ui\js\jquery-ui.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\popper.js\js\popper.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\bootstrap\js\bootstrap.min.js"></script>
+     <!-- jquery file upload js -->
+     <script src="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\js\jquery.filer.min.js"></script>
+    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\custom-filer.js" type="text/javascript"></script>
+    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\jquery.fileuploads.init.js" type="text/javascript"></script>
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-slimscroll\js\jquery.slimscroll.js"></script>
     <!-- data-table js -->
@@ -143,9 +147,6 @@
     <!-- modernizr js -->
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\modernizr\js\modernizr.js"></script>
 
-    <script src="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\js\jquery.filer.min.js"></script>
-    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\custom-filer.js" type="text/javascript"></script>
-    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\jquery.fileuploads.init.js" type="text/javascript"></script>
     <!-- Chart js -->
     <script src="<?= base_url() ?>\templates\libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\pcoded.min.js"></script>
@@ -179,6 +180,40 @@
         })
     </script>
 
+   
+    <script>
+        function fileValidation() {
+            var fileInput =
+                document.getElementById('filer_input1');
+
+            var filePath = fileInput.value;
+
+            // Allowing file type
+            var allowedExtensions =
+                /(\.xlsx|\.xls)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Vui lòng chọn đúng định dạng file excel vd: *.xlsx,*.xls !');
+                fileInput.value = '';
+                return false;
+            }
+            //  else {
+
+            //     // Image preview
+            //     if (fileInput.files && fileInput.files[0]) {
+            //         var reader = new FileReader();
+            //         reader.onload = function(e) {
+            //             document.getElementById(
+            //                     'imagePreview').innerHTML =
+            //                 '<img src="' + e.target.result +
+            //                 '"/>';
+            //         };
+
+            //         reader.readAsDataURL(fileInput.files[0]);
+            //     }
+            // }
+        }
+    </script>
     <?= $this->renderSection('js') ?>
 </body>
 
