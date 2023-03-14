@@ -14,7 +14,7 @@ $menu = [
         'sub_menu' => [
             [
                 'url' => '',
-                'name' => 'Admin',
+                'name' => 'Quản trị',
                 'active' => 'dashboard/admin',
                 'sub_menu' => [
                     [
@@ -29,7 +29,7 @@ $menu = [
             ],
             [
                 'url' => '',
-                'name' => 'User',
+                'name' => 'Người dùng',
                 'active' => 'dashboard/user',
                 'sub_menu' => [
                     [
@@ -48,7 +48,7 @@ $menu = [
         'url' => '',
         'active' => 'dashboard/test-listen',
         'name' => 'Quản lý Câu hỏi',
-        'icon' => '<i class="fa fa-photo"></i>',
+        'icon' => '<i class="fa fa-bars"></i>',
         'sub_menu' => [
             
             [
@@ -81,22 +81,24 @@ $menu = [
                     ],
                 ]
             ],
-            [
-                'url' => '',
-                'name' => 'Đề thi Toeic',
-                'active' => 'dashboard/exam',
-                'sub_menu' => [
-                    [
-                        'url' => base_url('dashboard/exam'),
-                        'name' => 'Danh sách',
-                    ],
-                    [
-                        'url' => base_url('dashboard/exam/detail'),
-                        'name' => 'Thêm mới',
-                    ],
-                ]
-            ],
+            
 
+        ]
+    ],
+    [
+        'url' => '',
+        'name' => 'Quản lý Đề Thi',
+        'active' => 'dashboard/exam',
+        'icon' => '<i class="fa fa-bars"></i>',
+        'sub_menu' => [
+            [
+                'url' => base_url('dashboard/exam'),
+                'name' => 'Danh sách',
+            ],
+            [
+                'url' => base_url('dashboard/exam/detail'),
+                'name' => 'Thêm mới',
+            ],
         ]
     ],
     [
@@ -188,7 +190,7 @@ $menu = [
                                                         <span class="pcoded-mtext"><?= $val['name'] ?></span>
                                                     </a>
                                                 </li>
-                                            <?php endforeach; ?>
+                                            <?php endforeach ?>
                                         </ul>
                                     </li>
                                 <?php else : ?>

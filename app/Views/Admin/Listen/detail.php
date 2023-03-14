@@ -65,43 +65,51 @@
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên tài khoản</label>
+                                                                        <label for="username">Tên</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên tài khoản ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Email</label>
+                                                                        <label for="username">Loại</label>
                                                                         <div class="input-group">
-                                                                            <input type="email" class="form-control" value="" name="email" placeholder="Email ..." required>
+                                                                            <input type="email" class="form-control" value="" name="email" placeholder="..." required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Họ</label>
+                                                                        <label for="status">Trạng thái</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Họ ..." required autofocus>
+                                                                            <select name="status" class="form-control">
+                                                                                <option value="1" selected>Hiển thị</option>
+                                                                                <option value="0">Ẩn</option>
+                                                                            </select>
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="password">v.v</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="password" class="form-control" placeholder="...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="password">Upload tệp Excel</label>
+                                                                        <input type="file" name="files[]" id="filer_input_excel" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="password">Upload tệp hình ảnh</label>
+                                                                        <input type="file" name="files[]" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="password">Upload tệp âm thanh</label>
+                                                                        <input type="file" name="files[]" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple">
                                                                     </div>
 
-
-                                                                    <div class="col-md-6">
-                                                                        <label for="password">Mật khẩu</label>
-                                                                        <div class="input-group">
-                                                                            <input type="password" name="password" class="form-control" placeholder="Mật khẩu ...">
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="password">Upload file</label>  
-                                                                            <input type="file" name="files[]" id="filer_input" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple">                                                                        
-                                                                    </div>
-                                                                    
                                                                 </div>
-                                                             <!-- end of row -->
+                                                                <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/admin') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <a href="<?= base_url('dashboard/test-listen/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

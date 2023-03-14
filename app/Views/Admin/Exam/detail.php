@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm tài khoản</h4>
+                                    <h4>Thêm bài thi </h4>
                                 </div>
                             </div>
                         </div>
@@ -65,60 +65,47 @@
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên tài khoản</label>
+                                                                        <label for="username">Tên</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Email</label>
+                                                                        <label for="username">Loại</label>
                                                                         <div class="input-group">
-                                                                            <input type="email" class="form-control" id="inputWarning1" value="" name="email" placeholder="Email ..." required>
+                                                                            <input type="email" class="form-control" value="" name="email" placeholder="..." required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="password">Mật khẩu</label>
+                                                                        <label for="username">Trạng thái</label>
                                                                         <div class="input-group">
-                                                                            <input type="password" name="password" class="form-control" placeholder="">
-
+                                                                            <input type="text" class="form-control" value="" name="username" placeholder="..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="level">Cấp bậc</label>
+                                                                        <label for="password">v.v</label>
                                                                         <div class="input-group">
-                                                                            <select name="level" class="form-control">
-                                                                            <option value="" selected>
-                                                                                    --Chọn cấp bậc--
-                                                                                </option>
-                                                                                <option value="0">
-                                                                                    Admin
-                                                                                </option>
-                                                                                <option value="1">
-                                                                                    Moderator
-                                                                                </option>
-                                                                            </select>
+                                                                            <input type="text" name="password" class="form-control" placeholder="...">
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <!-- end of table col-lg-6 -->
                                                                     <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-
-                                                                            <select name="status" class="form-control">
-                                                                                <option value="1" selected>Bình thường</option>
-                                                                                <option value="0">Bị cấm</option>
-                                                                            </select>
-                                                                        </div>
+                                                                        <label for="password">Upload tệp Excel</label>
+                                                                        <input type="file" name="files[]" id="filer_input_excel" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple">
                                                                     </div>
-                                                                    <!-- end of table col-lg-6 -->
+                                                                    <div class="col-md-6">
+                                                                        <label for="password">Upload tệp hình ảnh</label>
+                                                                        <input type="file" name="files[]" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="password">Upload tệp âm thanh</label>
+                                                                        <input type="file" name="files[]" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple">
+                                                                    </div>
                                                                 </div>
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/admin/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <a href="<?= base_url('dashboard/exam/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

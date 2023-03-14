@@ -35,7 +35,6 @@
                                                 <th>Họ</th>
                                                 <th>Tên</th>
                                                 <th>Email</th>
-                                                
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 10px;">Quản lý</th>
 
@@ -52,7 +51,6 @@
                                                         <option value="">Bình thường </option>
                                                         <option value="">Bị cấm</option>
                                                     </select>
-                                                   
                                                 </td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm">
@@ -66,7 +64,7 @@
                                                 </td>
 
                                             </tr>
-                                          
+
 
                                         </tbody>
 

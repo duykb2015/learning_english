@@ -12,7 +12,7 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Danh sách người dùng</h4>
+                                    <h4>Danh sách câu hỏi nghe</h4>
 
                                 </div>
                             </div>
@@ -27,32 +27,24 @@
                             <!-- Zero config.table start -->
                             <div class="card">
                                 <div class="card-block">
-
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                             <tr>
-                                                <th>Tên</th>
-                                                <th>Họ</th>
-                                                <th>Tên</th>
-                                                <th>Email</th>
-                                                
+                                                <th>TT</th>
+                                                <th>Tên bài nghe</th>
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 10px;">Quản lý</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>UserLinh</td>
-                                                <td>Lê</td>
-                                                <td>Linh</td>
-                                                <td>linh@gmail.com</td>
+                                                <td>1</td>
+                                                <td>Family</td>
                                                 <td>
                                                     <select style="width: 100px;" name="" id="" class="form-select">
                                                         <option value="">Bình thường </option>
                                                         <option value="">Bị cấm</option>
                                                     </select>
-                                                   
                                                 </td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm">
@@ -64,14 +56,9 @@
                                                         </a>
                                                     </div>
                                                 </td>
-
                                             </tr>
-                                          
-
                                         </tbody>
-
                                     </table>
-
                                 </div>
                             </div>
                         </div>

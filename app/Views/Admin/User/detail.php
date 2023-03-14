@@ -82,8 +82,6 @@
                                                                             <input type="text" class="form-control" value="" name="username" placeholder="Họ ..." required autofocus>
                                                                         </div>
                                                                     </div>
-                                                                   
-                                                                   
                                                                     <div class="col-md-6">
                                                                         <label for="password">Mật khẩu</label>
                                                                         <div class="input-group">
@@ -139,7 +137,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/admin') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <a href="<?= base_url('dashboard/user/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

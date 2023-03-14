@@ -55,6 +55,11 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('/', 'Admin\ReadController::index');
         $routes->get('detail', 'Admin\ReadController::detail');
     });
+
+    $routes->group('exam', function ($routes) {
+        $routes->get('/', 'Admin\ExamController::index');
+        $routes->get('detail', 'Admin\ExamController::detail');
+    });
 });
 
 /*
