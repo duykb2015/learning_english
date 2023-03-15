@@ -4,14 +4,15 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class ReadController extends BaseController
+class CategoryController extends BaseController
 {
     public function index()
     {
-        return view('Admin/Read/index');
+        return view('Admin/Category/index');
     }
+
     public function detail()
     {
-        return view('Admin/Read/detail');
+        return view('Admin/Category/detail');
     }
 }

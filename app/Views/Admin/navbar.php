@@ -46,63 +46,6 @@ $menu = [
     ],
     [
         'url' => '',
-        'active' => 'dashboard/test-listen',
-        'name' => 'Quản lý Câu hỏi',
-        'icon' => '<i class="fa fa-bars"></i>',
-        'sub_menu' => [
-            
-            [
-                'url' => '',
-                'name' => 'Câu hỏi nghe',
-                'active' => 'dashboard/test-listen',
-                'sub_menu' => [
-                    [
-                        'url' => base_url('dashboard/test-listen'),
-                        'name' => 'Danh sách',
-                    ],
-                    [
-                        'url' => base_url('dashboard/test-listen/detail'),
-                        'name' => 'Thêm mới',
-                    ],
-                ]
-            ],
-            [
-                'url' => '',
-                'name' => 'Câu hỏi đọc',
-                'active' => 'dashboard/test-read',
-                'sub_menu' => [
-                    [
-                        'url' => base_url('dashboard/test-read'),
-                        'name' => 'Danh sách',
-                    ],
-                    [
-                        'url' => base_url('dashboard/test-read/detail'),
-                        'name' => 'Thêm mới',
-                    ],
-                ]
-            ],
-            
-
-        ]
-    ],
-    [
-        'url' => '',
-        'name' => 'Quản lý Đề Thi',
-        'active' => 'dashboard/exam',
-        'icon' => '<i class="fa fa-bars"></i>',
-        'sub_menu' => [
-            [
-                'url' => base_url('dashboard/exam'),
-                'name' => 'Danh sách',
-            ],
-            [
-                'url' => base_url('dashboard/exam/detail'),
-                'name' => 'Thêm mới',
-            ],
-        ]
-    ],
-    [
-        'url' => '',
 
         'name' => 'Quản lý Danh mục',
         'active' => 'dashboard/category',
@@ -121,9 +64,100 @@ $menu = [
     ],
     [
         'url' => '',
-        'name' => 'Quản lý bai viet',
+        'active' => 'dashboard/question',
+        'name' => 'Quản lý Câu hỏi',
+        'icon' => '<i class="fa fa-question-circle-o"></i>',
+        'sub_menu' => [
+            [
+                'url' => base_url('dashboard/question'),
+                'name' => 'Danh sách',
+            ],
+            [
+                'url' => base_url('dashboard/question/detail'),
+                'name' => 'Thêm mới câu hỏi',
+            ],
+
+            [
+                'url' => base_url('dashboard/question/upload-excel'),
+                'name' => 'Thêm câu hỏi Excel',
+            ],
+            [
+                'url' => '',
+                'name' => 'Nhóm câu hỏi',
+                'active' => 'dashboard/group-question',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/question/group-question-detail'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/question/group-question'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
+            ],
+           
+        ]
+    ],
+    [
+        'url' => '',
+        'name' => 'Quản lý Đề Thi',
+        'active' => 'dashboard/exam',
+        'icon' => '<i class="fa fa-list-ol"></i>',
+        'sub_menu' => [
+            [
+                'url' => base_url('dashboard/exam'),
+                'name' => 'Danh sách',
+            ],
+            [
+                'url' => base_url('dashboard/exam/detail'),
+                'name' => 'Thêm mới',
+            ],
+        ]
+    ],
+    [
+        'url' => '',
+        'active' => 'dashboard/learn',
+        'name' => 'Quản lý bài Luyện tập',
+        'icon' => '<i class="fa fa-leanpub"></i>',
+        'sub_menu' => [
+            [
+                'url' => '',
+                'name' => 'Bài ngữ pháp',
+                'active' => 'dashboard/learn',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/learn'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/learn/detail'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
+            ],
+            [
+                'url' => '',
+                'name' => 'Bài từ vựng',
+                'active' => 'dashboard/learn',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/learn/'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/learn/detail'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
+            ],
+        ]
+    ],
+    [
+        'url' => '',
+        'name' => 'Quản lý Bài viết',
         'active' => 'dashboard/product',
-        'icon' => '<i class="feather icon-shopping-cart"></i>',
+        'icon' => '<i class="fa fa-info"></i>',
         'sub_menu' => [
             [
                 'url' => '',
@@ -157,7 +191,7 @@ $menu = [
             ]
         ]
     ],
-    
+
 
 
 ];

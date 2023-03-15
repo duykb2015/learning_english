@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm câu hỏi nghe </h4>
+                                    <h4>Thêm câu hỏi Excel </h4>
                                 </div>
                             </div>
                         </div>
@@ -60,56 +60,55 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/admin/save') ?>" method="post">
+                                                        <form action="#" method="#">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
+
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên</label>
+                                                                        <label for="status">Loại câu hỏi</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên ..." required autofocus>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="username">Loại</label>
-                                                                        <div class="input-group">
-                                                                            <input type="email" class="form-control" value="" name="email" placeholder="..." required>
+                                                                            <select name="group_question" class="form-control" require>
+                                                                                <option value="" disabled selected>
+                                                                                    --Chọn loại câu hỏi--
+                                                                                </option>
+                                                                                <option value="0">Câu hỏi nghe</option>
+                                                                                <option value="1">Câu hỏi đọc</option>
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="status">Trạng thái</label>
                                                                         <div class="input-group">
-                                                                            <select name="status" class="form-control">
-                                                                                <option value="1" selected>Hiển thị</option>
-                                                                                <option value="0">Ẩn</option>
+                                                                            <select name="status" class="form-control" required>
+                                                                                <option value="" disabled selected>
+                                                                                    --Chọn trạng thái--
+                                                                                </option>
+                                                                                <option value="0">Hiển thị</option>
+                                                                                <option value="1">Ẩn</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="password">v.v</label>
-                                                                        <div class="input-group">
-                                                                            <input type="text" name="password" class="form-control" placeholder="...">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
+
+                                                                    <div class="col-md-12">
                                                                         <label for="password">Upload tệp Excel</label>
-                                                                        <input type="file" name="files[]" id="filer_input_excel" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple">
+                                                                        <input type="file" name="files_excel" id="filer_input_excel" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple" required>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12 mb-3" id="question">
                                                                         <label for="password">Upload tệp hình ảnh</label>
-                                                                        <input type="file" name="files[]" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple">
+                                                                        <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" required>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12 mb-3" id="question1">
                                                                         <label for="password">Upload tệp âm thanh</label>
-                                                                        <input type="file" name="files[]" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple">
+                                                                        <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
                                                                     </div>
 
                                                                 </div>
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
-                                                                        <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/test-listen/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
+                                                                        <a href="<?= base_url('dashboard/question/upload-excel') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

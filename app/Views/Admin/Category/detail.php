@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm câu hỏi đọc </h4>
+                                    <h4>Thêm danh mục</h4>
                                 </div>
                             </div>
                         </div>
@@ -53,54 +53,64 @@
                                                     </div>
                                                 </div>
                                             </div> -->
-
                                         </div>
-
                                         <div class="card-block">
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/admin/save') ?>" method="post">
+                                                        <form action="<?= base_url('dashboard/category/save') ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên</label>
+                                                                        <label for="username">Tên danh mục</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" name="name" placeholder="Tên ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Loại</label>
+                                                                        <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <input type="email" class="form-control" value="" name="email" placeholder="..." required>
+                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label for="level">Cấp bậc</label>
+                                                                        <div class="input-group">
+                                                                            <select name="level" class="form-control">
+                                                                                <option value="" disabled selected>
+                                                                                    --Chọn cấp menu--
+                                                                                </option>
+                                                                                <option value="0">
+                                                                                    Không
+                                                                                </option>
+                                                                                <option value="1">
+                                                                                    Luyện tập
+                                                                                </option>
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="status">Trạng thái</label>
                                                                         <div class="input-group">
                                                                             <select name="status" class="form-control">
-                                                                                <option value="1" selected>Hiển thị</option>
+                                                                                <option value="#" disabled selected>
+                                                                                    --Chọn trạng thái--
+                                                                                </option>
+                                                                                <option value="1">Hiển thị</option>
                                                                                 <option value="0">Ẩn</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="password">v.v</label>
-                                                                        <div class="input-group">
-                                                                            <input type="text" name="password" class="form-control" placeholder="...">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="password">Upload tệp Excel</label>
-                                                                        <input type="file" name="files[]" id="filer_input_excel" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple">
-                                                                    </div>
                                                                 </div>
+
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
-                                                                        <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/test-read/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
+                                                                        <a href="<?= base_url('dashboard/category/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

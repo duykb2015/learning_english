@@ -66,7 +66,7 @@ $(document).ready(function(){
         }
     });
     $('#filer_input_image').filer({
-        limit: null,
+        limit: 1,
         maxSize: null,
         extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],       
         changeInput: true,

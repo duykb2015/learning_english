@@ -36,7 +36,7 @@
                                                 <th>Tên</th>
                                                 <th>Email</th>
                                                 <th style="width: 30px;">Trạng thái</th>
-                                                <th style="width: 10px;">Quản lý</th>
+                                                <th style="width: 70px;">Quản lý</th>
 
                                             </tr>
                                         </thead>
@@ -47,10 +47,14 @@
                                                 <td>Linh</td>
                                                 <td>linh@gmail.com</td>
                                                 <td>
-                                                    <select style="width: 100px;" name="" id="" class="form-select">
-                                                        <option value="">Bình thường </option>
-                                                        <option value="">Bị cấm</option>
-                                                    </select>
+                                                    <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
+                                                        <label>
+                                                            <input type="checkbox" id="checkbox2" name="status" value="">
+                                                            <span class="cr">
+                                                                <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                                            </span>
+                                                        </label>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm">

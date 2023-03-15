@@ -45,20 +45,23 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('/', 'Admin\AdminController::user');
         $routes->get('detail', 'Admin\AdminController::user_detail');
     });
-
-    $routes->group('test-listen', function ($routes) {
-        $routes->get('/', 'Admin\ListenController::index');
-        $routes->get('detail', 'Admin\ListenController::detail');
+    $routes->group('category', function ($routes) {
+        $routes->get('/', 'Admin\CategoryController::index');
+        $routes->get('detail', 'Admin\CategoryController::detail');
     });
 
-    $routes->group('test-read', function ($routes) {
-        $routes->get('/', 'Admin\ReadController::index');
-        $routes->get('detail', 'Admin\ReadController::detail');
+    $routes->group('question', function ($routes) {
+        $routes->get('/', 'Admin\QuestionController::index');
+        $routes->get('detail', 'Admin\QuestionController::detail');
+        $routes->get('upload-excel', 'Admin\QuestionController::upload_excel');
+        $routes->get('group-question', 'Admin\QuestionController::group_question');
+        $routes->get('group-question-detail', 'Admin\QuestionController::group_question_detail');
     });
 
     $routes->group('exam', function ($routes) {
         $routes->get('/', 'Admin\ExamController::index');
         $routes->get('detail', 'Admin\ExamController::detail');
+        
     });
 });
 
