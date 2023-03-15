@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm nhóm câu hỏi</h4>
+                                    <h4>Thêm bài viết</h4>
                                 </div>
                             </div>
                         </div>
@@ -69,60 +69,71 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="level">Trạng thái</label>
+                                                                        <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <select name="level" class="form-control" required>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn trạng thái--
-                                                                                </option>
-                                                                                <option value="0">
-                                                                                    Hiển thị
-                                                                                </option>
-                                                                                <option value="1">
-                                                                                    Ẩn
-                                                                                </option>
-                                                                            </select>
+                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." disabled required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-12">
-                                                                        <label for="paragraph">Paragraph</label>
+                                                                        <label for="description">Mô tả</label>
                                                                         <div class="input-group">
-                                                                            <textarea class="form-control" name="paragraph" rows="10" placeholder="Paragraph ..." required></textarea>
+                                                                            <textarea class="form-control" name="description" rows="3" placeholder="Mô tả ..." required></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <label for="content">Nội dung bài viêt</label>
+                                                                        <div class="input-group">
+                                                                            <textarea class="form-control" name="content" rows="10" placeholder="Nội dung bài viết ..." required></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- end of row -->
-                                                                <div class="row">
-                                                                    <div class="col-md-12 text-right">
-                                                                        <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/category/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label for="status">Trạng thái</label>
+                                                                    <div class="input-group">
+                                                                        <select name="status" class="form-control" required>
+                                                                            <option value="" disabled selected>
+                                                                                --Chọn trạng thái--
+                                                                            </option>
+                                                                            <option value="1">Hiển thị</option>
+                                                                            <option value="0">Ẩn</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- end of edit info -->
-                                                        </form>
+                                                            <!-- end of row -->
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-right">
+                                                                    <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
+                                                                    <a href="<?= base_url('dashboard/category/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                </div>
+                                                            </div>
                                                     </div>
-                                                    <!-- end of col-lg-12 -->
+                                                    <!-- end of edit info -->
+                                                    </form>
                                                 </div>
-                                                <!-- end of row -->
+                                                <!-- end of col-lg-12 -->
                                             </div>
+                                            <!-- end of row -->
                                         </div>
-                                        <!-- end of card-block -->
                                     </div>
-                                    <!-- personal card end-->
+                                    <!-- end of card-block -->
                                 </div>
-
+                                <!-- personal card end-->
                             </div>
-                            <!-- tab content end -->
+
                         </div>
+                        <!-- tab content end -->
                     </div>
                 </div>
-                <!-- Page-body end -->
             </div>
+            <!-- Page-body end -->
         </div>
-        <!-- Main body end -->
     </div>
+    <!-- Main body end -->
+</div>
 </div>
 <?= $this->endSection() ?>

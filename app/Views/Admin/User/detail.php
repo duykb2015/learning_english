@@ -71,7 +71,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Email</label>
+                                                                        <label for="email">Email</label>
                                                                         <div class="input-group">
                                                                             <input type="email" class="form-control" value="" name="email" placeholder="Email ..." required>
                                                                         </div>
@@ -79,7 +79,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="username">Họ</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Họ ..." required >
+                                                                            <input type="text" class="form-control" value="" name="firstname" placeholder="Họ ..." required >
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -92,7 +92,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="username">Tên</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên ..." required >
+                                                                            <input type="text" class="form-control" value="" name="lastname" placeholder="Tên ..." required >
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">

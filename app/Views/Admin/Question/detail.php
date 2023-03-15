@@ -65,13 +65,13 @@
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Câu hỏi</label>
+                                                                        <label for="question">Câu hỏi</label>
                                                                         <div class="input-group">
                                                                             <input type="text" class="form-control" value="" name="question" placeholder="Câu hỏi ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Loại câu hỏi</label>
+                                                                        <label for="group_question">Loại câu hỏi</label>
                                                                         <div class="input-group">
                                                                             <select name="group_question" class="form-control" required>
                                                                                 <option value="" disabled selected>
@@ -93,7 +93,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="username">Đáp án đúng</label>
                                                                         <div class="input-group">
-                                                                            <select name="status" class="form-control" id="validationCustom04" required>
+                                                                            <select name="result_true" class="form-control" id="validationCustom04" required>
                                                                                 <option selected disabled value="">
                                                                                     --Chọn đáp án đúng--
                                                                                 </option>
@@ -104,9 +104,9 @@
                                                                             </select>
                                                                     
                                                                         </div>
-                                                                        <label for="username">Phần câu hỏi</label>
+                                                                        <label for="part_question">Phần câu hỏi</label>
                                                                         <div class="input-group">
-                                                                            <select name="status" class="form-control" required>
+                                                                            <select name="part" class="form-control" required>
                                                                                 <option value="" disabled selected>
                                                                                     --Chọn phần câu hỏi--
                                                                                 </option>
@@ -122,7 +122,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="username">Nhóm câu hỏi</label>
                                                                         <div class="input-group">
-                                                                            <select name="status" class="form-control" required>
+                                                                            <select name="group" class="form-control" required>
                                                                                 <option value="" disabled selected>
                                                                                     --Chọn nhóm câu hỏi--
                                                                                 </option>
@@ -148,11 +148,11 @@
 
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-3" id="question">
-                                                                        <label for="password">Upload tệp hình ảnh</label>
+                                                                        <label for="upload_image">Upload tệp hình ảnh</label>
                                                                         <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" required>
                                                                     </div>
                                                                     <div class="col-md-12 mb-3" id="question1">
-                                                                        <label for="password">Upload tệp âm thanh</label>
+                                                                        <label for="upload_audio">Upload tệp âm thanh</label>
                                                                         <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
                                                                     </div>
                                                                 </div>

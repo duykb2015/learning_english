@@ -63,6 +63,12 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('detail', 'Admin\ExamController::detail');
         
     });
+
+    $routes->group('posts', function ($routes) {
+        $routes->get('/', 'Admin\PostsController::index');
+        $routes->get('detail', 'Admin\PostsController::detail');
+        
+    });
 });
 
 /*

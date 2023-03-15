@@ -96,7 +96,7 @@ $menu = [
                     ],
                 ]
             ],
-           
+
         ]
     ],
     [
@@ -156,44 +156,20 @@ $menu = [
     [
         'url' => '',
         'name' => 'Quản lý Bài viết',
-        'active' => 'dashboard/product',
+        'active' => 'dashboard/posts',
         'icon' => '<i class="fa fa-info"></i>',
         'sub_menu' => [
+
             [
-                'url' => '',
-                'name' => 'Thuộc tính',
-                'active' => 'dashboard/product/attribute',
-                'sub_menu' => [
-                    [
-                        'url' => base_url('dashboard/product/attribute'),
-                        'name' => 'Danh sách',
-                    ],
-                    [
-                        'url' => base_url('dashboard/product/attribute/detail'),
-                        'name' => 'Thêm mới',
-                    ],
-                ]
+                'url' => base_url('dashboard/posts'),
+                'name' => 'Danh sách',
             ],
             [
-                'url' => '',
-                'name' => 'Sản phẩm',
-                'active' => 'dashboard/product/manage',
-                'sub_menu' => [
-                    [
-                        'url' => base_url('dashboard/product/manage'),
-                        'name' => 'Danh sách',
-                    ],
-                    [
-                        'url' => base_url('dashboard/product/manage/detail'),
-                        'name' => 'Thêm mới',
-                    ],
-                ]
-            ]
+                'url' => base_url('dashboard/posts/detail'),
+                'name' => 'Thêm mới',
+            ],
         ]
     ],
-
-
-
 ];
 ?>
 
