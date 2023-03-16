@@ -53,9 +53,12 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('question', function ($routes) {
         $routes->get('/', 'Admin\QuestionController::index');
         $routes->get('detail', 'Admin\QuestionController::detail');
+        
         $routes->get('upload-excel', 'Admin\UploadController::upload_excel');
         $routes->get('question-group', 'Admin\QuestionGroupController::index');
         $routes->get('question-group/detail', 'Admin\QuestionGroupController::detail');
+
+        $routes->post('save', 'Admin\QuestionController::save');
     });
 
     $routes->group('exam', function ($routes) {

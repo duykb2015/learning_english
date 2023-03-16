@@ -15,16 +15,16 @@ class QuestionController extends BaseController
         return view('Admin/Question/detail');
     }
 
+    public function save()
+    {
+        echo "<pre>";
+        print_r($this->request->getFiles());
+        die;
+    }
+
     public function upload_excel()
     {
         return view('Admin/Question/upload_excel');
     }
-    public function group_question()
-    {
-        return view('Admin/Question/group_question');
-    }
-    public function group_question_detail()
-    {
-        return view('Admin/Question/group_question_detail');
-    }
+   
 }

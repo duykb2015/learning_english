@@ -90,17 +90,17 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-12 mb-3">
                                                                         <label for="password">Upload tệp Excel</label>
-                                                                        <input type="file" name="files_excel" id="filer_input_excel" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple" required>
+                                                                        <input type="file" name="files_excel" id="filer_input_exceln" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple" required>
                                                                     </div>
                                                                     <div class="col-md-12 mb-3" id="question">
                                                                         <label for="password">Upload tệp hình ảnh</label>
-                                                                        <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" required>
+                                                                        <input type="file" name="question_image" id="filer_input_imagen" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" required>
                                                                     </div>
                                                                     <div class="col-md-12 mb-3" id="question1">
                                                                         <label for="password">Upload tệp âm thanh</label>
-                                                                        <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
+                                                                        <input type="file" name="question_audio" id="filer_input_audion" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
                                                                     </div>
 
                                                                 </div>
@@ -136,4 +136,111 @@
         <!-- Main body end -->
     </div>
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('js') ?>
+<!-- ajax hidden upload file -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="group_question"]').on('change', function() {
+            var eins = $(this).val();
+            console.log(eins);
+            if (eins == "1") {
+                $('#filer_input_image').attr('disabled', 'disabled');
+                $('#filer_input_audio').attr('disabled', 'disabled');
+                $('#question').attr('hidden', '');
+                $('#question1').attr('hidden', '');
+            } else {
+                $('#filer_input_image').removeAttr('disabled');
+                $('#filer_input_audio').removeAttr('disabled');
+                $('#question').removeAttr('hidden', '');
+                $('#question1').removeAttr('hidden', '');
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+
+                'use-strict';
+
+                //Example single
+                $('#filer_input_single').filer({
+                    extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+                    changeInput: true,
+                    showThumbs: true,
+                    addMore: false
+                });
+
+                //Example 2
+                $('#filer_input_exceln').filer({
+                    limit: null,
+                    maxSize: null,
+                    // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+                    extensions: ['xlsx', 'xls', 'csv'],
+                    changeInput: true,
+                    showThumbs: true,
+                    addMore: true,
+
+                    captions: {
+                        button: "Chọn tệp Excel",
+                        feedback: "Chọn files để Upload",
+                        feedback2: "files đã được chọn",
+                        drop: "Drop file here to Upload",
+                        removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+                        errors: {
+                            filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                            filesType: "Vui lòng chọn đúng định dạng file excel vd: *.xlsx,*.xls !",
+                            filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                            filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+                        }
+                    }
+                });
+                $('#filer_input_audion').filer({
+                    limit: null,
+                    maxSize: null,
+                    // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+                    extensions: ['mp3', 'aac', 'wav', 'flac', 'wma', 'ogg', 'aiff', 'alac'],
+                    changeInput: true,
+                    showThumbs: true,
+                    addMore: true,
+
+                    captions: {
+                        button: "Chọn tệp âm thanh",
+                        feedback: "Chọn files để Upload",
+                        feedback2: "files đã được chọn",
+                        drop: "Drop file here to Upload",
+                        removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+                        errors: {
+                            filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                            filesType: "Vui lòng chọn đúng định dạng file âm thanh vd: *.mp3,*.wav,... !",
+                            filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                            filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+                        }
+                    }
+                });
+                $('#filer_input_imagen').filer({
+                    limit: null,
+                    maxSize: null,
+                    extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+                    changeInput: true,
+                    showThumbs: true,
+                    addMore: true,
+
+                    captions: {
+                        button: "Chọn tệp hình ảnh",
+                        feedback: "Chọn files để Upload",
+                        feedback2: "files đã được chọn",
+                        drop: "Drop file here to Upload",
+                        removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+                        errors: {
+                            filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                            filesType: "Vui lòng chọn đúng định dạng file hình ảnh vd: *.jpg,*.png,.. !",
+                            filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                            filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+                        }
+                    }
+                });
+            });
+</script>
 <?= $this->endSection() ?>

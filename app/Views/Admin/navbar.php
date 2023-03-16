@@ -46,10 +46,8 @@ $menu = [
     ],
     [
         'url' => '',
-
         'name' => 'Quản lý Danh mục',
         'active' => 'dashboard/category',
-
         'icon' => '<i class="fa fa-bars"></i>',
         'sub_menu' => [
             [
@@ -69,18 +67,26 @@ $menu = [
         'icon' => '<i class="fa fa-question-circle-o"></i>',
         'sub_menu' => [
             [
-                'url' => base_url('dashboard/question'),
-                'name' => 'Danh sách',
-            ],
-            [
-                'url' => base_url('dashboard/question/detail'),
-                'name' => 'Thêm mới câu hỏi',
+                'url' => '',
+                'name' => 'Câu hỏi',
+                'active' => 'dashboard/question',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/question'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/question/detail'),
+                        'name' => 'Thêm mới câu hỏi',
+                    ],
+                    [
+                        'url' => base_url('dashboard/question/upload-excel'),
+                        'name' => 'Thêm câu hỏi Excel',
+                    ],
+
+                ]
             ],
 
-            [
-                'url' => base_url('dashboard/question/upload-excel'),
-                'name' => 'Thêm câu hỏi Excel',
-            ],
             [
                 'url' => '',
                 'name' => 'Nhóm câu hỏi',
@@ -106,12 +112,19 @@ $menu = [
         'icon' => '<i class="fa fa-list-ol"></i>',
         'sub_menu' => [
             [
-                'url' => base_url('dashboard/exam'),
-                'name' => 'Danh sách',
-            ],
-            [
-                'url' => base_url('dashboard/exam/detail'),
-                'name' => 'Thêm đề thi',
+                'url' => '',
+                'name' => 'Đề thi',
+                'active' => 'dashboard/exam',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/exam'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/exam/detail'),
+                        'name' => 'Thêm đề thi',
+                    ],
+                ]
             ],
             [
                 'url' => '',

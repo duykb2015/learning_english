@@ -43,7 +43,7 @@ $(document).ready(function(){
         }
     });
     $('#filer_input_audio').filer({
-        limit: null,
+        limit: 1,
         maxSize: null,
         // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
         extensions: ['mp3', 'aac','wav','flac','wma','ogg','aiff','alac'],

@@ -79,7 +79,8 @@
                                                                     <div class="col-md-12">
                                                                         <label for="description">Mô tả</label>
                                                                         <div class="input-group">
-                                                                            <textarea  class="form-control" id="editor2" name="description" rows="10" placeholder="Mô tả ..." required></textarea>
+                                                                            <textarea class="form-control" id="editor1" name="description" rows="10" placeholder="Mô tả ..." required></textarea>
+                                                                        
                                                                         </div>
                                                                     </div>
                                                                     <!-- Import -->

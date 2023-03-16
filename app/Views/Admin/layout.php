@@ -42,7 +42,13 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\css\app.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\jquery.filer.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css">
+    <!-- Select 2 css -->
+    <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css">
 
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\multiselect\css\multi-select.css">
+
+ 
 
     <style>
         body {
@@ -163,9 +169,12 @@
     <script src="<?= base_url() ?>\templates\libraries\assets\js\pcoded.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\pages\ckeditor\ckeditor.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\pages\ckeditor\ckeditor-custom.js"></script>
     <!-- <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css"> -->
-
+    <!-- Select 2 js -->
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\select2\js\select2.full.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\js\app.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\js\jquery.quicksearch.js"></script>
     <!-- ajax -->
 
     <script>
@@ -202,26 +211,7 @@
             }
         }
     </script>
-<!-- ajax hidden upload file -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('select[name="group_question"]').on('change', function() {
-                var eins = $(this).val();
-                console.log(eins);
-                if (eins == "1") {
-                    $('#filer_input_image').attr('disabled', 'disabled');
-                    $('#filer_input_audio').attr('disabled', 'disabled');
-                    $('#question').attr('hidden', '');
-                    $('#question1').attr('hidden', '');
-                } else {
-                    $('#filer_input_image').removeAttr('disabled');
-                    $('#filer_input_audio').removeAttr('disabled');
-                    $('#question').removeAttr('hidden', '');
-                    $('#question1').removeAttr('hidden', '');
-                }
-            });
-        });
-    </script>
+
 
 
 

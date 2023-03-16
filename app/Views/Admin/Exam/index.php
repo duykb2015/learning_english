@@ -12,7 +12,7 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Danh sách danh mục</h4>
+                                    <h4>Danh sách phần thi</h4>
                                 </div>
                             </div>
                         </div>
@@ -30,18 +30,14 @@
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                             <tr>
-                                                <th>TT</th>
-                                                <th>Tên</th>
-                                                <th>Danh mục cha</th>
+                                                <th>Tên đề thi</th>
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>#1</td>
-                                                <td>Luyện tập</td>
-                                                <td>Luyện tập</td>
+                                                <td>Toeic 950</td>
                                                 <td>
                                                     <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
                                                         <label>
