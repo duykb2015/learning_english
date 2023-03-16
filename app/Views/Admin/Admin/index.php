@@ -12,7 +12,9 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
+
                                     <h4>Danh sách tài khoản admin</h4>
+
 
                                 </div>
                             </div>
@@ -36,7 +38,6 @@
                                                 <th>Quyền truy cập</th>
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -64,11 +65,8 @@
                                                         </a>
                                                     </div>
                                                 </td>
-
                                             </tr>
-
-
-                                        </tbody>
+                                       </tbody>
 
                                     </table>
 

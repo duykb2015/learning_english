@@ -19,6 +19,7 @@ $(document).ready(function(){
     });
 
     //Example 2
+
     $('#filer_input_excel').filer({
         limit: null,
         maxSize: null,
@@ -86,6 +87,7 @@ $(document).ready(function(){
                 filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
             }
         }
+
     });
 
 	//Example 1

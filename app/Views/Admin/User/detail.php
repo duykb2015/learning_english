@@ -72,6 +72,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="email">Email</label>
+
                                                                         <div class="input-group">
                                                                             <input type="email" class="form-control" value="" name="email" placeholder="Email ..." required>
                                                                         </div>
