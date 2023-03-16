@@ -30,18 +30,14 @@
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                             <tr>
-                                                <th>TT</th>
-                                                <th>Tên</th>
-                                                <th>Danh mục cha</th>
+                                                <th>Phần đề thi</th>
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>#1</td>
-                                                <td>Luyện tập</td>
-                                                <td>Luyện tập</td>
+                                                <td>1</td>
                                                 <td>
                                                     <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
                                                         <label>
@@ -82,7 +78,7 @@
 <?= $this->section('js') ?>
 <script>
     function delete_account(id, name) {
-        const is_confirm = confirm(`Bạn muốn xóa tài khoản "${name}" ?`);
+        const is_confirm = confirm(`Bạn muốn xóa phần đề thi "${name}" ?`);
         if (!is_confirm) {
             return
         }

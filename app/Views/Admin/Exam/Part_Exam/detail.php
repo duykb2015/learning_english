@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm bài thi </h4>
+                                    <h4>Thêm phần đề thi </h4>
                                 </div>
                             </div>
                         </div>
@@ -58,42 +58,36 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/admin/save') ?>" method="post">
+                                                        <form action="<?= base_url('dashboard/part_exam/save') ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên đề thi</label>
+                                                                        <label for="title">Tiêu đề</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="name" placeholder="Tên đề..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" name="title" placeholder="Tiêu đề..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Phương thức thêm đề <span style="font-size: 12px;" class="text-warning">(Dùng cho chức năng import excel)</span></label>
+                                                                        <label for="partnumber">Phần đề thi</label>
                                                                         <div class="input-group">
-                                                                            <select name="status" class="form-control" disabled>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn loại--
-                                                                                </option>
-                                                                                <option value="1">Ngẫu nhiên</option>
-                                                                                <option value="0">Import Excel</option>
-                                                                            </select>
+                                                                            <input type="number" name="partnumber" class="form-control" placeholder="Từ 1 - 7" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="partnumber">Phần đề thi</label>
-                                                                    <div class="input-group">
-                                                                        <input type="number" name="partnumber" class="form-control" placeholder="Từ 1 - 7" required>
+                                                                    <div class="col-md-12">
+                                                                        <label for="description">Mô tả</label>
+                                                                        <div class="input-group">
+                                                                            <textarea  class="form-control" id="editor2" name="description" rows="10" placeholder="Mô tả ..." required></textarea>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <!-- Import -->
-                                                                    <div class="col-md-6" >
+                                                                    <!-- Import -->
+                                                                    <div class="col-md-6">
                                                                         <label for="status">Trạng thái</label>
                                                                         <div class="input-group">
                                                                             <select name="status" class="form-control" required>
-                                                                                <option value="" disabled selected >
+                                                                                <option value="" disabled selected>
                                                                                     --Chọn trạng thái--
                                                                                 </option>
                                                                                 <option value="1">Hiển thị</option>
@@ -102,25 +96,11 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                
-                                                                <div class="col-md-6" hidden>
-                                                                    <label for="password">Upload tệp Excel</label>
-                                                                    <input type="file" name="files[]" id="filer_input_excel" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple">
-                                                                </div>
-                                                                <div class="col-md-6" hidden>
-                                                                    <label for="password">Upload tệp hình ảnh</label>
-                                                                    <input type="file" name="files[]" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple">
-                                                                </div>
-                                                                <div class="col-md-6" hidden>
-                                                                    <label for="password">Upload tệp âm thanh</label>
-                                                                    <input type="file" name="files[]" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple">
-                                                                </div>
-
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/exam/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <a href="<?= base_url('dashboard/exam/part-exam-detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

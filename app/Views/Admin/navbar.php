@@ -84,14 +84,14 @@ $menu = [
             [
                 'url' => '',
                 'name' => 'Nhóm câu hỏi',
-                'active' => 'dashboard/group-question',
+                'active' => 'dashboard/question-group',
                 'sub_menu' => [
                     [
-                        'url' => base_url('dashboard/question/group-question-detail'),
+                        'url' => base_url('dashboard/question/question-group/'),
                         'name' => 'Danh sách',
                     ],
                     [
-                        'url' => base_url('dashboard/question/group-question'),
+                        'url' => base_url('dashboard/question/question-group/detail'),
                         'name' => 'Thêm mới',
                     ],
                 ]
@@ -111,7 +111,22 @@ $menu = [
             ],
             [
                 'url' => base_url('dashboard/exam/detail'),
-                'name' => 'Thêm mới',
+                'name' => 'Thêm đề thi',
+            ],
+            [
+                'url' => '',
+                'name' => 'Phần đề thi',
+                'active' => 'dashboard/part-exam',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/exam/part-exam/'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/exam/part-exam/detail'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
             ],
         ]
     ],

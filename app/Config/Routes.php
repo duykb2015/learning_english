@@ -42,8 +42,8 @@ $routes->group('dashboard', function ($routes) {
 
 
     $routes->group('user', function ($routes) {
-        $routes->get('/', 'Admin\AdminController::user');
-        $routes->get('detail', 'Admin\AdminController::user_detail');
+        $routes->get('/', 'Admin\UserController::index');
+        $routes->get('detail', 'Admin\UserController::detail');
     });
     $routes->group('category', function ($routes) {
         $routes->get('/', 'Admin\CategoryController::index');
@@ -53,14 +53,17 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('question', function ($routes) {
         $routes->get('/', 'Admin\QuestionController::index');
         $routes->get('detail', 'Admin\QuestionController::detail');
-        $routes->get('upload-excel', 'Admin\QuestionController::upload_excel');
-        $routes->get('group-question', 'Admin\QuestionController::group_question');
-        $routes->get('group-question-detail', 'Admin\QuestionController::group_question_detail');
+        $routes->get('upload-excel', 'Admin\UploadController::upload_excel');
+        $routes->get('question-group', 'Admin\QuestionGroupController::index');
+        $routes->get('question-group/detail', 'Admin\QuestionGroupController::detail');
     });
 
     $routes->group('exam', function ($routes) {
         $routes->get('/', 'Admin\ExamController::index');
         $routes->get('detail', 'Admin\ExamController::detail');
+        $routes->get('part-exam', 'Admin\PartExamController::index');
+        $routes->get('part-exam/detail', 'Admin\PartExamController::detail');
+        
         
     });
 

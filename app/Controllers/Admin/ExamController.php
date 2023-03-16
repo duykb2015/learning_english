@@ -14,4 +14,5 @@ class ExamController extends BaseController
     {
         return view('Admin/Exam/detail');
     }
+    
 }
