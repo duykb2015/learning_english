@@ -30,6 +30,52 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('admin-login', 'Admin\Login::index');
+
+$routes->group('dashboard', function ($routes) {
+    $routes->get('', 'Admin\HomeController::index');
+
+    $routes->group('admin', function ($routes) {
+        $routes->get('/', 'Admin\AdminController::index');
+        $routes->get('detail', 'Admin\AdminController::detail');
+    });
+
+
+    $routes->group('user', function ($routes) {
+        $routes->get('/', 'Admin\UserController::index');
+        $routes->get('detail', 'Admin\UserController::detail');
+    });
+    $routes->group('category', function ($routes) {
+        $routes->get('/', 'Admin\CategoryController::index');
+        $routes->get('detail', 'Admin\CategoryController::detail');
+    });
+
+    $routes->group('question', function ($routes) {
+        $routes->get('/', 'Admin\QuestionController::index');
+        $routes->get('detail', 'Admin\QuestionController::detail');
+        
+        $routes->get('upload-excel', 'Admin\UploadController::upload_excel');
+        $routes->get('question-group', 'Admin\QuestionGroupController::index');
+        $routes->get('question-group/detail', 'Admin\QuestionGroupController::detail');
+
+        $routes->post('save', 'Admin\QuestionController::save');
+    });
+
+    $routes->group('exam', function ($routes) {
+        $routes->get('/', 'Admin\ExamController::index');
+        $routes->get('detail', 'Admin\ExamController::detail');
+        $routes->get('part-exam', 'Admin\PartExamController::index');
+        $routes->get('part-exam/detail', 'Admin\PartExamController::detail');
+        
+        
+    });
+
+    $routes->group('posts', function ($routes) {
+        $routes->get('/', 'Admin\PostsController::index');
+        $routes->get('detail', 'Admin\PostsController::detail');
+        
+    });
+});
 
 $routes->group('dashboard', function ($routes) {
     $routes->get('', 'Admin\HomeController::index');

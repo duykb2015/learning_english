@@ -33,7 +33,7 @@
                                     <div class="row align-items-end">
                                         <div class="col-8">
                                             <h4 class="text-white"><?= !empty($total_menu) ? $total_menu : 0 ?></h4>
-                                            <h6 class="text-white m-b-0">Menus</h6>
+                                            <h6 class="text-white m-b-0">Bài thi</h6>
                                         </div>
                                         <div class="col-4 text-right">
                                             <canvas id="update-chart-2" height="50"></canvas>
@@ -51,7 +51,7 @@
                                     <div class="row align-items-end">
                                         <div class="col-8">
                                             <h4 class="text-white"><?= !empty($total_product) ? $total_product : 0 ?></h4>
-                                            <h6 class="text-white m-b-0">Dòng sản phẩm</h6>
+                                            <h6 class="text-white m-b-0">Bài nghe</h6>
                                         </div>
                                         <div class="col-4 text-right">
                                             <canvas id="update-chart-3" height="50"></canvas>
@@ -69,7 +69,7 @@
                                     <div class="row align-items-end">
                                         <div class="col-8">
                                             <h4 class="text-white"><?= !empty($total_product_items) ? $total_product_items : 0 ?></h4>
-                                            <h6 class="text-white m-b-0">Sản phẩm</h6>
+                                            <h6 class="text-white m-b-0">Bài đọc</h6>
                                         </div>
                                         <div class="col-4 text-right">
                                             <canvas id="update-chart-4" height="50"></canvas>
@@ -86,8 +86,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

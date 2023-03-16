@@ -12,10 +12,7 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
-
-                                    <h4>Danh sách tài khoản admin</h4>
-
-
+                                    <h4>Danh sách nhóm câu hỏi</h4>
                                 </div>
                             </div>
                         </div>
@@ -32,31 +29,27 @@
 
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
-                                            <tr>
-                                                <th>Tên</th>
-                                                <th>Email</th>
-                                                <th>Quyền truy cập</th>
+                                            <tr>                                             
+                                                <th>Tiêu đề</th>
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Admin</td>
-                                                <td>ad@gmail.com</td>
-                                                <td>Admin</td>
+                                                <td>Home and family</td>
                                                 <td>
                                                     <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
                                                         <label>
                                                             <input type="checkbox" id="checkbox2" name="status" value="">
                                                             <span class="cr">
                                                                 <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                                            </span>   
+                                                            </span>
                                                         </label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div class="btn-group btn-group-sm">
+                                                    <div style="width: 90px;" class="btn-group btn-group-sm">
                                                         <a style="margin: 4px;" href="<?php base_url('dashboard/admin/detail') ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
                                                             <span class="icofont icofont-ui-edit"></span>
                                                         </a>
@@ -66,10 +59,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                       </tbody>
-
+                                        </tbody>
                                     </table>
-
                                 </div>
                             </div>
                         </div>
@@ -100,7 +91,7 @@
             redirect: 'follow'
         };
 
-        fetch('<?= base_url('dashboard/admin/delete') ?>', requestOptions)
+        fetch('<?= base_url('dashboard/category/delete') ?>', requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.success) {

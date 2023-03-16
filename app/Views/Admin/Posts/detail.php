@@ -12,9 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-
-                                    <h4>Thêm tài khoản</h4>
-
+                                    <h4>Thêm bài viết</h4>
                                 </div>
                             </div>
                         </div>
@@ -55,107 +53,87 @@
                                                     </div>
                                                 </div>
                                             </div> -->
-
                                         </div>
-
                                         <div class="card-block">
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/admin/save') ?>" method="post">
+                                                        <form action="<?= base_url('dashboard/category/save') ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên tài khoản</label>
+                                                                        <label for="title">Tiêu đề</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" name="title" placeholder="Tiêu đề ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Email</label>
+                                                                        <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <input type="email" class="form-control" id="inputWarning1" value="" name="email" placeholder="Email ..." required>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="password">Mật khẩu</label>
-                                                                        <div class="input-group">
-
-                                                                            <input type="password" name="password" class="form-control" placeholder="" required>
-
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="level">Cấp bậc</label>
-                                                                        <div class="input-group">
-
-                                                                            <select name="level" class="form-control" required>
-                                                                                <option value="" disabled selected>
-
-                                                                                    --Chọn cấp bậc--
-                                                                                </option>
-                                                                                <option value="0">
-                                                                                    Admin
-                                                                                </option>
-                                                                                <option value="1">
-                                                                                    Moderator
-                                                                                </option>
-                                                                            </select>
+                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." disabled required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <!-- end of table col-lg-6 -->
-                                                                    <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
+                                                                    <div class="col-md-12">
+                                                                        <label for="description">Mô tả</label>
                                                                         <div class="input-group">
-
-                                                                            <select name="status" class="form-control" required>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn trạng thái--
-                                                                                </option>
-                                                                                <option value="1">Hiển thị</option>
-                                                                                <option value="0">Ẩn</option>
-
-                                                                            </select>
+                                                                            <textarea class="form-control" name="description" rows="3" placeholder="Mô tả ..." required></textarea>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- end of table col-lg-6 -->
-                                                                </div>
-                                                                <!-- end of row -->
-                                                                <div class="row">
-                                                                    <div class="col-md-12 text-right">
-
-                                                                        <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/admin/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
-
+                                                                    <div class="col-md-12">
+                                                                        <label for="content">Nội dung bài viêt</label>
+                                                                        <div class="input-group">
+                                                                            <textarea class="form-control" name="content" rows="10" placeholder="Nội dung bài viết ..." required></textarea>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- end of edit info -->
-                                                        </form>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label for="status">Trạng thái</label>
+                                                                    <div class="input-group">
+                                                                        <select name="status" class="form-control" required>
+                                                                            <option value="" disabled selected>
+                                                                                --Chọn trạng thái--
+                                                                            </option>
+                                                                            <option value="1">Hiển thị</option>
+                                                                            <option value="0">Ẩn</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end of row -->
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-right">
+                                                                    <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
+                                                                    <a href="<?= base_url('dashboard/category/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                </div>
+                                                            </div>
                                                     </div>
-                                                    <!-- end of col-lg-12 -->
+                                                    <!-- end of edit info -->
+                                                    </form>
                                                 </div>
-                                                <!-- end of row -->
+                                                <!-- end of col-lg-12 -->
                                             </div>
+                                            <!-- end of row -->
                                         </div>
-                                        <!-- end of card-block -->
                                     </div>
-                                    <!-- personal card end-->
+                                    <!-- end of card-block -->
                                 </div>
-
+                                <!-- personal card end-->
                             </div>
-                            <!-- tab content end -->
+
                         </div>
+                        <!-- tab content end -->
                     </div>
                 </div>
-                <!-- Page-body end -->
             </div>
+            <!-- Page-body end -->
         </div>
-        <!-- Main body end -->
     </div>
+    <!-- Main body end -->
+</div>
 </div>
 <?= $this->endSection() ?>

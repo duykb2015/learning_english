@@ -42,7 +42,13 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\css\app.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\jquery.filer.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css">
-    <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
+    <!-- Select 2 css -->
+    <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css">
+
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\multiselect\css\multi-select.css">
+
+ 
 
     <style>
         body {
@@ -117,12 +123,21 @@
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\pages\form-validation\validate.js"></script>
     <!-- Required Jquery -->
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery\js\jquery.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-ui\js\jquery-ui.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\popper.js\js\popper.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\bootstrap\js\bootstrap.min.js"></script>
+
+    <!-- jquery file upload js -->
+    <script src="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\js\jquery.filer.min.js"></script>
+    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\custom-filer.js" type="text/javascript"></script>
+    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\jquery.fileuploads.init.js" type="text/javascript"></script>
+
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-slimscroll\js\jquery.slimscroll.js"></script>
     <!-- data-table js -->
@@ -143,9 +158,6 @@
     <!-- modernizr js -->
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\modernizr\js\modernizr.js"></script>
 
-    <script src="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\js\jquery.filer.min.js"></script>
-    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\custom-filer.js" type="text/javascript"></script>
-    <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\jquery.fileuploads.init.js" type="text/javascript"></script>
     <!-- Chart js -->
     <script src="<?= base_url() ?>\templates\libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\pcoded.min.js"></script>
@@ -160,10 +172,15 @@
     <script src="<?= base_url() ?>\templates\libraries\assets\pages\data-table\js\data-table-custom.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\pcoded.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
-
+    <script src="<?= base_url() ?>\templates\libraries\assets\pages\ckeditor\ckeditor.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\pages\ckeditor\ckeditor-custom.js"></script>
     <!-- <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css"> -->
-
+    <!-- Select 2 js -->
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\select2\js\select2.full.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\js\app.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\js\jquery.quicksearch.js"></script>
+    <!-- ajax -->
+
     <script>
         $('#remove-alert').on('click', function() {
             $('.alert').remove();
@@ -178,7 +195,24 @@
             })
         })
     </script>
+    <script>
+        function fileValidation() {
+            var fileInput =
+                document.getElementById('filer_input1');
 
+            var filePath = fileInput.value;
+
+            // Allowing file type
+            var allowedExtensions =
+                /(\.xlsx|\.xls)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Vui lòng chọn đúng định dạng file excel vd: *.xlsx,*.xls !');
+                fileInput.value = '';
+                return false;
+            }
+        }
+    </script>
     <?= $this->renderSection('js') ?>
 </body>
 

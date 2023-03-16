@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm người dùng</h4>
+                                    <h4>Thêm danh mục</h4>
                                 </div>
                             </div>
                         </div>
@@ -53,94 +53,64 @@
                                                     </div>
                                                 </div>
                                             </div> -->
-
                                         </div>
-
                                         <div class="card-block">
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/admin/save') ?>" method="post">
+                                                        <form action="<?= base_url('dashboard/category/save') ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Tên tài khoản</label>
+                                                                        <label for="username">Tên danh mục</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="username" placeholder="Tên tài khoản ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" name="name" placeholder="Tên ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="email">Email</label>
-
+                                                                        <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <input type="email" class="form-control" value="" name="email" placeholder="Email ..." required>
+                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." required>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="username">Họ</label>
-                                                                        <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="firstname" placeholder="Họ ..." required >
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="password">Mật khẩu</label>
-                                                                        <div class="input-group">
-                                                                            <input type="password" name="password" class="form-control" placeholder="Mật khẩu ..." required>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="username">Tên</label>
-                                                                        <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="lastname" placeholder="Tên ..." required >
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-                                                                            <select name="status" class="form-control" required>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn trạng thái--
-                                                                                </option>
-                                                                                <option value="1">Bình thường</option>
-                                                                                <option value="0">Cấm</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- <div class="col-md-6">
                                                                         <label for="level">Cấp bậc</label>
                                                                         <div class="input-group">
                                                                             <select name="level" class="form-control">
+                                                                                <option value="" disabled selected>
+                                                                                    --Chọn cấp menu--
+                                                                                </option>
                                                                                 <option value="0">
-                                                                                    Admin
+                                                                                    Không
                                                                                 </option>
                                                                                 <option value="1">
-                                                                                    Moderator
+                                                                                    Luyện tập
                                                                                 </option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div> -->
-                                                                </div>
-                                                                <!-- <div class="row">
-                                                                    
-                                                                    <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-
-                                                                            <select name="status" class="form-control">
-                                                                                <option value="1" selected>Bình thường</option>
-                                                                                <option value="0">Bị cấm</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                   
-                                                                </div> -->
+                                                                    <div class="col-md-6">
+                                                                        <label for="status">Trạng thái</label>
+                                                                        <div class="input-group">
+                                                                            <select name="status" class="form-control">
+                                                                                <option value="#" disabled selected>
+                                                                                    --Chọn trạng thái--
+                                                                                </option>
+                                                                                <option value="1">Hiển thị</option>
+                                                                                <option value="0">Ẩn</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/user/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <a href="<?= base_url('dashboard/category/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

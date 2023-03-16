@@ -12,8 +12,7 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>List User</h4>
-
+                                    <h4>Danh sách người dùng</h4>
                                 </div>
                             </div>
                         </div>
@@ -31,25 +30,29 @@
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
+                                                <th>Tên</th>
+                                                <th>Họ</th>
+                                                <th>Tên</th>
                                                 <th>Email</th>
-                                                <th>Level</th>
-                                                <th style="width: 30px;">Status</th>
-                                                <th style="width: 10px;">Manager</th>
-
+                                                <th style="width: 30px;">Trạng thái</th>
+                                                <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>User</td>
-                                                <td>user@gmail.com</td>
-                                                <td>User</td>
+                                                <td>UserLinh</td>
+                                                <td>Lê</td>
+                                                <td>Anh</td>
+                                                <td>linh@gmail.com</td>
                                                 <td>
-                                                    <select style="width: 60px;" name="" id="" class="form-select">
-                                                        <option value="">Enable</option>
-                                                        <option value="">Disable</option>
-                                                    </select>
-                                                   
+                                                    <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
+                                                        <label>
+                                                            <input type="checkbox" id="checkbox2" name="status" value="" checked>
+                                                            <span class="cr">
+                                                                <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                                            </span>
+                                                        </label>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm">
@@ -63,7 +66,33 @@
                                                 </td>
 
                                             </tr>
-                                          
+                                            <tr>
+                                                <td>UserLinh</td>
+                                                <td>Lê</td>
+                                                <td>Linh</td>
+                                                <td>linh@gmail.com</td>
+                                                <td>
+                                                    <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
+                                                        <label>
+                                                            <input type="checkbox" id="checkbox2" name="status" value="">
+                                                            <span class="cr">
+                                                                <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <a style="margin: 4px;" href="" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
+                                                            <span class="icofont icofont-ui-edit"></span>
+                                                        </a>
+                                                        <a style="margin: 4px;" href="" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
+                                                            <span class="icofont icofont-ui-delete"></span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
 
                                         </tbody>
 
