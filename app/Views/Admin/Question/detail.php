@@ -1,3 +1,8 @@
+<?= $this->section('css') ?>
+
+<link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css">
+<?= $this->endSection() ?>
+
 <?= $this->extend('Admin/layout') ?>
 <?= $this->section('content') ?>
 
@@ -60,7 +65,7 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form class="needs-validation" action="<?= base_url('dashboard/question/save') ?>" method="post" >
+                                                        <form class="needs-validation" action="<?= base_url('dashboard/question/save') ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
@@ -107,7 +112,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="result">Câu trả lời D</label>
                                                                         <div class="input-group">
-                                                                            <input class="form-control" name="resultD" placeholder="Vd: D.Yes..." >
+                                                                            <input class="form-control" name="resultD" placeholder="Vd: D.Yes...">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -130,23 +135,20 @@
                                                                 <div class="col-md-6">
                                                                     <label for="part_question">Part</label>
                                                                     <div class="input-group">
-                                                                    <select class="js-example-basic-single col-sm-12 form-control">
-                                                                <optgroup label="Developer">
-                                                                    <option value="AL">Alabama</option>
-                                                                    <option value="WY">Wyoming</option>
-                                                                </optgroup>
-                                                                <optgroup label="Designer">
-                                                                    <option value="WY">Peter</option>
-                                                                    <option value="WY">Hanry Die</option>
-                                                                    <option value="WY">John Doe</option>
-                                                                </optgroup>
-                                                            </select>
+                                                                        <select class="form-control js-example-matcher-start" name="part" required>
+                                                                            <optgroup label="Danh sách">
+                                                                                <option selected disabled>--Chọn Part--</option>
+                                                                                <option value="1">Alabama</option>
+                                                                                <option value="2">Wyoming</option>
+                                                                                <option value="3">Peter</option>
+                                                                                <option value="4">Hanry Die</option>
+                                                                                <option value="5">John Doe</option>
+                                                                            </optgroup>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                             <div class="row">
-
                                                                 <div class="col-md-6">
                                                                     <label for="username">Nhóm câu hỏi</label>
                                                                     <div class="input-group">
@@ -184,7 +186,6 @@
                                                                     <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
                                                                 </div>
                                                             </div>
-
                                                             <!-- end of row -->
                                                             <div class="row">
                                                                 <div class="col-md-12 text-right">
@@ -219,6 +220,9 @@
 </div>
 <?= $this->endSection() ?>
 <?= $this->section('js') ?>
+
+<!-- Select 2 js -->
+<script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\select2\js\select2.full.min.js"></script>
 <!-- ajax hidden upload file -->
 <script type="text/javascript">
     $(document).ready(function() {
@@ -237,6 +241,40 @@
                 $('#question1').removeAttr('hidden', '');
             }
         });
+    });
+</script>
+
+<script>
+    function matchStart(params, data) {
+        // If there are no search terms, return all of the data
+        if ($.trim(params.term) === '') {
+            return data;
+        }
+        // Skip if there is no 'children' property
+        if (typeof data.children === '') {
+            return null;
+        }
+        // `data.children` contains the actual options that we are matching against
+        var filteredChildren = [];
+        $.each(data.children, function(idx, child) {
+            if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+                filteredChildren.push(child);
+            }
+        });
+        // If we matched any of the timezone group's children, then set the matched children on the group
+        // and return the group object
+        if (filteredChildren.length) {
+            var modifiedData = $.extend({}, data, true);
+            modifiedData.children = filteredChildren;
+            // You can return modified objects from here
+            // This includes matching the `children` how you want in nested data sets
+            return modifiedData;
+        }
+        // Return `null` if the term should not be displayed
+        return null;
+    }
+    $(".js-example-matcher-start").select2({
+        matcher: matchStart
     });
 </script>
 <?= $this->endSection() ?>

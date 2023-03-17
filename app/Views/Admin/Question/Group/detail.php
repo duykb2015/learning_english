@@ -88,16 +88,14 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <label for="paragraph">Paragraph</label>
-                                                                        <div class="input-group">
-                                                                            <textarea class="form-control" name="paragraph" rows="10" placeholder="Paragraph ..." required></textarea>
-                                                                        </div>
+                                                                        <textarea class="form-control" id="editor2" name="paragraph" required></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/category/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <a href="<?= base_url('dashboard/question/question-group/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -125,4 +123,24 @@
         <!-- Main body end -->
     </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+
+<script>
+    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor2');
+
+
+    var cleave = new Cleave('.cleave1', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+
+    var cleave2 = new Cleave('.cleave2', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+</script>
+
 <?= $this->endSection() ?>

@@ -77,11 +77,8 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-12">
-                                                                        <label for="description">Mô tả</label>
-                                                                        <div class="input-group">
-                                                                            <textarea class="form-control" id="editor1" name="description" rows="10" placeholder="Mô tả ..." required></textarea>
-                                                                        
-                                                                        </div>
+                                                                        <label for="paragraph">Paragraph</label>
+                                                                        <textarea class="form-control" id="editor2" name="paragraph" required></textarea>
                                                                     </div>
                                                                     <!-- Import -->
                                                                     <div class="col-md-6">
@@ -129,4 +126,23 @@
         <!-- Main body end -->
     </div>
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('js') ?>
+
+<script>
+    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor2');
+
+
+    var cleave = new Cleave('.cleave1', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+
+    var cleave2 = new Cleave('.cleave2', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+</script>
+
 <?= $this->endSection() ?>
