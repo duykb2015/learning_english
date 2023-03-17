@@ -71,22 +71,18 @@
                                                                     <div class="col-md-6">
                                                                         <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." disabled required>
+                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-12 mb-3">
                                                                         <label for="description">Mô tả</label>
-                                                                        <div class="input-group">
-                                                                            <textarea class="form-control" name="description" rows="3" placeholder="Mô tả ..." required></textarea>
-                                                                        </div>
+                                                                        <textarea class="form-control" id="editor2" name="description" required></textarea>
                                                                     </div>
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-12 mb-3">
                                                                         <label for="content">Nội dung bài viêt</label>
-                                                                        <div class="input-group">
-                                                                            <textarea class="form-control" name="content" rows="10" placeholder="Nội dung bài viết ..." required></textarea>
-                                                                        </div>
+                                                                        <textarea class="form-control" id="editor1" name="content" required></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -136,4 +132,24 @@
     <!-- Main body end -->
 </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+
+<script>
+    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor2');
+
+
+    var cleave = new Cleave('.cleave1', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+
+    var cleave2 = new Cleave('.cleave2', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+</script>
+
 <?= $this->endSection() ?>
