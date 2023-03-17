@@ -36,7 +36,6 @@
                                                 <th>Email</th>
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -94,7 +93,6 @@
                                                 </td>
 
                                             </tr>
-
 
                                         </tbody>
 

@@ -16,5 +16,4 @@ class AdminController extends BaseController
         return view('Admin/Admin/detail');
     }
 
-   
 }

@@ -12,7 +12,9 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
+
                                     <h4>Thêm tài khoản</h4>
+
                                 </div>
                             </div>
                         </div>
@@ -79,15 +81,19 @@
                                                                     <div class="col-md-6">
                                                                         <label for="password">Mật khẩu</label>
                                                                         <div class="input-group">
+
                                                                             <input type="password" name="password" class="form-control" placeholder="" required>
+
 
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="level">Cấp bậc</label>
                                                                         <div class="input-group">
+
                                                                             <select name="level" class="form-control" required>
                                                                                 <option value="" disabled selected>
+
                                                                                     --Chọn cấp bậc--
                                                                                 </option>
                                                                                 <option value="0">
@@ -105,12 +111,14 @@
                                                                     <div class="col-md-6">
                                                                         <label for="status">Trạng thái</label>
                                                                         <div class="input-group">
+
                                                                             <select name="status" class="form-control" required>
                                                                                 <option value="" disabled selected>
                                                                                     --Chọn trạng thái--
                                                                                 </option>
                                                                                 <option value="1">Hiển thị</option>
                                                                                 <option value="0">Ẩn</option>
+
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -119,8 +127,10 @@
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
+
                                                                         <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
                                                                         <a href="<?= base_url('dashboard/admin/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

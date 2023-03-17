@@ -77,6 +77,22 @@ $routes->group('dashboard', function ($routes) {
     });
 });
 
+$routes->group('dashboard', function ($routes) {
+    $routes->get('', 'Admin\HomeController::index');
+
+    $routes->group('admin', function ($routes) {
+        $routes->get('/', 'Admin\AdminController::index');
+        $routes->get('detail', 'Admin\AdminController::detail');
+        
+    });
+
+    $routes->group('user', function ($routes) {
+        $routes->get('/', 'Admin\AdminController::user');
+        $routes->get('detail', 'Admin\AdminController::user_detail');
+        
+    });
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
