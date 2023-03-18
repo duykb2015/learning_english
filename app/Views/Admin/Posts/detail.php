@@ -78,11 +78,11 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-3">
                                                                         <label for="description">Mô tả</label>
-                                                                        <textarea class="form-control" id="editor2" name="description" required></textarea>
+                                                                        <textarea class="form-control" id="editor" name="description" required></textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-3">
                                                                         <label for="content">Nội dung bài viêt</label>
-                                                                        <textarea class="form-control" id="editor1" name="content" required></textarea>
+                                                                        <textarea class="form-control" id="editor3" name="content" required></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -137,8 +137,8 @@
 <?= $this->section('js') ?>
 
 <script>
-    CKEDITOR.replace('editor1');
-    CKEDITOR.replace('editor2');
+    CKEDITOR.replace('editor');
+    CKEDITOR.replace('editor3');
 
 
     var cleave = new Cleave('.cleave1', {

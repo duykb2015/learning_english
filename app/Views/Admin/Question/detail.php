@@ -2,9 +2,6 @@
 
 <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css">
 
-<!-- Multi Select css -->
-<link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css">
-<link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\multiselect\css\multi-select.css">
 <?= $this->endSection() ?>
 
 <?= $this->extend('Admin/layout') ?>
@@ -221,11 +218,7 @@
 </div>
 <?= $this->endSection() ?>
 <?= $this->section('js') ?>
-<!-- Multiselect js -->
-<script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\js\bootstrap-multiselect.js">
-</script>
 
-<script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\multiselect\js\jquery.multi-select.js"></script>
 <!-- Select 2 js -->
 <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\select2\js\select2.full.min.js"></script>
 <!-- ajax hidden upload file -->
