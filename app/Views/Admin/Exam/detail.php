@@ -71,7 +71,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="username">Phương thức thêm đề <span style="font-size: 12px;" class="text-warning">(Dùng cho chức năng import excel)</span></label>
                                                                         <div class="input-group">
-                                                                            <select name="status" class="form-control" disabled>
+                                                                            <select name="static" class="form-control" disabled>
                                                                                 <option value="" disabled selected>
                                                                                     --Chọn loại--
                                                                                 </option>
@@ -85,8 +85,14 @@
                                                                 <div class="col-md-6">
                                                                     <label for="partnumber">Phần đề thi</label>
                                                                     <div class="input-group">
-                                                                        <input type="number" name="partnumber" class="form-control" placeholder="Từ 1 - 7" required>
-                                                                    </div>
+                                                                            <select name="part" class="form-control" required>
+                                                                                <option value="" disabled selected>
+                                                                                    --Chọn part--
+                                                                                </option>
+                                                                                <option value="1">1</option>
+                                                                                <option value="2">2</option>
+                                                                            </select>
+                                                                        </div>
                                                                 </div>
                                                                 <!-- Import -->
                                                                     <div class="col-md-6" >

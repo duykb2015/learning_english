@@ -78,7 +78,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <label for="paragraph">Paragraph</label>
-                                                                        <textarea class="form-control" id="editor2" name="paragraph" required></textarea>
+                                                                        <textarea class="form-control" id="editor0" name="paragraph" required></textarea>
                                                                     </div>
                                                                     <!-- Import -->
                                                                     <div class="col-md-6">
@@ -130,9 +130,7 @@
 <?= $this->section('js') ?>
 
 <script>
-    CKEDITOR.replace('editor1');
-    CKEDITOR.replace('editor2');
-
+    CKEDITOR.replace('editor0');
 
     var cleave = new Cleave('.cleave1', {
         numeral: true,
