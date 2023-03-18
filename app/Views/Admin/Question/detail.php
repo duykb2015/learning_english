@@ -1,6 +1,9 @@
 <?= $this->section('css') ?>
 
 <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css">
+
+
+
 <?= $this->endSection() ?>
 
 <?= $this->extend('Admin/layout') ?>
@@ -134,16 +137,16 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="part_question">Part</label>
-                                                                    <div class="input-group">
-                                                                        <select class="form-control js-example-matcher-start" name="part" required>
-                                                                            <optgroup label="Danh sách">
-                                                                                <option selected disabled>--Chọn Part--</option>
-                                                                                <option value="1">Alabama</option>
-                                                                                <option value="2">Wyoming</option>
-                                                                                <option value="3">Peter</option>
-                                                                                <option value="4">Hanry Die</option>
-                                                                                <option value="5">John Doe</option>
-                                                                            </optgroup>
+
+                                                                    <div style="height: 1px;" class="input-group">
+                                                                        <select class="form-control js-example-basic-single" name="part" required>
+                                                                            <option value="" selected disabled>--Chọn Part--</option>
+                                                                            <option value="1">Alabama</option>
+                                                                            <option value="2">Wyoming</option>
+                                                                            <option value="3">Peter</option>
+                                                                            <option value="4">Hanry Die</option>
+                                                                            <option value="5">John Doe</option>
+
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -161,7 +164,6 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="col-md-6">
                                                                     <label for="status">Trạng thái</label>
                                                                     <div class="input-group">
@@ -247,34 +249,36 @@
 <script>
     function matchStart(params, data) {
         // If there are no search terms, return all of the data
-        if ($.trim(params.term) === '') {
-            return data;
-        }
-        // Skip if there is no 'children' property
-        if (typeof data.children === '') {
-            return null;
-        }
-        // `data.children` contains the actual options that we are matching against
-        var filteredChildren = [];
-        $.each(data.children, function(idx, child) {
-            if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
-                filteredChildren.push(child);
-            }
-        });
-        // If we matched any of the timezone group's children, then set the matched children on the group
-        // and return the group object
-        if (filteredChildren.length) {
-            var modifiedData = $.extend({}, data, true);
-            modifiedData.children = filteredChildren;
-            // You can return modified objects from here
-            // This includes matching the `children` how you want in nested data sets
-            return modifiedData;
-        }
-        // Return `null` if the term should not be displayed
-        return null;
+
+        // if ($.trim(params.term) === '') {
+        //     return data;
+        // }
+        // // Skip if there is no 'children' property
+        // if (typeof data.children === '') {
+        //     return null;
+        // }
+        // // `data.children` contains the actual options that we are matching against
+        // var filteredChildren = [];
+        // $.each(data.children, function(idx, child) {
+        //     if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+        //         filteredChildren.push(child);
+        //     }
+        // });
+        // // If we matched any of the timezone group's children, then set the matched children on the group
+        // // and return the group object
+        // if (filteredChildren.length) {
+        //     var modifiedData = $.extend({}, data, true);
+        //     modifiedData.children = filteredChildren;
+        //     // You can return modified objects from here
+        //     // This includes matching the `children` how you want in nested data sets
+        //     return modifiedData;
+        // }
+        // // Return `null` if the term should not be displayed
+        // return null;
     }
-    $(".js-example-matcher-start").select2({
-        matcher: matchStart
+    $(".js-example-basic-single").select2({
+        // matcher: matchStart
+
     });
 </script>
 <?= $this->endSection() ?>

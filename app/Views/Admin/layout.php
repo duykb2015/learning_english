@@ -34,6 +34,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\assets\icon\icofont\css\icofont.css">
 
     <?php $this->renderSection('css') ?>
+    <!-- Multi Select css -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\multiselect\css\multi-select.css">
 
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\assets\css\style.css">
@@ -43,8 +46,9 @@
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\jquery.filer.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css">
 
-    <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
 
+    <!-- ckeditor js -->
+    <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
 
 
     <style>
@@ -117,6 +121,13 @@
     </div>
 
     <!-- Warning Section Ends -->
+
+    <!-- Multiselect js -->
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\js\bootstrap-multiselect.js">
+    </script>
+
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\multiselect\js\jquery.multi-select.js"></script>
+
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
@@ -164,6 +175,7 @@
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\i18next-browser-languagedetector\js\i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-i18next\js\jquery-i18next.min.js"></script>
     <!-- custom js -->
+    <!-- <script src="//cdn.ckeditor.com/4.20.2/basic/ckeditor.js"></script> -->
     <script src="<?= base_url() ?>\templates\libraries\assets\js\vartical-layout.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\js\script.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\pages\data-table\js\data-table-custom.js"></script>
