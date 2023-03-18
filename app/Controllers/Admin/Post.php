@@ -4,15 +4,15 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class CategoryController extends BaseController
+class Post extends BaseController
 {
     public function index()
     {
-        return view('Admin/Category/index');
+        return view('Admin/Posts/index');
     }
 
     public function detail()
     {
-        return view('Admin/Category/detail');
+        return view('Admin/Posts/detail');
     }
 }

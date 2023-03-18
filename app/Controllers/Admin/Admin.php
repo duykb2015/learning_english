@@ -4,7 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class AdminController extends BaseController
+class Admin extends BaseController
 {
     public function index()
     {
@@ -15,5 +15,4 @@ class AdminController extends BaseController
     {
         return view('Admin/Admin/detail');
     }
-
 }

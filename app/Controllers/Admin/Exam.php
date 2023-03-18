@@ -4,14 +4,15 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class PartExamController extends BaseController
+class Exam extends BaseController
 {
     public function index()
     {
-        return view('Admin/Exam/Part_Exam/index');
+        return view('Admin/Exam/index');
     }
     public function detail()
     {
-        return view('Admin/Exam/Part_Exam/detail');
+        return view('Admin/Exam/detail');
     }
+    
 }
