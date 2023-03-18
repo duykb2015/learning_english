@@ -46,8 +46,10 @@
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\jquery.filer.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css">
 
+
     <!-- ckeditor js -->
     <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
+
 
     <style>
         body {

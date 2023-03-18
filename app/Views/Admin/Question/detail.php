@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css">
 
+
+
 <?= $this->endSection() ?>
 
 <?= $this->extend('Admin/layout') ?>
@@ -135,6 +137,7 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="part_question">Part</label>
+
                                                                     <div style="height: 1px;" class="input-group">
                                                                         <select class="form-control js-example-basic-single" name="part" required>
                                                                             <option value="" selected disabled>--Chọn Part--</option>
@@ -143,6 +146,7 @@
                                                                             <option value="3">Peter</option>
                                                                             <option value="4">Hanry Die</option>
                                                                             <option value="5">John Doe</option>
+
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -245,6 +249,7 @@
 <script>
     function matchStart(params, data) {
         // If there are no search terms, return all of the data
+
         // if ($.trim(params.term) === '') {
         //     return data;
         // }
@@ -273,6 +278,7 @@
     }
     $(".js-example-basic-single").select2({
         // matcher: matchStart
+
     });
 </script>
 <?= $this->endSection() ?>

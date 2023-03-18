@@ -88,7 +88,9 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <label for="paragraph">Paragraph</label>
+
                                                                         <textarea class="form-control" id="editor" name="paragraph" required></textarea>
+
                                                                     </div>
                                                                 </div>
                                                                 <!-- end of row -->
@@ -126,13 +128,15 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
+
 <script>
     CKEDITOR.replace('editor');
+
 
 
     var cleave = new Cleave('.cleave1', {
         numeral: true,
         numeralThousandsGroupStyle: 'thousand'
     });
-</script>
+
 <?= $this->endSection() ?>
