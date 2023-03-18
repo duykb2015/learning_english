@@ -60,7 +60,7 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="#" method="#">
+                                                        <form action="#" method="#" enctype="multipart/form-data">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">

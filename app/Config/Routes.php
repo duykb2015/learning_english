@@ -30,68 +30,52 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
 $routes->get('admin-login', 'Admin\Login::index');
+$routes->post('admin-login', 'Admin\Login::authLogin');
 
-$routes->group('dashboard', function ($routes) {
-    $routes->get('', 'Admin\HomeController::index');
+$routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
 
+    $routes->get('', 'Admin\Home::index');
     $routes->group('admin', function ($routes) {
-        $routes->get('/', 'Admin\AdminController::index');
-        $routes->get('detail', 'Admin\AdminController::detail');
+        $routes->get('/', 'Admin\Admin::index');
+        $routes->get('detail', 'Admin\Admin::detail');
     });
 
 
     $routes->group('user', function ($routes) {
-        $routes->get('/', 'Admin\UserController::index');
-        $routes->get('detail', 'Admin\UserController::detail');
+        $routes->get('/', 'Admin\User::index');
+        $routes->get('detail', 'Admin\User::detail');
     });
     $routes->group('category', function ($routes) {
-        $routes->get('/', 'Admin\CategoryController::index');
-        $routes->get('detail', 'Admin\CategoryController::detail');
+        $routes->get('/', 'Admin\Category::index');
+        $routes->get('detail', 'Admin\Category::detail');
     });
 
     $routes->group('question', function ($routes) {
-        $routes->get('/', 'Admin\QuestionController::index');
-        $routes->get('detail', 'Admin\QuestionController::detail');
-        
-        $routes->get('upload-excel', 'Admin\UploadController::upload_excel');
-        $routes->get('question-group', 'Admin\QuestionGroupController::index');
-        $routes->get('question-group/detail', 'Admin\QuestionGroupController::detail');
+        $routes->get('/', 'Admin\Question::index');
+        $routes->get('detail', 'Admin\Question::detail');
 
-        $routes->post('save', 'Admin\QuestionController::save');
+        $routes->get('upload-excel', 'Admin\Question::upload_excel');
+        $routes->get('question-group', 'Admin\QuestionGroup::index');
+        $routes->get('question-group/detail', 'Admin\QuestionGroup::detail');
+
+        $routes->post('save', 'Admin\Question::save');
     });
 
     $routes->group('exam', function ($routes) {
-        $routes->get('/', 'Admin\ExamController::index');
-        $routes->get('detail', 'Admin\ExamController::detail');
-        $routes->get('part-exam', 'Admin\PartExamController::index');
-        $routes->get('part-exam/detail', 'Admin\PartExamController::detail');
-        
-        
+        $routes->get('/', 'Admin\Exam::index');
+        $routes->get('detail', 'Admin\Exam::detail');
+        $routes->get('part-exam', 'Admin\PartExam::index');
+        $routes->get('part-exam/detail', 'Admin\PartExam::detail');
     });
 
     $routes->group('posts', function ($routes) {
-        $routes->get('/', 'Admin\PostsController::index');
-        $routes->get('detail', 'Admin\PostsController::detail');
-        
+        $routes->get('/', 'Admin\Posts::index');
+        $routes->get('detail', 'Admin\Posts::detail');
     });
 });
 
-$routes->group('dashboard', function ($routes) {
-    $routes->get('', 'Admin\HomeController::index');
-
-    $routes->group('admin', function ($routes) {
-        $routes->get('/', 'Admin\AdminController::index');
-        $routes->get('detail', 'Admin\AdminController::detail');
-        
-    });
-
-    $routes->group('user', function ($routes) {
-        $routes->get('/', 'Admin\AdminController::user');
-        $routes->get('detail', 'Admin\AdminController::user_detail');
-        
-    });
-});
 
 /*
  * --------------------------------------------------------------------

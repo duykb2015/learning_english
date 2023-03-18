@@ -45,7 +45,7 @@
                                         <h3 class="text-center">Đăng nhập</h3>
                                     </div>
                                     <div class="col-12">
-                                        <!-- <?php $errors = session()->getFlashdata('error_msg') ?>
+                                        <?php $errors = session()->getFlashdata('error_msg') ?>
                                         <?php if (!empty($errors)) :  ?>
                                             <?php if (!is_array($errors)) : ?>
                                                 <div class="alert alert-danger mb-1">
@@ -58,7 +58,7 @@
                                                     </div>
                                                 <?php endforeach ?>
                                             <?php endif ?>
-                                        <?php endif ?> -->
+                                        <?php endif ?>
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
