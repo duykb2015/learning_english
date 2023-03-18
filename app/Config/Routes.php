@@ -42,11 +42,11 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
         $routes->get('detail', 'Admin\Admin::detail');
     });
 
-
     $routes->group('user', function ($routes) {
         $routes->get('/', 'Admin\User::index');
         $routes->get('detail', 'Admin\User::detail');
     });
+    
     $routes->group('category', function ($routes) {
         $routes->get('/', 'Admin\Category::index');
         $routes->get('detail', 'Admin\Category::detail');
