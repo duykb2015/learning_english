@@ -88,7 +88,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <label for="paragraph">Paragraph</label>
-                                                                        <textarea class="form-control" id="editor2" name="paragraph" required></textarea>
+                                                                        <textarea class="form-control" id="editor1" name="paragraph" required></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <!-- end of row -->
@@ -129,8 +129,7 @@
 
 <script>
     CKEDITOR.replace('editor1');
-    CKEDITOR.replace('editor2');
-
+    
 
     var cleave = new Cleave('.cleave1', {
         numeral: true,

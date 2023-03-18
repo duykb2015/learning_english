@@ -43,8 +43,6 @@
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\jquery.filer.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css">
 
-    <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
-
 
 
     <style>
@@ -117,6 +115,9 @@
     </div>
 
     <!-- Warning Section Ends -->
+    <!-- ckeditor js -->
+    <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
+
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
