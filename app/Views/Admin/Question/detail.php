@@ -137,7 +137,6 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="part_question">Part</label>
-
                                                                     <div style="height: 1px;" class="input-group">
                                                                         <select class="form-control js-example-basic-single" name="part" required>
                                                                             <option value="" selected disabled>--Chọn Part--</option>

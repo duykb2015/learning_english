@@ -10,6 +10,8 @@
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
 
+
+   
     <!-- Boostrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!-- Favicon icon -->
@@ -45,10 +47,9 @@
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\jquery.filer.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css">
 
-
     <!-- ckeditor js -->
     <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
-
+    <?= $this->renderSection('css') ?>
 
     <style>
         body {
@@ -101,6 +102,8 @@
     </div>
 
     <!-- Warning Section Ends -->
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\select2\js\select2.full.min.js"></script>
+
 
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
