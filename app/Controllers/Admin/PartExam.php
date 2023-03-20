@@ -14,4 +14,8 @@ class PartExam extends BaseController
     {
         return view('Admin/Exam/Part/detail');
     }
+    public function save()
+    {
+        # code...
+    }
 }

@@ -68,6 +68,21 @@ $menu = [
         'sub_menu' => [
             [
                 'url' => '',
+                'name' => 'Nhóm câu hỏi',
+                'active' => 'dashboard/question-group',
+                'sub_menu' => [
+                    [
+                        'url' => base_url('dashboard/question-group/'),
+                        'name' => 'Danh sách',
+                    ],
+                    [
+                        'url' => base_url('dashboard/question-group/detail'),
+                        'name' => 'Thêm mới',
+                    ],
+                ]
+            ],
+            [
+                'url' => '',
                 'name' => 'Câu hỏi',
                 'active' => 'dashboard/question',
                 'sub_menu' => [
@@ -83,26 +98,8 @@ $menu = [
                         'url' => base_url('dashboard/question/upload-excel'),
                         'name' => 'Thêm câu hỏi Excel',
                     ],
-
                 ]
             ],
-
-            [
-                'url' => '',
-                'name' => 'Nhóm câu hỏi',
-                'active' => 'dashboard/question-group',
-                'sub_menu' => [
-                    [
-                        'url' => base_url('dashboard/question/question-group/'),
-                        'name' => 'Danh sách',
-                    ],
-                    [
-                        'url' => base_url('dashboard/question/question-group/detail'),
-                        'name' => 'Thêm mới',
-                    ],
-                ]
-            ],
-
         ]
     ],
     [

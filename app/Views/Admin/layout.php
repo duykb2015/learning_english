@@ -33,7 +33,6 @@
     <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\assets\icon\icofont\css\icofont.css">
 
-    <?php $this->renderSection('css') ?>
     <!-- Multi Select css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\multiselect\css\multi-select.css">
@@ -65,39 +64,20 @@
 <body>
     <!-- Pre-loader start -->
     <div class="theme-loader">
-        <div class="ball-scale">
-            <div class='contain'>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
+        <div style="position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+        width: 100px;
+        height: 100px;" class='contain'>
+            <div class="preloader3 loader-block">
+                <div class="circ1 loader-primary loader-md"></div>
+                <div class="circ2 loader-primary loader-md"></div>
+                <div class="circ3 loader-primary loader-md"></div>
+                <div class="circ4 loader-primary loader-md"></div>
             </div>
+
         </div>
     </div>
     <!-- Pre-loader end -->
@@ -121,12 +101,6 @@
     </div>
 
     <!-- Warning Section Ends -->
-
-    <!-- Multiselect js -->
-    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\js\bootstrap-multiselect.js">
-    </script>
-
-    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\multiselect\js\jquery.multi-select.js"></script>
 
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -175,14 +149,11 @@
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\i18next-browser-languagedetector\js\i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-i18next\js\jquery-i18next.min.js"></script>
     <!-- custom js -->
-    <!-- <script src="//cdn.ckeditor.com/4.20.2/basic/ckeditor.js"></script> -->
     <script src="<?= base_url() ?>\templates\libraries\assets\js\vartical-layout.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\js\script.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\pages\data-table\js\data-table-custom.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\pcoded.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="<?= base_url() ?>\templates\libraries\assets\pages\ckeditor\ckeditor.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\pages\ckeditor\ckeditor-custom.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\js\app.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\js\jquery.quicksearch.js"></script>
     <!-- ajax -->
