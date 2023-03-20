@@ -93,5 +93,7 @@ define('EVENT_PRIORITY_NORMAL', 100);
  */
 define('EVENT_PRIORITY_HIGH', 10);
 
+define('PART_LIMIT', 7);
+
 define('WRONG_LOGIN_INFO_MESSAGE', 'Tài khoản hoặc mật khẩu sai, vui lòng kiểm tra lại!');
 define('UNEXPECTED_ERROR_MESSAGE', 'Có lỗi xảy ra, vui lòng thử lại sau!');

@@ -58,11 +58,11 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/category/save') ?>" method="post">
-                                                            <input type="hidden" name="id" value="">
+                                                        <form action="<?= base_url('dashboard/question-group/save') ?>" method="post">
+                                                            <input type="hidden" name="part_number_id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <label for="title">Tiêu đề</label>
                                                                         <div class="input-group">
                                                                             <input type="text" class="form-control" value="" name="title" placeholder="Tiêu đề ..." required autofocus>
@@ -71,10 +71,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="level">Trạng thái</label>
                                                                         <div class="input-group">
-                                                                            <select name="level" class="form-control" required>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn trạng thái--
-                                                                                </option>
+                                                                            <select name="status" class="form-control" required>
                                                                                 <option value="0">
                                                                                     Hiển thị
                                                                                 </option>
@@ -84,13 +81,23 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="partnumber">Phần đề thi</label>
+                                                                        <div class="input-group">
+                                                                            <select name="part_number" class="form-control">
+                                                                                <?php if (isset($examPart) || !empty($examPart)) : ?>
+                                                                                    <?php foreach ($examPart as $item) : ?>
+                                                                                        <option value="<?= $item['id'] ?>">Part <?= $item['part_number'] ?></option>
+                                                                                    <?php endforeach ?>
+                                                                                <?php endif ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <label for="paragraph">Paragraph</label>
-
-                                                                        <textarea class="form-control" id="editor" name="paragraph" required></textarea>
-
+                                                                    <div class="col-md-12  mb-3">
+                                                                        <label for="paragraph">Đoạn văn</label>
+                                                                        <textarea class="form-control" id="editor1" name="paragraph" required></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <!-- end of row -->
@@ -130,13 +137,6 @@
 <?= $this->section('js') ?>
 
 <script>
-    CKEDITOR.replace('editor');
-
-
-
-    var cleave = new Cleave('.cleave1', {
-        numeral: true,
-        numeralThousandsGroupStyle: 'thousand'
-    });
-
+    CKEDITOR.replace('editor1');
+</script>
 <?= $this->endSection() ?>

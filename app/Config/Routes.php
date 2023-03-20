@@ -46,7 +46,7 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
         $routes->get('/', 'Admin\User::index');
         $routes->get('detail', 'Admin\User::detail');
     });
-    
+
     $routes->group('category', function ($routes) {
         $routes->get('/', 'Admin\Category::index');
         $routes->get('detail', 'Admin\Category::detail');
@@ -57,12 +57,14 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
         $routes->get('detail', 'Admin\Question::detail');
 
         $routes->get('upload-excel', 'Admin\Question::upload_excel');
-        $routes->get('question-group', 'Admin\QuestionGroup::index');
-        $routes->get('question-group/detail', 'Admin\QuestionGroup::detail');
-
         $routes->post('save', 'Admin\Question::save');
     });
+    $routes->group('question-group', function ($routes) {
+        $routes->get('/', 'Admin\QuestionGroup::index');
+        $routes->get('detail', 'Admin\QuestionGroup::detail');
 
+        $routes->post('save', 'Admin\QuestionGroup::create');
+    });
     $routes->group('exam', function ($routes) {
         $routes->get('/', 'Admin\Exam::index');
         $routes->get('detail', 'Admin\Exam::detail');
