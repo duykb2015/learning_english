@@ -71,7 +71,13 @@
                                                                     <div class="col-md-6">
                                                                         <label for="partnumber">Phần đề thi</label>
                                                                         <div class="input-group">
-                                                                            <input type="number" name="partnumber" class="form-control" placeholder="Từ 1 - 7" required>
+                                                                            <!-- <input type="number" name="partnumber" class="form-control" placeholder="Từ 1 - 7" required> -->
+                                                                            <select name="part_number" class="form-control">
+                                                                                <option value="">Chọn Part</option>
+                                                                                <?php for ($i = 1; $i <= PART_LIMIT; $i++) : ?>
+                                                                                    <option value="<?= $i ?>">Part <?= $i ?></option>
+                                                                                <?php endfor ?>
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
