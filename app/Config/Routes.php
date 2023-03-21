@@ -33,7 +33,7 @@ $routes->get('/', 'Home::index');
 
 $routes->get('admin-login', 'Admin\Login::index');
 $routes->post('admin-login', 'Admin\Login::authLogin');
-
+$routes->get('logout', 'Admin\Login::logout');
 $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
 
     $routes->get('', 'Admin\Home::index');
