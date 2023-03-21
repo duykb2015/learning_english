@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm bài viết</h4>
+                                    <h4>Cập nhật bài viết</h4>
                                 </div>
                             </div>
                         </div>
@@ -58,20 +58,20 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/posts/save') ?>" method="post">
+                                                        <form action="<?= base_url('dashboard/posts/update/'.$posts['id']) ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <label for="title">Tiêu đề</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="title" placeholder="Tiêu đề ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="<?= $posts['title'] ?>" name="title" placeholder="Tiêu đề ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." required>
+                                                                            <input type="text" class="form-control" id="inputWarning1" value="<?= $posts['slug'] ?>" name="slug" placeholder="Slug ..." required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -79,11 +79,11 @@
                                                                     <div class="col-md-12 mb-3">
                                                                         <label for="description">Mô tả</label>
 
-                                                                        <textarea class="form-control" id="editor" name="description" required></textarea>
+                                                                        <textarea class="form-control" id="editor"   name="description" required><?= $posts['description'] ?></textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-3">
                                                                         <label for="content">Nội dung bài viêt</label>
-                                                                        <textarea class="form-control" id="editor3" name="content" required></textarea>
+                                                                        <textarea class="form-control"   id="editor3" name="content" required><?= $posts['content'] ?></textarea>
 
                                                                     </div>
                                                                 </div>
@@ -106,7 +106,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12 text-right">
                                                                     <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                    <a href="<?= base_url('dashboard/posts/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                    <a href="<?= base_url('dashboard/posts') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                 </div>
                                                             </div>
                                                     </div>
@@ -139,6 +139,7 @@
 <?= $this->section('js') ?>
 
 <script>
+
     CKEDITOR.replace('editor');
     CKEDITOR.replace('editor3');
 
