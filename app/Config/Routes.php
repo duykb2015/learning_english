@@ -75,6 +75,11 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
     $routes->group('posts', function ($routes) {
         $routes->get('/', 'Admin\Posts::index');
         $routes->get('detail', 'Admin\Posts::detail');
+        $routes->post('save', 'Admin\Posts::save');
+
+        $routes->get('edit/:any', 'Admin\Posts::edit');
+        $routes->post('update/:any', 'Admin\Posts::update');
+        $routes->get('delete/:any', 'Admin\Posts::delete');
     });
 });
 
