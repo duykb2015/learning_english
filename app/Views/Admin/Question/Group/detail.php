@@ -109,13 +109,13 @@
                                                                 <div class="border border-secondary rounded mb-3 repeater">
                                                                     <div class="container">
                                                                         <div class="row" style="padding-top: 5px;">
-                                                                            <div class="col-md-12 ">
+                                                                            <div class="col-md-6 ">
                                                                                 <label for="question">Câu hỏi</label>
                                                                                 <div class="input-group">
                                                                                     <textarea type="text" class="form-control" value="" name="question" placeholder="Câu hỏi ..." rows="1" required autofocus></textarea>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-12 ">
+                                                                            <div class="col-md-6 ">
                                                                                 <label for="username">Đáp án đúng</label>
                                                                                 <div class="input-group">
                                                                                     <select name="result_true" class="form-control" id="validationCustom04" required>
@@ -307,6 +307,27 @@
         const is_confirm = confirm(`Bạn muốn xóa câu trả lời ?`);
         if (!is_confirm) {
             return
+        }
+        $(current).parents('.form-row').remove();
+    }
+</script>
+
+<!-- js add answers -->
+<script>
+    function addFormElements(current) {
+
+        $(current).parents('.form-list').append($(current).parents('.form-row').clone())
+    }
+
+    function removeFormElements(current) {
+        const is_confirm = confirm(`Bạn muốn xóa câu trả lời ?`);
+        if (!is_confirm) {
+            return
+        }
+
+        if ($('.form-row').length === 1) {
+            alert('Không thể xóa câu trả lời cuối cùng');
+            return;
         }
         $(current).parents('.form-row').remove();
     }
