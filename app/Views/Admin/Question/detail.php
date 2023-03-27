@@ -2,8 +2,6 @@
 
 <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css">
 
-
-
 <?= $this->endSection() ?>
 
 <?= $this->extend('Admin/layout') ?>
@@ -68,7 +66,7 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form class="needs-validation" action="<?= base_url('dashboard/question/save') ?>" method="post">
+                                                        <form class="needs-validation" action="<?= base_url('dashboard/question/save') ?>" method="post" enctype="multipart/form-data">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
@@ -92,34 +90,22 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label for="result">Câu trả lời A</label>
+                                                                    <div class="col-md-12">
+                                                                        <label for="result">Câu trả lời</label>
                                                                         <div class="input-group">
-                                                                            <input class="form-control" name="resultA" placeholder="Vd: A.Yes..." required>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="result">Câu trả lời B</label>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" name="resultB" placeholder="Vd: B.Yes..." required>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label for="result">Câu trả lời C</label>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" name="resultC" placeholder="Vd: C.Yes..." required>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="result">Câu trả lời D</label>
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" name="resultD" placeholder="Vd: D.Yes...">
+                                                                            <input style="height: 40px;" class="form-control" name="result[]" placeholder="Vd: A.Yes..." required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div id="newinput"></div>
+                                                            <div class="row">
+                                                                <div class="mb-3">
+                                                                    <button id="rowAdder" type="button" class="btn btn-primary waves-effect waves-light m-r-20">Thêm câu trả lời</button>
+
+                                                                </div>
+                                                            </div>
+
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <label for="username">Đáp án đúng</label>
@@ -136,7 +122,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label for="part_question">Part</label>
+                                                                    <label for="partnumber">Part</label>
                                                                     <div style="height: 1px;" class="input-group">
                                                                         <select class="form-control js-example-basic-single" name="part" required>
                                                                             <option value="" selected disabled>--Chọn Part--</option>
@@ -151,18 +137,16 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="username">Nhóm câu hỏi</label>
-                                                                    <div class="input-group">
-                                                                        <select name="group" class="form-control" required>
-                                                                            <option value="" disabled selected>
-                                                                                --Chọn nhóm câu hỏi--
-                                                                            </option>
-                                                                            <option value="0">Không</option>
-                                                                            <option value="1">Đoạn</option>
-                                                                        </select>
-                                                                    </div>
+                                                                <div class="col-md-12 mb-3" id="question">
+                                                                    <label for="upload_image">Upload tệp hình ảnh</label>
+                                                                    <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple" required>
                                                                 </div>
+                                                                <div class="col-md-12 mb-3" id="question1">
+                                                                    <label for="upload_audio">Upload tệp âm thanh</label>
+                                                                    <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
                                                                 <div class="col-md-6">
                                                                     <label for="status">Trạng thái</label>
                                                                     <div class="input-group">
@@ -174,17 +158,6 @@
                                                                             <option value="0">Ẩn</option>
                                                                         </select>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-3" id="question">
-                                                                    <label for="upload_image">Upload tệp hình ảnh</label>
-                                                                    <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple" required>
-                                                                </div>
-                                                                <div class="col-md-12 mb-3" id="question1">
-                                                                    <label for="upload_audio">Upload tệp âm thanh</label>
-                                                                    <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
                                                                 </div>
                                                             </div>
                                                             <!-- end of row -->
@@ -279,5 +252,40 @@
         // matcher: matchStart
 
     });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var counter = 3;
+    $("#rowAdder").click(function() {
+       
+        if (counter > 6) {
+            alert("Tối đa 5 câu trả lời được chấp nhận!");
+            return false;
+        }
+        counter++;
+        newRowAdd =
+            '<div class="row" id="row" >' +
+            '<div class="col-md-12">' +
+            '<label for="result">Câu trả lời tiếp theo</label>' +
+            '<div class="input-group">' +
+            '<input class="form-control" name="result[]" placeholder="Vd: A.Yes..." required>' +
+            '<button class="btn btn-danger" id="DeleteRow" type="button">' +
+            '<i class="bi bi-trash"></i> Xóa</button> </div> </div> ' +
+            '</div>';
+
+        $('#newinput').append(newRowAdd);
+        
+    });
+
+    $("body").on("click", "#DeleteRow", function() {
+        const is_confirm = confirm(`Bạn muốn xóa câu trả lời ?`);
+        if (!is_confirm) {
+            return
+        }
+        counter--;
+        $(this).parents("#row").remove();
+    })
+});
 </script>
 <?= $this->endSection() ?>

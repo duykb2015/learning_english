@@ -65,13 +65,13 @@
                                                                     <div class="col-md-6">
                                                                         <label for="title">Tiêu đề</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="title" placeholder="Tiêu đề ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" id="title" name="title" placeholder="Tiêu đề ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." required>
+                                                                            <input type="text" class="form-control" id="slug" value="" name="slug" placeholder="Slug ..." required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -144,15 +144,41 @@
 
 
 
-    var cleave = new Cleave('.cleave1', {
-        numeral: true,
-        numeralThousandsGroupStyle: 'thousand'
-    });
+    // var cleave = new Cleave('.cleave1', {
+    //     numeral: true,
+    //     numeralThousandsGroupStyle: 'thousand'
+    // });
 
-    var cleave2 = new Cleave('.cleave2', {
-        numeral: true,
-        numeralThousandsGroupStyle: 'thousand'
-    });
+    // var cleave2 = new Cleave('.cleave2', {
+    //     numeral: true,
+    //     numeralThousandsGroupStyle: 'thousand'
+    // });
+
+    function slug(str) {
+
+        str = str.replace(/^\s+|\s+$/g, "");
+        str = str.toLowerCase();
+
+        var from = "àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ·/_,:;";
+        var to = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd------";
+        for (var i = 0; i < from.length; i++) {
+            str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+        }
+
+        str = str.replace(/[^a-z0-9 -]/g, '')
+            .replace(/\s+/g, "-")
+            .replace(/-+/g, "-")
+
+        return str
+    }
+
+    // $('#name').on('input', function() {
+    //     $('#slug').val(slug($(this).val()))
+    // })
+
+    document.getElementById('title').oninput = function() {
+        document.getElementById('slug').value = (slug(document.getElementById('title').value))
+    }
 </script>
 
 <?= $this->endSection() ?>
