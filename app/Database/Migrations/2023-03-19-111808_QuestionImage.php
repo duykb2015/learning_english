@@ -25,12 +25,6 @@ class QuestionImage extends Migration
                 'constraint' => 255,
                 'null' => FALSE,
             ],
-            'status' => [
-                'type' => 'TINYINT',
-                'constraint' => 1,
-                'null' => FALSE,
-                'default' => '1'
-            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('question_id', 'question', 'id', '', '', 'fk_q_i_q_id_question_id');

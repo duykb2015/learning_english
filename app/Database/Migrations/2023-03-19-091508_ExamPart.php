@@ -10,8 +10,8 @@ class ExamPart extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type' => 'TINYINT',
-                'constraint' => 1,
+                'type' => 'INT',
+                'constraint' => 11,
                 'null' => FALSE,
                 'auto_increment' => TRUE,
             ],
@@ -25,14 +25,8 @@ class ExamPart extends Migration
                 'constraint' => 255,
                 'null' => FALSE,
             ],
-            'slug' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => FALSE,
-            ],
             'direction' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
+                'type' => 'TEXT',
                 'null' => FALSE,
             ],
         ]);

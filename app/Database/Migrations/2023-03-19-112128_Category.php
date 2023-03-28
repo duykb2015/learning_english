@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class WrongAnswerQuestion extends Migration
+class Category extends Migration
 {
     public function up()
     {
@@ -15,37 +15,41 @@ class WrongAnswerQuestion extends Migration
                 'null' => FALSE,
                 'auto_increment' => TRUE,
             ],
-            'user_id' => [
+            'parent_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'null' => FALSE,
             ],
-            'question_id' => [
-                'type' => 'INT',
-                'constraint' => 11,
+            'name' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
                 'null' => FALSE,
             ],
-            'selected_answer' => [
-                'type' => 'tinyint',
+            'slug' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => FALSE,
+            ],
+            'status' => [
+                'type' => 'TINYINT',
                 'constraint' => 1,
                 'null' => FALSE,
+                'default'=> 1
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('user_id', 'user', 'id', '', '', 'fk_w_a_q_user_id_user_id');
-        $this->forge->addForeignKey('question_id', 'question', 'id', '', '', 'fk_w_a_q_question_id_question_id');
+        $this->forge->addForeignKey('parent_id', 'category', 'id', '', '', 'fk_category_id');
         $attributes = [
             'ENGINE' => 'InnoDB',
             'CHARACTER SET' => 'utf8',
             'COLLATE' => 'utf8_general_ci'
         ];
-        $this->forge->createTable('wrong_answer_question', TRUE, $attributes);
+        $this->forge->createTable('category', TRUE, $attributes);
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('wrong_answer_question', 'fk_w_a_q_user_id_user_id');
-        $this->forge->dropForeignKey('wrong_answer_question', 'fk_w_a_q_question_id_question_id');
-        $this->forge->dropTable('wrong_answer_question', TRUE);
+        $this->forge->dropForeignKey('category', 'fk_category_id');
+        $this->forge->dropTable('category', TRUE);
     }
 }
