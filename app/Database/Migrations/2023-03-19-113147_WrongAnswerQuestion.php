@@ -20,11 +20,6 @@ class WrongAnswerQuestion extends Migration
                 'constraint' => 11,
                 'null' => FALSE,
             ],
-            'exam_id' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE,
-            ],
             'question_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
@@ -38,7 +33,6 @@ class WrongAnswerQuestion extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('user_id', 'user', 'id', '', '', 'fk_w_a_q_user_id_user_id');
-        $this->forge->addForeignKey('exam_id', 'exam', 'id', '', '', 'fk_w_a_q_exam_id_exam_id');
         $this->forge->addForeignKey('question_id', 'question', 'id', '', '', 'fk_w_a_q_question_id_question_id');
         $attributes = [
             'ENGINE' => 'InnoDB',
@@ -51,7 +45,6 @@ class WrongAnswerQuestion extends Migration
     public function down()
     {
         $this->forge->dropForeignKey('wrong_answer_question', 'fk_w_a_q_user_id_user_id');
-        $this->forge->dropForeignKey('wrong_answer_question', 'fk_w_a_q_exam_id_exam_id');
         $this->forge->dropForeignKey('wrong_answer_question', 'fk_w_a_q_question_id_question_id');
         $this->forge->dropTable('wrong_answer_question', TRUE);
     }

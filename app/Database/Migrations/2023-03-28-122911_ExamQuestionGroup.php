@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class ExamQuestion extends Migration
+class ExamQuestionGroup extends Migration
 {
     public function up()
     {
@@ -15,7 +15,7 @@ class ExamQuestion extends Migration
                 'null' => FALSE,
                 'auto_increment' => TRUE,
             ],
-            'question_id' => [
+            'question_group_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'null' => FALSE,
@@ -25,24 +25,22 @@ class ExamQuestion extends Migration
                 'constraint' => 11,
                 'null' => FALSE,
             ],
-            'created_at DATETIME NOT NULL DEFAULT current_timestamp',
-            'updated_at DATETIME NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp'
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('question_id', 'question', 'id', '', '', 'fk_e_q_question_id_question_id');
-        $this->forge->addForeignKey('exam_id', 'exam', 'id', '', '', 'fk_e_q_exam_id_question_id');
+        $this->forge->addForeignKey('question_group_id', 'question_group', 'id', '', '', 'fk_w_a_q_g_id_question_group_id');
+        $this->forge->addForeignKey('exam_id', 'exam', 'id', '', '', 'fk_w_a_q_g_id_exam_id');
         $attributes = [
             'ENGINE' => 'InnoDB',
             'CHARACTER SET' => 'utf8',
             'COLLATE' => 'utf8_general_ci'
         ];
-        $this->forge->createTable('exam_question', TRUE, $attributes);
+        $this->forge->createTable('exam_question_group', TRUE, $attributes);
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('exam_question', 'fk_e_q_question_id_question_id');
-        $this->forge->dropForeignKey('exam_question', 'fk_e_q_exam_id_question_id');
-        $this->forge->dropTable('exam_question', TRUE);
+        $this->forge->dropForeignKey('exam_question_group', 'fk_w_a_q_g_id_question_group_id');
+        $this->forge->dropForeignKey('exam_question_group', 'fk_w_a_q_g_id_exam_id');
+        $this->forge->dropTable('exam_question_group', TRUE);
     }
 }

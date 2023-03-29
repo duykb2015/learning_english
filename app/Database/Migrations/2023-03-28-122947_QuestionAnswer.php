@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class QuestionGroup extends Migration
+class QuestionAnswer extends Migration
 {
     public function up()
     {
@@ -15,34 +15,35 @@ class QuestionGroup extends Migration
                 'null' => FALSE,
                 'auto_increment' => TRUE,
             ],
-            'exam_part_id' => [
-                'type' => 'TINYINT',
-                'constraint' => 1,
+            'question_id' => [
+                'type' => 'INT',
+                'constraint' => 11,
                 'null' => FALSE,
             ],
-            'title' => [
+            'type' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => FALSE,
+            ],
+            'text' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => FALSE,
-            ],
-            'paragraph' => [
-                'type' => 'TEXT',
+                'constraint' => 512,
                 'null' => FALSE,
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('exam_part_id', 'exam_part', 'id', '', '', 'fk_q_g_e_part_id_exam_part_id');
+        $this->forge->addForeignKey('question_id', 'question', 'id', '', '', 'fk_q_a_question_id_question_id');
         $attributes = [
             'ENGINE' => 'InnoDB',
             'CHARACTER SET' => 'utf8',
             'COLLATE' => 'utf8_general_ci'
         ];
-        $this->forge->createTable('question_group', TRUE, $attributes);
+        $this->forge->createTable('question_answer', TRUE, $attributes);
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('question_group', 'fk_q_g_e_part_id_exam_part_id');
-        $this->forge->dropTable('question_group', TRUE);
+        $this->forge->dropForeignKey('question_answer', 'fk_q_a_question_id_question_id');
+        $this->forge->dropTable('question_answer', TRUE);
     }
 }
