@@ -81,42 +81,21 @@
     <div id="resultsearchGrammar">
         <div class="row">
 
-            <div class="span9" >
+            <div class="span9">
 
                 <div class="span9" style="display:flex ;">
-                    <?php
-                    for ($x = 0; $x < 3; $x++) { ?>
-                    <div class="item px-2">
-                    <div class="fh5co_hover_news_img">
-                        <div class="fh5co_news_img"><img src="../resources/file/images/baiNgheId=9.png" alt="" /></div>
-                        <div>
-                            <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                            <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
+                    <?php foreach ($posts as $item) { ?>
+                        <div class="item px-2">
+                            <div class="fh5co_hover_news_img">
+                                <div class="fh5co_news_img"><img src="../resources/file/images/baiNgheId=9.png" alt="" /></div>
+                                <div>
+                                    <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">123</span></a>
+                                    <div class="c_g"><i class="fa fa-clock-o"></i> <?= $item['created_at'] ?></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    </div>
-
-                <?php }
-                    ?>
+                    <?php } ?>
                 </div>
-                <div class="span9" style="display:flex ;">
-                    <?php
-                    for ($x = 0; $x < 3; $x++) { ?>
-                    <div class="item px-2">
-                    <div class="fh5co_hover_news_img">
-                        <div class="fh5co_news_img"><img src="../resources/file/images/baiDocId=1.png" alt="" /></div>
-                        <div>
-                            <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                            <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                        </div>
-                    </div>
-                    </div>
-
-                <?php }
-                    ?>
-                </div>
-
-
                 <br>
             </div>
 
