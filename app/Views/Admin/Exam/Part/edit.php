@@ -12,7 +12,7 @@
                         <div class="col-lg-12">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Thêm phần đề thi </h4>
+                                    <h4>Sửa Phần Đề Thi </h4>
                                 </div>
                             </div>
                         </div>
@@ -58,54 +58,39 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/exam-part/save') ?>" method="post">
+                                                        <form action="<?= base_url('dashboard/exam-part/update/'.$examPart['id']) ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <label for="title">Tiêu đề</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="title" placeholder="Tiêu đề..." required autofocus>
+                                                                            <input type="text" class="form-control" value="<?= $examPart['title'] ?>" name="title" placeholder="Tiêu đề..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="partnumber">Phần đề thi</label>
                                                                         <div class="input-group">
-                                                                            <input type="number" name="part_number" class="form-control" placeholder="nhập số part" required>
-                                                                            <!-- <select name="part_number" class="form-control">
-                                                                                <option value="">Chọn Part</option>
-                                                                                <?php for ($i = 1; $i <= PART_LIMIT; $i++) : ?>
-                                                                                    <option value="<?= $i ?>">Part <?= $i ?></option>
-                                                                                <?php endfor ?>
-                                                                            </select> -->
+                                                                            <input type="number" name="part_number" value="<?= $examPart['part_number'] ?>" class="form-control" placeholder="nhập số part" required>
+                                                             
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-12">
-                                                                        <label for="paragraph">Paragraph</label>
-                                                                        <textarea class="form-control" id="editor0" name="paragraph" required></textarea>
+                                                                        <label for="direction">Paragraph</label>
+                                                                        <textarea class="form-control" id="editor0" value="" name="direction" required><?= $examPart['direction'] ?></textarea>
                                                                     </div>
                                                                     <!-- Import -->
                                                                     <div class="col-md-6">
-                                                                        <!-- <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-                                                                            <select name="status" class="form-control" required>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn trạng thái--
-                                                                                </option>
-                                                                                <option value="1">Hiển thị</option>
-                                                                                <option value="0">Ẩn</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <input type="text" class="form-control" value="" name="status" placeholder="Trang thai..." required autofocus> -->
+                
                                                                     </div>
                                                                 </div>
                                                                 <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                        <a href="<?= base_url('dashboard/exam/part-exam-detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                        <a href="<?= base_url('dashboard/exam/part-exam') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
