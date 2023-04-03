@@ -50,6 +50,11 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
     $routes->group('category', function ($routes) {
         $routes->get('/', 'Admin\Category::index');
         $routes->get('detail', 'Admin\Category::detail');
+        $routes->post('save', 'Admin\Category::save');
+
+        $routes->get('edit/:any', 'Admin\Category::edit');
+        $routes->post('update/:any', 'Admin\Category::update');
+        $routes->get('delete/:any', 'Admin\Category::delete');
     });
 
     $routes->group('question', function ($routes) {

@@ -1,3 +1,4 @@
+
 <?= $this->extend('Admin/layout') ?>
 <?= $this->section('content') ?>
 
@@ -63,6 +64,45 @@
                                                             <div class="general-info">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
+                                                                        <label for="status">Trạng thái</label>
+                                                                        <div class="input-group">
+                                                                            <select name="status" class="form-control" required>
+
+                                                                                <option value="" disabled selected>
+                                                                                    --Chọn trạng thái--
+                                                                                </option>
+                                                                                <?php  if($posts['status'] == 1): ?>
+                                                                                    <option value="1" checked selected >Hiển thị</option>
+                                                                                    <option value="0">Ẩn</option>
+                                                                                <?php endif ?>
+                                                                                <?php  if($posts['status'] == 0): ?>
+                                                                                    <option value="1"  >Hiển thị</option>
+                                                                                    <option value="0" checked selected>Ẩn</option>
+                                                                                <?php endif ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="partnumber">Danh mục bài viết</label>
+                                                                        <div style="height: 1px;" class="input-group">
+                                                                            <select name="category" class="form-control js-example-basic-single">
+                                                                                <option value="" disabled selected>
+                                                                                    --Chọn danh mục--
+                                                                                </option>
+                                                                                <?php if (isset($category) || !empty($category)) : ?>
+                                                                                        <?php foreach ($category as $item) : ?>
+                                                                                            <?php  if($posts['category_id'] == $item['id']): ?>
+                                                                                                <option value="<?= $item['id'] ?>" checked selected > <?= $item['name'] ?> </option>
+                                                                                            <?php else: ?>
+                                                                                                <option value="<?= $item['id'] ?>"> <?= $item['name'] ?></option>
+                                                                                             <?php endif ?>
+                                                                                        <?php endforeach ?>
+                                                                                <?php endif ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
                                                                         <label for="title">Tiêu đề</label>
                                                                         <div class="input-group">
                                                                             <input type="text" class="form-control" value="<?= $posts['title'] ?>" name="title" placeholder="Tiêu đề ..." required autofocus>
@@ -88,20 +128,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="status">Trạng thái</label>
-                                                                    <div class="input-group">
-                                                                        <select name="status" class="form-control" required>
-                                                                            <option value="" disabled selected>
-                                                                                --Chọn trạng thái--
-                                                                            </option>
-                                                                            <option value="1">Hiển thị</option>
-                                                                            <option value="0">Ẩn</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div> -->
+
                                                             <!-- end of row -->
                                                             <div class="row">
                                                                 <div class="col-md-12 text-right">

@@ -15,11 +15,11 @@ class Category extends Migration
                 'null' => FALSE,
                 'auto_increment' => TRUE,
             ],
-            'parent_id' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE,
-            ],
+            // 'parent_id' => [
+            //     'type' => 'INT',
+            //     'constraint' => 11,
+            //     'null' => FALSE,
+            // ],
             'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -38,7 +38,7 @@ class Category extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('parent_id', 'category', 'id', '', '', 'fk_category_id');
+        // $this->forge->addForeignKey('parent_id', 'category', 'id', '', '', 'fk_category_id');
         $attributes = [
             'ENGINE' => 'InnoDB',
             'CHARACTER SET' => 'utf8',
@@ -49,7 +49,7 @@ class Category extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('category', 'fk_category_id');
+        //$this->forge->dropForeignKey('category', 'fk_category_id');
         $this->forge->dropTable('category', TRUE);
     }
 }
