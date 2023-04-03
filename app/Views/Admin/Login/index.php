@@ -45,7 +45,7 @@
                                         <h3 class="text-center">Đăng nhập</h3>
                                     </div>
                                     <div class="col-12">
-                                        <!-- <?php $errors = session()->getFlashdata('error_msg') ?>
+                                        <?php $errors = session()->getFlashdata('error_msg') ?>
                                         <?php if (!empty($errors)) :  ?>
                                             <?php if (!is_array($errors)) : ?>
                                                 <div class="alert alert-danger mb-1">
@@ -58,15 +58,15 @@
                                                     </div>
                                                 <?php endforeach ?>
                                             <?php endif ?>
-                                        <?php endif ?> -->
+                                        <?php endif ?>
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="text" name="username" value="" class="form-control" required="" placeholder="Tài khoản">
+                                    <input type="text" name="username" value="" class="form-control" placeholder="Tài khoản">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="password" name="password" class="form-control" required="" placeholder="Mật khẩu">
+                                    <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
                                     <span class="form-bar"></span>
                                 </div>
 

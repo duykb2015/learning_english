@@ -30,7 +30,11 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
 $routes->get('admin-login', 'Admin\Login::index');
+$routes->post('admin-login', 'Admin\Login::authLogin');
+$routes->get('logout', 'Admin\Login::logout');
+$routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
 
 $routes->group('', function ($routes) {
     $routes->get('', 'Home::index');
@@ -68,26 +72,51 @@ $routes->group('dashboard', function ($routes) {
     $routes->get('', 'Admin\HomeController::index');
 
     $routes->group('admin', function ($routes) {
-        $routes->get('/', 'Admin\AdminController::index');
-        $routes->get('detail', 'Admin\AdminController::detail');
+        $routes->get('/', 'Admin\Admin::index');
+        $routes->get('detail', 'Admin\Admin::detail');
     });
-
 
     $routes->group('user', function ($routes) {
-        $routes->get('/', 'Admin\AdminController::user');
-        $routes->get('detail', 'Admin\AdminController::user_detail');
+        $routes->get('/', 'Admin\User::index');
+        $routes->get('detail', 'Admin\User::detail');
     });
 
-    $routes->group('test-listen', function ($routes) {
-        $routes->get('/', 'Admin\ListenController::index');
-        $routes->get('detail', 'Admin\ListenController::detail');
+    $routes->group('category', function ($routes) {
+        $routes->get('/', 'Admin\Category::index');
+        $routes->get('detail', 'Admin\Category::detail');
     });
 
-    $routes->group('test-read', function ($routes) {
-        $routes->get('/', 'Admin\ReadController::index');
-        $routes->get('detail', 'Admin\ReadController::detail');
+    $routes->group('question', function ($routes) {
+        $routes->get('/', 'Admin\Question::index');
+        $routes->get('detail', 'Admin\Question::detail');
+
+        $routes->get('upload-excel', 'Admin\Question::upload_excel');
+        $routes->post('save', 'Admin\Question::save');
+    });
+    $routes->group('question-group', function ($routes) {
+        $routes->get('/', 'Admin\QuestionGroup::index');
+        $routes->get('detail', 'Admin\QuestionGroup::detail');
+
+        $routes->post('save', 'Admin\QuestionGroup::create');
+    });
+    $routes->group('exam', function ($routes) {
+        $routes->get('/', 'Admin\Exam::index');
+        $routes->get('detail', 'Admin\Exam::detail');
+        $routes->get('part-exam', 'Admin\PartExam::index');
+        $routes->get('part-exam/detail', 'Admin\PartExam::detail');
+    });
+
+    $routes->group('posts', function ($routes) {
+        $routes->get('/', 'Admin\Posts::index');
+        $routes->get('detail', 'Admin\Posts::detail');
+        $routes->post('save', 'Admin\Posts::save');
+
+        $routes->get('edit/:any', 'Admin\Posts::edit');
+        $routes->post('update/:any', 'Admin\Posts::update');
+        $routes->get('delete/:any', 'Admin\Posts::delete');
     });
 });
+
 
 /*
  * --------------------------------------------------------------------

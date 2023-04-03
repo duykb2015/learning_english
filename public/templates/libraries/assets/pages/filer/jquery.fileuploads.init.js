@@ -19,7 +19,8 @@ $(document).ready(function(){
     });
 
     //Example 2
-    $('#filer_input').filer({
+
+    $('#filer_input_excel').filer({
         limit: null,
         maxSize: null,
         // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
@@ -29,7 +30,7 @@ $(document).ready(function(){
         addMore: true,
 
         captions: {
-            button: "Chọn Files Excel",
+            button: "Chọn tệp Excel",
             feedback: "Chọn files để Upload",
             feedback2: "files đã được chọn",
             drop: "Drop file here to Upload",
@@ -41,6 +42,52 @@ $(document).ready(function(){
                 filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
             }
         }
+    });
+    $('#filer_input_audio').filer({
+        limit: 1,
+        maxSize: null,
+        // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+        extensions: ['mp3', 'aac','wav','flac','wma','ogg','aiff','alac'],
+        changeInput: true,
+        showThumbs: true,
+        addMore: true,
+
+        captions: {
+            button: "Chọn tệp âm thanh",
+            feedback: "Chọn files để Upload",
+            feedback2: "files đã được chọn",
+            drop: "Drop file here to Upload",
+            removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+            errors: {
+                filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                filesType: "Vui lòng chọn đúng định dạng file âm thanh vd: *.mp3,*.wav,... !",
+                filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+            }
+        }
+    });
+    $('#filer_input_image').filer({
+        limit: 1,
+        maxSize: null,
+        extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],       
+        changeInput: true,
+        showThumbs: true,
+        addMore: true,
+
+        captions: {
+            button: "Chọn tệp hình ảnh",
+            feedback: "Chọn files để Upload",
+            feedback2: "files đã được chọn",
+            drop: "Drop file here to Upload",
+            removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+            errors: {
+                filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                filesType: "Vui lòng chọn đúng định dạng file hình ảnh vd: *.jpg,*.png,.. !",
+                filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+            }
+        }
+
     });
 
 	//Example 1

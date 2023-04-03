@@ -10,6 +10,8 @@
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
 
+
+   
     <!-- Boostrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!-- Favicon icon -->
@@ -33,7 +35,9 @@
     <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\assets\icon\icofont\css\icofont.css">
 
-    <?php $this->renderSection('css') ?>
+    <!-- Multi Select css -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\bower_components\multiselect\css\multi-select.css">
 
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\libraries\assets\css\style.css">
@@ -42,7 +46,10 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\templates\css\app.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\jquery.filer.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css">
+
+    <!-- ckeditor js -->
     <script src="<?= base_url() ?>/ckeditor/ckeditor.js"></script>
+    <?= $this->renderSection('css') ?>
 
     <style>
         body {
@@ -58,39 +65,20 @@
 <body>
     <!-- Pre-loader start -->
     <div class="theme-loader">
-        <div class="ball-scale">
-            <div class='contain'>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
+        <div style="position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+        width: 100px;
+        height: 100px;" class='contain'>
+            <div class="preloader3 loader-block">
+                <div class="circ1 loader-primary loader-md"></div>
+                <div class="circ2 loader-primary loader-md"></div>
+                <div class="circ3 loader-primary loader-md"></div>
+                <div class="circ4 loader-primary loader-md"></div>
             </div>
+
         </div>
     </div>
     <!-- Pre-loader end -->
@@ -114,19 +102,27 @@
     </div>
 
     <!-- Warning Section Ends -->
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\select2\js\select2.full.min.js"></script>
+
+
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\pages\form-validation\validate.js"></script>
     <!-- Required Jquery -->
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery\js\jquery.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-ui\js\jquery-ui.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\popper.js\js\popper.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\bootstrap\js\bootstrap.min.js"></script>
-     <!-- jquery file upload js -->
-     <script src="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\js\jquery.filer.min.js"></script>
+
+    <!-- jquery file upload js -->
+    <script src="<?= base_url() ?>\templates\libraries\assets\pages\jquery.filer\js\jquery.filer.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\custom-filer.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\pages\filer\jquery.fileuploads.init.js" type="text/javascript"></script>
+
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\bower_components\jquery-slimscroll\js\jquery.slimscroll.js"></script>
     <!-- data-table js -->
@@ -161,10 +157,10 @@
     <script src="<?= base_url() ?>\templates\libraries\assets\pages\data-table\js\data-table-custom.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\pcoded.min.js"></script>
     <script src="<?= base_url() ?>\templates\libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
-
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>\templates\libraries\bower_components\select2\css\select2.min.css"> -->
-
     <script type="text/javascript" src="<?= base_url() ?>\templates\js\app.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>\templates\libraries\assets\js\jquery.quicksearch.js"></script>
+    <!-- ajax -->
+
     <script>
         $('#remove-alert').on('click', function() {
             $('.alert').remove();
@@ -179,8 +175,6 @@
             })
         })
     </script>
-
-   
     <script>
         function fileValidation() {
             var fileInput =
@@ -197,21 +191,6 @@
                 fileInput.value = '';
                 return false;
             }
-            //  else {
-
-            //     // Image preview
-            //     if (fileInput.files && fileInput.files[0]) {
-            //         var reader = new FileReader();
-            //         reader.onload = function(e) {
-            //             document.getElementById(
-            //                     'imagePreview').innerHTML =
-            //                 '<img src="' + e.target.result +
-            //                 '"/>';
-            //         };
-
-            //         reader.readAsDataURL(fileInput.files[0]);
-            //     }
-            // }
         }
     </script>
     <?= $this->renderSection('js') ?>

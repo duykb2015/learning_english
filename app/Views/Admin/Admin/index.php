@@ -12,7 +12,9 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
+
                                     <h4>Danh sách tài khoản admin</h4>
+
 
                                 </div>
                             </div>
@@ -35,8 +37,7 @@
                                                 <th>Email</th>
                                                 <th>Quyền truy cập</th>
                                                 <th style="width: 30px;">Trạng thái</th>
-                                                <th style="width: 10px;">Quản lý</th>
-
+                                                <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -45,27 +46,27 @@
                                                 <td>ad@gmail.com</td>
                                                 <td>Admin</td>
                                                 <td>
-                                                    <select style="width: 100px;" name="" id="" class="form-select">
-                                                        <option value="">Bình thường</option>
-                                                        <option value="">Bị cấm</option>
-                                                    </select>
-                                                   
+                                                    <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
+                                                        <label>
+                                                            <input type="checkbox" id="checkbox2" name="status" value="">
+                                                            <span class="cr">
+                                                                <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                                            </span>   
+                                                        </label>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm">
                                                         <a style="margin: 4px;" href="<?php base_url('dashboard/admin/detail') ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
                                                             <span class="icofont icofont-ui-edit"></span>
                                                         </a>
-                                                        <a style="margin: 4px;" href="" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
+                                                        <a style="margin: 4px;" onclick="delete_account()" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
                                                             <span class="icofont icofont-ui-delete"></span>
                                                         </a>
                                                     </div>
                                                 </td>
-
                                             </tr>
-                                          
-
-                                        </tbody>
+                                       </tbody>
 
                                     </table>
 

@@ -14304,12 +14304,13 @@ body.menu-bottom #collapse-menu {
 .select2-container--default .select2-selection--single {
     color: #fff;
     height: auto
+    
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-    background-color: #01a9ac;
-    color: #fff;
-    padding: 8px 30px 8px 20px
+    background-color: #fff;
+    color: #495057;
+    padding: 2px 30px 4px 20px
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
