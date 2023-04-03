@@ -109,7 +109,7 @@
 								<h4>Tên bài</h4>
 							</div>
 							<div>
-									<a href="<?=base_url('user/Exam/ExamToeic')?>"
+									<a href="<?=base_url('Exam/ExamToeic')?>"
 									class="btn btn-primary">Làm Bài</a>
 							</div>
 
