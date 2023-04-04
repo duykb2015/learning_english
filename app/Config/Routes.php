@@ -36,7 +36,41 @@ $routes->post('admin-login', 'Admin\Login::authLogin');
 $routes->get('logout', 'Admin\Login::logout');
 $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
 
-    $routes->get('', 'Admin\Home::index');
+$routes->group('', function ($routes) {
+    $routes->get('', 'Home::index');
+
+    $routes->group('blog', function ($routes) {
+        $routes->get('/', 'BlogController::index');
+    });
+    $routes->group('listExam', function ($routes) {
+        $routes->get('listtoeic', 'ListExamController::index');
+        $routes->get('listlisten', 'ListExamController::listListen');
+        $routes->get('listread', 'ListExamController::listRead');
+        $routes->get('examrandom', 'ListExamController::ExamRandom');
+    });
+    $routes->group('Exam', function ($routes) {
+        $routes->get('ExamToeic','FullTestController::index');
+        $routes->get('ExamListen','FullTestController::Testlisten');
+        $routes->get('ExamRead', 'FullTestController::TestRead');
+    });
+    $routes->group('Practice', function ($routes) {
+        $routes->get('PracticeVocabulary','PracticeController::PracticeVocabulary');
+        $routes->get('PracticeGrammar','PracticeController::PracticeGrammar');
+        $routes->get('PracticeListen', 'PracticeController::PracticeListen');
+        $routes->get('PracticeRead', 'PracticeController::PracticeRead');
+    });
+    $routes->group('User', function ($routes) {
+        $routes->get('Infor','UserController::Infor');
+        $routes->get('Result','UserController::Result');
+
+    });
+
+
+});
+
+$routes->group('dashboard', function ($routes) {
+    $routes->get('', 'Admin\HomeController::index');
+
     $routes->group('admin', function ($routes) {
         $routes->get('/', 'Admin\Admin::index');
         $routes->get('detail', 'Admin\Admin::detail');
