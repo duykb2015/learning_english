@@ -95,8 +95,10 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
     $routes->group('question-group', function ($routes) {
         $routes->get('/', 'Admin\QuestionGroup::index');
         $routes->get('detail', 'Admin\QuestionGroup::detail');
+        $routes->get('detail/:any', 'Admin\QuestionGroup::detail');
 
-        $routes->post('save', 'Admin\QuestionGroup::create');
+        $routes->post('save', 'Admin\QuestionGroup::save');
+        $routes->post('delete', 'Admin\QuestionGroup::delete');
     });
     $routes->group('exam', function ($routes) {
         $routes->get('/', 'Admin\Exam::index');
