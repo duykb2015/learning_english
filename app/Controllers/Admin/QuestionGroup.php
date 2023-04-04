@@ -50,7 +50,7 @@ class QuestionGroup extends BaseController
 
         $data['questions'] = $questions;
 
-        if ($questions[0]['audio_id']) {
+        if (isset($questions[0]['audio_id'])) {
             $audio = $questionAudioModel->where('id', $questions[0]['audio_id'])->first();
             $data['audio'] = $audio;
         }
@@ -113,7 +113,7 @@ class QuestionGroup extends BaseController
                 'question'          => $question,
                 'explain'           => 'No explain',
             ];
-            if ($oldQuestions[$key]) {
+            if (isset($oldQuestions[$key])) {
                 $data['id'] = $oldQuestions[$key];
             }
 
@@ -123,7 +123,7 @@ class QuestionGroup extends BaseController
             }
 
             $questionID = $questionModel->getInsertID();
-            if ($oldQuestions[$key]) {
+            if (isset($oldQuestions[$key])) {
                 $questionID = $oldQuestions[$key];
             }
 
@@ -133,7 +133,7 @@ class QuestionGroup extends BaseController
                     'type' => $optionType,
                     'text' => $option
                 ];
-                if ($oldOptions[$key][$subKey]) {
+                if (isset($oldOptions[$key][$subKey])) {
                     $data['id'] = $oldOptions[$key][$subKey];
                 }
                 $isInsert = $questionAnswerModel->save($data);
