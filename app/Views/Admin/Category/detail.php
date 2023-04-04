@@ -65,33 +65,18 @@
                                                                     <div class="col-md-6">
                                                                         <label for="username">Tên danh mục</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" value="" name="name" placeholder="Tên ..." required autofocus>
+                                                                            <input type="text" class="form-control" value="" id="name" name="name" placeholder="Tên ..." required autofocus>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="username">Slug</label>
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control" id="inputWarning1" value="" name="slug" placeholder="Slug ..." required>
+                                                                            <input type="text" class="form-control" id="slug" value="" name="slug" placeholder="Slug ..." required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <label for="level">Cấp bậc</label>
-                                                                        <div class="input-group">
-                                                                            <select name="level" class="form-control">
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn cấp menu--
-                                                                                </option>
-                                                                                <option value="0">
-                                                                                    Không
-                                                                                </option>
-                                                                                <option value="1">
-                                                                                    Luyện tập
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
+                                                                
                                                                     <div class="col-md-6">
                                                                         <label for="status">Trạng thái</label>
                                                                         <div class="input-group">
@@ -138,4 +123,52 @@
         <!-- Main body end -->
     </div>
 </div>
+
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+
+<script>
+    CKEDITOR.replace('editor');
+    CKEDITOR.replace('editor3');
+
+
+
+    // var cleave = new Cleave('.cleave1', {
+    //     numeral: true,
+    //     numeralThousandsGroupStyle: 'thousand'
+    // });
+
+    // var cleave2 = new Cleave('.cleave2', {
+    //     numeral: true,
+    //     numeralThousandsGroupStyle: 'thousand'
+    // });
+
+    function slug(str) {
+
+        str = str.replace(/^\s+|\s+$/g, "");
+        str = str.toLowerCase();
+
+        var from = "àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ·/_,:;";
+        var to = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd------";
+        for (var i = 0; i < from.length; i++) {
+            str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+        }
+
+        str = str.replace(/[^a-z0-9 -]/g, '')
+            .replace(/\s+/g, "-")
+            .replace(/-+/g, "-")
+
+        return str
+    }
+
+    // $('#name').on('input', function() {
+    //     $('#slug').val(slug($(this).val()))
+    // })
+
+    document.getElementById('name').oninput = function() {
+        document.getElementById('slug').value = (slug(document.getElementById('name').value))
+    }
+</script>
+
 <?= $this->endSection() ?>
