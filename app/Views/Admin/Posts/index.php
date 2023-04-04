@@ -32,6 +32,7 @@
                                             <tr>
                                                 <th >Tiêu đề</th>
                                                 <th style="width: 30px;">Ngày Cập nhật</th>
+                                                <th style="width: 30px;">Trạng Thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
@@ -43,6 +44,17 @@
                                                         <td>
                                                             <?= $item['updated_at'] ?>
                                                         </td>
+                                                        <td>
+                                                            <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
+                                                                <label>
+                                                                    <input type="checkbox" id="checkbox2" name="status" value=""<?= $item['status'] == 1 ? 'checked' : '' ?>>
+                                                                    <span class="cr">
+                                                                        <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+
                                                         <td>
 
                                                             <div style="width: 90px;" class="btn-group btn-group-sm">

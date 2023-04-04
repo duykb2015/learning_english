@@ -83,6 +83,11 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
     $routes->group('category', function ($routes) {
         $routes->get('/', 'Admin\Category::index');
         $routes->get('detail', 'Admin\Category::detail');
+        $routes->post('save', 'Admin\Category::save');
+
+        $routes->get('edit/:any', 'Admin\Category::edit');
+        $routes->post('update/:any', 'Admin\Category::update');
+        $routes->get('delete/:any', 'Admin\Category::delete');
     });
 
     $routes->group('question', function ($routes) {
@@ -106,7 +111,14 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
         $routes->get('part-exam', 'Admin\PartExam::index');
         $routes->get('part-exam/detail', 'Admin\PartExam::detail');
     });
-
+    $routes->group('exam-part', function ($routes) {
+        $routes->get('/', 'Admin\PartExam::index');
+        $routes->get('detail', 'Admin\PartExam::detail');
+        $routes->post('save', 'Admin\PartExam::save');
+        $routes->get('edit/:any', 'Admin\PartExam::edit');
+        $routes->post('update/:any', 'Admin\PartExam::update');
+        $routes->get('delete/:any', 'Admin\PartExam::delete');
+    });
     $routes->group('posts', function ($routes) {
         $routes->get('/', 'Admin\Posts::index');
         $routes->get('detail', 'Admin\Posts::detail');
