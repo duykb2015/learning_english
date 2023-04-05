@@ -34,9 +34,42 @@ $routes->get('/', 'Home::index');
 $routes->get('admin-login', 'Admin\Login::index');
 $routes->post('admin-login', 'Admin\Login::authLogin');
 $routes->get('logout', 'Admin\Login::logout');
-$routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
 
+$routes->group('', function ($routes) {
+    $routes->get('', 'Home::index');
+
+    $routes->group('blog', function ($routes) {
+        $routes->get('/', 'BlogController::index');
+    });
+    $routes->group('listExam', function ($routes) {
+        $routes->get('listtoeic', 'ListExamController::index');
+        $routes->get('listlisten', 'ListExamController::listListen');
+        $routes->get('listread', 'ListExamController::listRead');
+        $routes->get('examrandom', 'ListExamController::ExamRandom');
+    });
+    $routes->group('Exam', function ($routes) {
+        $routes->get('ExamToeic','FullTestController::index');
+        $routes->get('ExamListen','FullTestController::Testlisten');
+        $routes->get('ExamRead', 'FullTestController::TestRead');
+    });
+    $routes->group('Practice', function ($routes) {
+        $routes->get('PracticeVocabulary','PracticeController::PracticeVocabulary');
+        $routes->get('PracticeGrammar','PracticeController::PracticeGrammar');
+        $routes->get('PracticeListen', 'PracticeController::PracticeListen');
+        $routes->get('PracticeRead', 'PracticeController::PracticeRead');
+    });
+    $routes->group('User', function ($routes) {
+        $routes->get('Infor','UserController::Infor');
+        $routes->get('Result','UserController::Result');
+
+    });
+
+
+});
+
+$routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
     $routes->get('', 'Admin\Home::index');
+
     $routes->group('admin', function ($routes) {
         $routes->get('/', 'Admin\Admin::index');
         $routes->get('detail', 'Admin\Admin::detail');
@@ -50,6 +83,11 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
     $routes->group('category', function ($routes) {
         $routes->get('/', 'Admin\Category::index');
         $routes->get('detail', 'Admin\Category::detail');
+        $routes->post('save', 'Admin\Category::save');
+
+        $routes->get('edit/:any', 'Admin\Category::edit');
+        $routes->post('update/:any', 'Admin\Category::update');
+        $routes->get('delete/:any', 'Admin\Category::delete');
     });
 
     $routes->group('question', function ($routes) {
@@ -62,8 +100,10 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
     $routes->group('question-group', function ($routes) {
         $routes->get('/', 'Admin\QuestionGroup::index');
         $routes->get('detail', 'Admin\QuestionGroup::detail');
+        $routes->get('detail/:any', 'Admin\QuestionGroup::detail');
 
-        $routes->post('save', 'Admin\QuestionGroup::create');
+        $routes->post('save', 'Admin\QuestionGroup::save');
+        $routes->post('delete', 'Admin\QuestionGroup::delete');
     });
     $routes->group('exam', function ($routes) {
         $routes->get('/', 'Admin\Exam::index');
@@ -71,7 +111,14 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
         $routes->get('part-exam', 'Admin\PartExam::index');
         $routes->get('part-exam/detail', 'Admin\PartExam::detail');
     });
-
+    $routes->group('exam-part', function ($routes) {
+        $routes->get('/', 'Admin\PartExam::index');
+        $routes->get('detail', 'Admin\PartExam::detail');
+        $routes->post('save', 'Admin\PartExam::save');
+        $routes->get('edit/:any', 'Admin\PartExam::edit');
+        $routes->post('update/:any', 'Admin\PartExam::update');
+        $routes->get('delete/:any', 'Admin\PartExam::delete');
+    });
     $routes->group('posts', function ($routes) {
         $routes->get('/', 'Admin\Posts::index');
         $routes->get('detail', 'Admin\Posts::detail');

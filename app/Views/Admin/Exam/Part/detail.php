@@ -58,7 +58,7 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="<?= base_url('dashboard/part_exam/save') ?>" method="post">
+                                                        <form action="<?= base_url('dashboard/exam-part/save') ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
@@ -71,13 +71,13 @@
                                                                     <div class="col-md-6">
                                                                         <label for="partnumber">Phần đề thi</label>
                                                                         <div class="input-group">
-                                                                            <!-- <input type="number" name="partnumber" class="form-control" placeholder="Từ 1 - 7" required> -->
-                                                                            <select name="part_number" class="form-control">
+                                                                            <input type="number" name="part_number" class="form-control" placeholder="nhập số part" required>
+                                                                            <!-- <select name="part_number" class="form-control">
                                                                                 <option value="">Chọn Part</option>
                                                                                 <?php for ($i = 1; $i <= PART_LIMIT; $i++) : ?>
                                                                                     <option value="<?= $i ?>">Part <?= $i ?></option>
                                                                                 <?php endfor ?>
-                                                                            </select>
+                                                                            </select> -->
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -88,7 +88,7 @@
                                                                     </div>
                                                                     <!-- Import -->
                                                                     <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
+                                                                        <!-- <label for="status">Trạng thái</label>
                                                                         <div class="input-group">
                                                                             <select name="status" class="form-control" required>
                                                                                 <option value="" disabled selected>
@@ -98,6 +98,7 @@
                                                                                 <option value="0">Ẩn</option>
                                                                             </select>
                                                                         </div>
+                                                                        <input type="text" class="form-control" value="" name="status" placeholder="Trang thai..." required autofocus> -->
                                                                     </div>
                                                                 </div>
                                                                 <!-- end of row -->

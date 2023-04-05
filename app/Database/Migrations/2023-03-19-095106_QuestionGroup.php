@@ -16,8 +16,8 @@ class QuestionGroup extends Migration
                 'auto_increment' => TRUE,
             ],
             'exam_part_id' => [
-                'type' => 'TINYINT',
-                'constraint' => 1,
+                'type' => 'INT',
+                'constraint' => 11,
                 'null' => FALSE,
             ],
             'title' => [

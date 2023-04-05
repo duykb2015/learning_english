@@ -12,7 +12,7 @@
                         <div class="col-lg-8">
                             <div class="page-header-title">
                                 <div class="d-inline">
-                                    <h4>Danh sách danh mục</h4>
+                                    <h4>Danh sách phần đề thi</h4>
                                 </div>
                             </div>
                         </div>
@@ -31,34 +31,34 @@
                                         <thead>
                                             <tr>
                                                 <th>Phần đề thi</th>
-                                                <th style="width: 30px;">Trạng thái</th>
+                                                <!-- <th style="width: 30px;">Trạng thái</th> -->
                                                 <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>
-                                                    <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
-                                                        <label>
-                                                            <input type="checkbox" id="checkbox2" name="status" value="">
-                                                            <span class="cr">
-                                                                <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div style="width: 90px;" class="btn-group btn-group-sm">
-                                                        <a style="margin: 4px;" href="<?php base_url('dashboard/admin/detail') ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
-                                                            <span class="icofont icofont-ui-edit"></span>
-                                                        </a>
-                                                        <a style="margin: 4px;" onclick="delete_account()" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
-                                                            <span class="icofont icofont-ui-delete"></span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <?php if (isset($examParts) || !empty($examParts)) : ?>
+                                                <?php foreach ($examParts as $item) : ?>
+                                                    <tr>
+                                                        <!-- <td><?= $item['part_number'] ?></td> -->
+                                                        <td><?= $item['title'] ?></td>
+                                                        <!-- <td><?= $item['direction'] ?></td> -->
+                                                        <td>
+                                                            <div class="btn-group btn-group-sm">
+                                                                <a href="<?= base_url('dashboard/exam-part/edit/'.$item['id']) ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
+                                                                    <span class="icofont icofont-ui-edit"></span>
+                                                                </a>
+                                                                <a href ="<?= base_url('dashboard/exam-part/delete/'.$item['id']) ?>" onclick="if(confirm('Bạn có chắc chắn xóa chi tiết liên hệ này không?') === false) event.preventDefault()" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
+                                                                    <span class="icofont icofont-ui-delete"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            <?php else : ?>
+                                                <tr>
+                                                    <td colspan="3" class="text-center">Hiện không có nhóm câu hỏi nào. <a href="<?= base_url('dashboard/question-group/detail') ?>">Bấm vào đây để thêm mới.</a></td>
+                                                </tr>
+                                            <?php endif ?>
                                         </tbody>
                                     </table>
                                 </div>
