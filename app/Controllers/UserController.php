@@ -12,4 +12,12 @@ class UserController extends BaseController
     {
         return view('User/Results/readingResult');
     }
+    public function Login()
+    {
+        return view('User/inforUser/Login');
+    }
+    public function Register()
+    {
+        return view('User/inforUser/Register');
+    }
 }
