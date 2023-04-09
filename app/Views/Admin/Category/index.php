@@ -30,22 +30,22 @@
                                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                                         <thead>
                                             <tr>
-                                                <th>TT</th>
+
                                                 <th>Tên</th>
-                                                <th>Danh mục cha</th>
                                                 <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php if (isset($category) || !empty($category)) : ?>
+                                            <?php foreach ($category as $item) : ?>
                                             <tr>
-                                                <td>#1</td>
-                                                <td>Luyện tập</td>
-                                                <td>Luyện tập</td>
+
+                                                <td><?= $item['name'] ?></td>
                                                 <td>
                                                     <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
                                                         <label>
-                                                            <input type="checkbox" id="checkbox2" name="status" value="">
+                                                            <input type="checkbox" id="checkbox2" name="status" value="" <?= $item['status'] == 1 ? 'checked' : '' ?>>
                                                             <span class="cr">
                                                                 <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
                                                             </span>
@@ -54,15 +54,17 @@
                                                 </td>
                                                 <td>
                                                     <div style="width: 90px;" class="btn-group btn-group-sm">
-                                                        <a style="margin: 4px;" href="<?php base_url('dashboard/admin/detail') ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
+                                                        <a href ="<?= base_url('dashboard/category/edit/'.$item['id']) ?>"  style="margin: 4px;"  class="tabledit-edit-button btn btn-primary waves-effect waves-light">
                                                             <span class="icofont icofont-ui-edit"></span>
                                                         </a>
-                                                        <a style="margin: 4px;" onclick="delete_account()" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
+                                                        <a href ="<?= base_url('dashboard/category/delete/'.$item['id']) ?>" style="margin: 4px;" onclick="delete_account()" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
                                                             <span class="icofont icofont-ui-delete"></span>
                                                         </a>
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php endforeach ?>
+                                            <?php endif ?>
                                         </tbody>
                                     </table>
                                 </div>

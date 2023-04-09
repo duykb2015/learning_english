@@ -31,7 +31,6 @@
                                         <thead>
                                             <tr>
                                                 <th>Tiêu đề</th>
-                                                <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 10%;">Quản lý</th>
                                             </tr>
                                         </thead>
@@ -41,21 +40,11 @@
                                                     <tr>
                                                         <td><?= $item['title'] ?></td>
                                                         <td>
-                                                            <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
-                                                                <label>
-                                                                    <input type="checkbox" id="checkbox2" name="status" value="" <?= $item['status'] == 1 ? 'checked' : '' ?>>
-                                                                    <span class="cr">
-                                                                        <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
                                                             <div class="btn-group btn-group-sm">
-                                                                <a href="<?php base_url('dashboard/admin/detail') ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
+                                                                <a href="<?= base_url('dashboard/question-group/detail') . '/' . $item['id'] ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
                                                                     <span class="icofont icofont-ui-edit"></span>
                                                                 </a>
-                                                                <a onclick="delete_account()" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
+                                                                <a onclick="delete_question_group(<?= $item['id'] ?>)" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
                                                                     <span class="icofont icofont-ui-delete"></span>
                                                                 </a>
                                                             </div>
@@ -85,8 +74,8 @@
 
 <?= $this->section('js') ?>
 <script>
-    function delete_account(id, name) {
-        const is_confirm = confirm(`Bạn muốn xóa tài khoản "${name}" ?`);
+    function delete_question_group(id) {
+        const is_confirm = confirm(`Bạn muốn câu hỏi này?`);
         if (!is_confirm) {
             return
         }
@@ -99,21 +88,11 @@
             redirect: 'follow'
         };
 
-        fetch('<?= base_url('dashboard/category/delete') ?>', requestOptions)
+        fetch('<?= base_url('dashboard/question-group/delete') ?>', requestOptions)
             .then(response => response.json())
             .then(result => {
-                if (result.success) {
-                    msgbox_success(result.message)
-                    document.getElementById(`menu-${id}`).remove()
-                    return
-                }
-
-                const error = result.result.error;
-                if (error) {
-                    msgbox_error(error)
-                    return
-                }
-
+                msgbox_success(result.message)
+                location.reload()
             })
             .catch(error => msgbox_error(error));
     }

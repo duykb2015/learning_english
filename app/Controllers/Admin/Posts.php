@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\AdminModel;
+use App\Models\CategoryModel;
 use App\Models\PostsModel;
 use Exception;
 
@@ -21,24 +22,30 @@ class Posts extends BaseController
 
     public function detail()
     {
-        return view('Admin/Posts/detail');
+        $categoryModel = new CategoryModel();
+        $category = $categoryModel->paginate(10);
+        $datas['category'] = $category;
+        return view('Admin/Posts/detail',$datas);
     }
 
     public function save()
     {
-        $author = session()->get('id');
 
+        $category_id=$this->request->getPost('category');
+        $author = session()->get('id');
         $title = $this->request->getPost('title');
         $slug = $this->request->getPost('slug');
         $description = $this->request->getPost('description');
         $content = $this->request->getPost('content');
+        $status=$this->request->getPost('status');
         $datas = [
+            'category_id'=>$category_id,
             'author' => $author,
             'title' => $title,
             'slug' => $slug,
             'description' => $description,
             'content' => $content,
-            //status
+            'status'=> $status,
         ];
         $postsModel = new PostsModel();
 
@@ -59,41 +66,49 @@ class Posts extends BaseController
     }
     public function edit()
     {
-        $a = current_url(true);
-        $uri = new \CodeIgniter\HTTP\URI($a);
-        $id = $uri->getSegment(4);
+        $id = $this->request->getUri()->getSegment(4);
+        // $a = current_url(true);
+        // $uri = new \CodeIgniter\HTTP\URI($a);
+        // $id = $uri->getSegment(4);
+
+        $categoryModel = new CategoryModel();
+        $category = $categoryModel->paginate(10);
+        $datas['category'] = $category;
 
 
         $postsModel = new PostsModel();
         $posts = $postsModel->find($id);
         $datas['posts'] = $posts;
-        return view('Admin/Posts/edit', $datas);
+        return view('Admin/Posts/edit',$datas);
+
     }
     public function update()
     {
-        $a = current_url(true);
-        $uri = new \CodeIgniter\HTTP\URI($a);
-        $id = $uri->getSegment(4);
+        $id = $this->request->getUri()->getSegment(4);
+        // $a = current_url(true);
+        // $uri = new \CodeIgniter\HTTP\URI($a);
+        // $id = $uri->getSegment(4);
 
         $postsModel = new PostsModel();
         $postsModel->find($id);
 
-        $adminModel = new AdminModel();
-        $admin = $adminModel->paginate(10);
-        $author = $admin['0']['id'];
-
+        $category_id=$this->request->getPost('category');
+        $author = session()->get('id');
         $title = $this->request->getPost('title');
         $slug = $this->request->getPost('slug');
         $description = $this->request->getPost('description');
         $content = $this->request->getPost('content');
+        $status=$this->request->getPost('status');
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $updated_at = date('Y-m-d H:i:s');
         $datas = [
+            'category_id'=>$category_id,
             'author' => $author,
             'title' => $title,
             'slug' => $slug,
             'description' => $description,
             'content' => $content,
+            'status'=>$status,
             'updated_at' => $updated_at
         ];
         $postsModel->update($id, $datas);
