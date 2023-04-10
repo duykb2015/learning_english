@@ -61,6 +61,8 @@ $routes->group('', function ($routes) {
     $routes->group('User', function ($routes) {
         $routes->get('Infor','UserController::Infor');
         $routes->get('Result','UserController::Result');
+        $routes->get('Login','UserController::Login');
+        $routes->get('Register','UserController::Register');
 
     });
 
