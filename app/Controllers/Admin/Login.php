@@ -3,19 +3,41 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Database\Migrations\QuestionAudio;
 use App\Models\AdminModel;
+use App\Models\QuestionAnswerModel;
+use App\Models\QuestionAudioModel;
+use App\Models\QuestionGroupModel;
+use App\Models\QuestionImageModel;
+use App\Models\QuestionModel;
 use CodeIgniter\I18n\Time;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class Login extends BaseController
 {
-    public function index()
-    {
-        return view('Admin/Login/index');
-    }
+	public function index()
+	{
+		$reader = IOFactory::createReader("Xlsx");
+		$spreadSheet = $reader->load(UPLOAD_PATH . '/exam1.xlsx');
 
-    public function authLogin()
-    {
-        $username = $this->request->getPost('username');
+		$sheetData = $spreadSheet->getActiveSheet()->rangeToArray('B2:J103');
+		
+		die('OK!');
+		
+		$part3 = array_chunk(array_slice($sheetData, 14, 20), 3);
+		$part4 = array_chunk(array_slice($sheetData, 35, 15), 3);
+		$part5 = array_slice($sheetData, 50, 14);
+		$part6 = array_chunk(array_slice($sheetData, 64, 12), 3);
+
+		$part7_1 = array_chunk(array_slice($sheetData, 73, 15), 5);
+		$part7_2 = array_chunk(array_slice($sheetData, 88, 12), 3);
+		
+		return view('Admin/Login/index');
+	}
+
+	public function authLogin()
+	{
+		$username = $this->request->getPost('username');
 		$password = $this->request->getPost('password');
 		$inputs = array(
 			'username' => $username,
@@ -53,9 +75,9 @@ class Login extends BaseController
 		}
 
 		$sessionData = [
-			'id' 	   => $user['id'],
-			'adminName'     => $user['username'],
-			'level'	   => $user['level'],
+			'id' 	       => $user['id'],
+			'adminName'    => $user['username'],
+			'level'	       => $user['level'],
 			'isAdminLogin' => true,
 		];
 
@@ -67,10 +89,10 @@ class Login extends BaseController
 		//create new session and start to work
 		session()->set($sessionData);
 		return redirect()->to('/dashboard');
-    }
+	}
 
 
-     /**
+	/**
 	 * Used to logout the user.
 	 * 
 	 */
