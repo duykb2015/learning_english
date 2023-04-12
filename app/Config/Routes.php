@@ -34,7 +34,6 @@ $routes->get('/', 'Home::index');
 $routes->get('admin-login', 'Admin\Login::index');
 $routes->post('admin-login', 'Admin\Login::authLogin');
 $routes->get('logout', 'Admin\Login::logout');
-$routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
 
 $routes->group('', function ($routes) {
     $routes->get('', 'Home::index');
@@ -62,14 +61,16 @@ $routes->group('', function ($routes) {
     $routes->group('User', function ($routes) {
         $routes->get('Infor','UserController::Infor');
         $routes->get('Result','UserController::Result');
+        $routes->get('Login','UserController::Login');
+        $routes->get('Register','UserController::Register');
 
     });
 
 
 });
 
-$routes->group('dashboard', function ($routes) {
-    $routes->get('', 'Admin\HomeController::index');
+$routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
+    $routes->get('', 'Admin\Home::index');
 
     $routes->group('admin', function ($routes) {
         $routes->get('/', 'Admin\Admin::index');
@@ -101,8 +102,10 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('question-group', function ($routes) {
         $routes->get('/', 'Admin\QuestionGroup::index');
         $routes->get('detail', 'Admin\QuestionGroup::detail');
+        $routes->get('detail/:any', 'Admin\QuestionGroup::detail');
 
-        $routes->post('save', 'Admin\QuestionGroup::create');
+        $routes->post('save', 'Admin\QuestionGroup::save');
+        $routes->post('delete', 'Admin\QuestionGroup::delete');
     });
     $routes->group('exam', function ($routes) {
         $routes->get('/', 'Admin\Exam::index');
@@ -110,7 +113,14 @@ $routes->group('dashboard', function ($routes) {
         $routes->get('part-exam', 'Admin\PartExam::index');
         $routes->get('part-exam/detail', 'Admin\PartExam::detail');
     });
-
+    $routes->group('exam-part', function ($routes) {
+        $routes->get('/', 'Admin\PartExam::index');
+        $routes->get('detail', 'Admin\PartExam::detail');
+        $routes->post('save', 'Admin\PartExam::save');
+        $routes->get('edit/:any', 'Admin\PartExam::edit');
+        $routes->post('update/:any', 'Admin\PartExam::update');
+        $routes->get('delete/:any', 'Admin\PartExam::delete');
+    });
     $routes->group('posts', function ($routes) {
         $routes->get('/', 'Admin\Posts::index');
         $routes->get('detail', 'Admin\Posts::detail');

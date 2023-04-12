@@ -33,7 +33,7 @@ class Question extends Migration
             'audio_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'null' => FALSE,
+                'null' => TRUE,
             ],
             'right_option' => [
                 'type' => 'TINYINT',

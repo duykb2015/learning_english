@@ -97,3 +97,7 @@ define('PART_LIMIT', 7);
 
 define('WRONG_LOGIN_INFO_MESSAGE', 'Tài khoản hoặc mật khẩu sai, vui lòng kiểm tra lại!');
 define('UNEXPECTED_ERROR_MESSAGE', 'Có lỗi xảy ra, vui lòng thử lại sau!');
+
+define('IMAGE_PATH', ROOTPATH . 'public/uploads/images');
+
+define('AUDIO_PATH', ROOTPATH . 'public/uploads/audios');
