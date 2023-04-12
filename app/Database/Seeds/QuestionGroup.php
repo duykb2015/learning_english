@@ -25,13 +25,19 @@ class QuestionGroup extends Seeder
 		$part2 = array_slice($sheetData, 3, 10);
 		$this->saveQuestionPart2($part2);
 
+		$part3 = array_chunk(array_slice($sheetData, 14, 21), 3);
+		$this->saveQuestionPart3_n_4($part3);
+
+		$part4 = array_chunk(array_slice($sheetData, 35, 15), 3);
+		$this->saveQuestionPart3_n_4($part4);
+
 	}
 
 	private function saveQuestionPart1($dataSet)
 	{
 		$data = [
 			'exam_part_id' =>  1,
-			'title'        =>  'None',
+			'title'        =>  'Question Part 1',
 			'paragraph'    =>  $dataSet[0][2],
 		];
 		$questionGroupModel = new QuestionGroupModel();
@@ -46,6 +52,7 @@ class QuestionGroup extends Seeder
 			$audioID = $questionAudioModel->insert(['audio_name' => $item[1]], true);
 			$data = [
 				'exam_part_id'      => 1,
+				'type'		        => 1,
 				'question_group_id' => $questionGroupID,
 				'audio_id'          => $audioID != 0 ? $audioID : null,
 				'right_option'      => QUESTION[$item[8]],
@@ -90,8 +97,8 @@ class QuestionGroup extends Seeder
 	private function saveQuestionPart2($dataSet)
 	{
 		$data = [
-			'exam_part_id' =>  1,
-			'title'        =>  'None',
+			'exam_part_id' =>  2,
+			'title'        =>  'Question Part 2',
 			'paragraph'    =>  $dataSet[0][2],
 		];
 		$questionGroupModel = new QuestionGroupModel();
@@ -104,7 +111,8 @@ class QuestionGroup extends Seeder
 		foreach ($dataSet as $item) {
 			$audioID = $questionAudioModel->insert(['audio_name' => $item[1]], true);
 			$data = [
-				'exam_part_id'      => 1,
+				'exam_part_id'      => 2,
+				'type'				=> 1,
 				'question_group_id' => $questionGroupID,
 				'audio_id'          => $audioID != 0 ? $audioID : null,
 				'right_option'      => QUESTION[$item[8]],
@@ -134,4 +142,65 @@ class QuestionGroup extends Seeder
 			$questionAnswerModel->insertBatch($data);
 		}
 	}
+
+	private function saveQuestionPart3_n_4($dataSet)
+	{
+		$questionAudioModel  = new QuestionAudioModel();
+		$questionModel 	 	 = new QuestionModel();
+		$questionAnswerModel = new QuestionAnswerModel();
+		$questionGroupModel  = new QuestionGroupModel();
+		$i = 0;
+		foreach ($dataSet as $key => $item) {
+			$data = [
+				'exam_part_id' =>  3,
+				'title'        =>  'Question Part 3 - Num ' . $key,
+				'paragraph'    =>  $item[$i][2] ?? '',
+			];
+			$questionGroupID = $questionGroupModel->insert($data, true);
+			$audioID = $questionAudioModel->insert(['audio_name' => $item[$i][1]], true);
+
+			foreach ($item as $subItem) {
+				$data = [
+					'exam_part_id'      => 3,
+					'type'				=> 1,
+					'question_group_id' => $questionGroupID,
+					'audio_id'          => $audioID != 0 ? $audioID : null,
+					'right_option'      => QUESTION[$subItem[8]],
+					'question'          => $subItem[3],
+					'explain'           => 'No explain',
+				];
+
+				$questionID = $questionModel->insert($data, true);
+				unset($data);
+
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $subItem[4]
+				];
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $subItem[5]
+				];
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $subItem[6]
+				];
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $subItem[7]
+				];
+
+				$questionAnswerModel->insertBatch($data);
+			}
+			$i += 1;
+			if (3 == $i) {
+				$i = 0;
+			}
+		}
+	}
+
 }

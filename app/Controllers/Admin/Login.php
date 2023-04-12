@@ -21,17 +21,17 @@ class Login extends BaseController
 		$spreadSheet = $reader->load(UPLOAD_PATH . '/exam1.xlsx');
 
 		$sheetData = $spreadSheet->getActiveSheet()->rangeToArray('B2:J103');
+
 		
-		die('OK!');
-		
-		$part3 = array_chunk(array_slice($sheetData, 14, 20), 3);
-		$part4 = array_chunk(array_slice($sheetData, 35, 15), 3);
 		$part5 = array_slice($sheetData, 50, 14);
+		dd($part5);
+		die('SUGOIIIIII!!');
+
 		$part6 = array_chunk(array_slice($sheetData, 64, 12), 3);
 
 		$part7_1 = array_chunk(array_slice($sheetData, 73, 15), 5);
 		$part7_2 = array_chunk(array_slice($sheetData, 88, 12), 3);
-		
+
 		return view('Admin/Login/index');
 	}
 
