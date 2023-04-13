@@ -31,6 +31,8 @@ class QuestionGroup extends Seeder
 		$part4 = array_chunk(array_slice($sheetData, 35, 15), 3);
 		$this->saveQuestionPart3_n_4($part4);
 
+		$part5 = array_slice($sheetData, 50, 14);
+		$this->saveQuestionPart5($part5);
 	}
 
 	private function saveQuestionPart1($dataSet)
@@ -200,6 +202,47 @@ class QuestionGroup extends Seeder
 			if (3 == $i) {
 				$i = 0;
 			}
+		}
+	}
+
+	private function saveQuestionPart5($dataSet)
+	{
+		$questionModel 	 	 = new QuestionModel();
+		$questionAnswerModel = new QuestionAnswerModel();
+		foreach ($dataSet as $item) {
+				$data = [
+					'exam_part_id'      => 5,
+					'type'				=> 2,
+					'right_option'      => QUESTION[$item[8]],
+					'question'          => $item[3],
+					'explain'           => 'No explain',
+				];
+
+				$questionID = $questionModel->insert($data, true);
+				unset($data);
+
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $item[4]
+				];
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $item[5]
+				];
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $item[6]
+				];
+				$data[] = [
+					'question_id' => $questionID,
+					'type' 		  => 1,
+					'text' 		  => $item[7]
+				];
+
+				$questionAnswerModel->insertBatch($data);
 		}
 	}
 

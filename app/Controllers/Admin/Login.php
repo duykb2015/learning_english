@@ -23,9 +23,9 @@ class Login extends BaseController
 		$sheetData = $spreadSheet->getActiveSheet()->rangeToArray('B2:J103');
 
 		
-		$part5 = array_slice($sheetData, 50, 14);
-		dd($part5);
-		die('SUGOIIIIII!!');
+		
+
+		// die('SUGOIIIIII!!');
 
 		$part6 = array_chunk(array_slice($sheetData, 64, 12), 3);
 

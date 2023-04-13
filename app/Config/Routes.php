@@ -95,8 +95,10 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
     $routes->group('question', function ($routes) {
         $routes->get('/', 'Admin\Question::index');
         $routes->get('detail', 'Admin\Question::detail');
-
+        $routes->get('detail/:any', 'Admin\Question::detail');
         $routes->get('upload-excel', 'Admin\Question::upload_excel');
+
+        $routes->post('detail/:any', 'Admin\Question::detail');
         $routes->post('save', 'Admin\Question::save');
     });
     $routes->group('question-group', function ($routes) {

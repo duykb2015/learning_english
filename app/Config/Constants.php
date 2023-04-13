@@ -110,3 +110,10 @@ define('QUESTION', [
     'C' => 3,
     'D' => 4 
 ]);
+
+define('LISTENING', 1);
+define('WRITING', 2);
+define('QUESTION_TYPE', [
+    LISTENING => 'Nghe',
+    WRITING => 'Đọc'
+]);
