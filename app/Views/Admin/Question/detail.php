@@ -66,110 +66,106 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form class="needs-validation" action="<?= base_url('dashboard/question/save') ?>" method="post" enctype="multipart/form-data">
-                                                            <input type="hidden" name="id" value="">
+                                                        <form action="<?= base_url('dashboard/question/save') ?>" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" name="id" value="<?= isset($question) && !empty($question) ? $question['id'] : '' ?>">
                                                             <div class="general-info">
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <label for="question">Câu hỏi</label>
                                                                         <div class="input-group">
-                                                                            <textarea type="text" class="form-control" value="" name="question" placeholder="Câu hỏi ..." rows="1" required autofocus></textarea>
+                                                                            <textarea type="text" class="form-control" name="question" placeholder="Câu hỏi ..." rows="5" autofocus><?= isset($question) && !empty($question) ? $question['question'] : '' ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="group_question">Loại câu hỏi</label>
+                                                                        <label for="type">Loại câu hỏi</label>
                                                                         <div class="input-group">
-                                                                            <select name="group_question" class="form-control" required>
+                                                                            <select name="type" class="form-control" required>
                                                                                 <option value="" disabled selected>
                                                                                     --Chọn loại câu hỏi--
                                                                                 </option>
-                                                                                <option value="0">Câu hỏi nghe</option>
-                                                                                <option value="1">Câu hỏi đọc</option>
+                                                                                <option value="1" <?= isset($question) && !empty($question) && $question['type'] == 1 ? 'selected' : '' ?>>Câu hỏi nghe</option>
+                                                                                <option value="2" <?= isset($question) && !empty($question) && $question['type'] == 2 ? 'selected' : '' ?>>Câu hỏi đọc</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="partnumber">Part</label>
+                                                                        <div style="height: 1px;" class="input-group">
+                                                                            <select name="part_id" class="form-control js-example-basic-single">
+                                                                                <?php if (isset($examPart) || !empty($examPart)) : ?>
+                                                                                    <?php foreach ($examPart as $item) : ?>
+                                                                                        <option value="<?= $item['id'] ?>" <?= isset($question) && !empty($question) && $question['exam_part_id'] == $item['id'] ? 'selected' : '' ?>>Part <?= $item['part_number'] ?></option>
+                                                                                    <?php endforeach ?>
+                                                                                <?php endif ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label for="username">Đáp án đúng</label>
+                                                                        <div class="input-group">
+                                                                            <select name="right_option" class="form-control" id="validationCustom04" required>
+                                                                                <option selected disabled value="">
+                                                                                    --Chọn đáp án đúng--
+                                                                                </option>
+                                                                                <option value="1" <?= isset($question) && !empty($question) && $question['right_option'] == 1 ? 'selected' : '' ?>>A</option>
+                                                                                <option value="2" <?= isset($question) && !empty($question) && $question['right_option'] == 2 ? 'selected' : '' ?>>B</option>
+                                                                                <option value="3" <?= isset($question) && !empty($question) && $question['right_option'] == 3 ? 'selected' : '' ?>>C</option>
+                                                                                <option value="4" <?= isset($question) && !empty($question) && $question['right_option'] == 4 ? 'selected' : '' ?>>D</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <label for="result">Câu trả lời</label>
-                                                                        <div class="input-group">
-                                                                            <input style="height: 40px;" class="form-control" name="result[]" placeholder="Vd: A.Yes..." required>
+                                                                    <?php if (isset($questionAnswer) && !empty($questionAnswer)) : ?>
+                                                                        <?php foreach ($questionAnswer as $item) : ?>
+                                                                            <input type="hidden" name="old_options_id[]" value="<?= $item['id'] ?>">
+                                                                            <div class="col-md-12">
+                                                                                <label for="result">Câu trả lời</label>
+                                                                                <div class="input-group">
+                                                                                    <input style="height: 40px;" class="form-control" value="<?= $item['text'] ?>" name="options[]" placeholder="Vd: Some thing big..." required>
+                                                                                </div>
+                                                                            </div>
+                                                                        <?php endforeach ?>
+                                                                    <?php else : ?>
+                                                                        <div class="col-md-12">
+                                                                            <label for="result">Câu trả lời</label>
+                                                                            <div class="input-group">
+                                                                                <input style="height: 40px;" class="form-control" name="options[]" placeholder="Vd: Some thing big..." required>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    <?php endif ?>
                                                                 </div>
                                                             </div>
                                                             <div id="newinput"></div>
                                                             <div class="row">
                                                                 <div class="mb-3">
                                                                     <button id="rowAdder" type="button" class="btn btn-primary waves-effect waves-light m-r-20">Thêm câu trả lời</button>
-
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="username">Đáp án đúng</label>
-                                                                    <div class="input-group">
-                                                                        <select name="result_true" class="form-control" id="validationCustom04" required>
-                                                                            <option selected disabled value="">
-                                                                                --Chọn đáp án đúng--
-                                                                            </option>
-                                                                            <option value="1">A</option>
-                                                                            <option value="2">B</option>
-                                                                            <option value="3">C</option>
-                                                                            <option value="4">D</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="partnumber">Part</label>
-                                                                    <div style="height: 1px;" class="input-group">
-                                                                        <select class="form-control js-example-basic-single" name="part" required>
-                                                                            <option value="" selected disabled>--Chọn Part--</option>
-                                                                            <option value="1">Alabama</option>
-                                                                            <option value="2">Wyoming</option>
-                                                                            <option value="3">Peter</option>
-                                                                            <option value="4">Hanry Die</option>
-                                                                            <option value="5">John Doe</option>
-
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-3" id="question">
+                                                                <div class="col-md-12 mb-3" id="question" <?= isset($question) && !empty($question) && $question['type'] == 2 ? 'hidden' : '' ?>>
                                                                     <label for="upload_image">Upload tệp hình ảnh</label>
-                                                                    <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple" required>
+                                                                    <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple">
                                                                 </div>
-                                                                <div class="col-md-12 mb-3" id="question1">
+                                                                <div class="col-md-12 mb-3" id="question1" <?= isset($question) && !empty($question) && $question['type'] == 2 ? 'hidden' : '' ?>>
                                                                     <label for="upload_audio">Upload tệp âm thanh</label>
-                                                                    <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="status">Trạng thái</label>
-                                                                    <div class="input-group">
-                                                                        <select name="status" class="form-control" required>
-                                                                            <option value="" disabled selected>
-                                                                                --Chọn trạng thái--
-                                                                            </option>
-                                                                            <option value="1">Hiển thị</option>
-                                                                            <option value="0">Ẩn</option>
-                                                                        </select>
-                                                                    </div>
+                                                                    <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple">
                                                                 </div>
                                                             </div>
                                                             <!-- end of row -->
                                                             <div class="row">
                                                                 <div class="col-md-12 text-right">
                                                                     <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
-                                                                    <a href="<?= base_url('dashboard/question/detail') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
+                                                                    <a href="<?= base_url('dashboard/question') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                 </div>
                                                             </div>
+                                                        </form>
                                                     </div>
                                                     <!-- end of edit info -->
-                                                    </form>
                                                 </div>
                                                 <!-- end of col-lg-12 -->
                                             </div>
@@ -202,8 +198,7 @@
     $(document).ready(function() {
         $('select[name="group_question"]').on('change', function() {
             var eins = $(this).val();
-            console.log(eins);
-            if (eins == "1") {
+            if (eins == "2") {
                 $('#filer_input_image').attr('disabled', 'disabled');
                 $('#filer_input_audio').attr('disabled', 'disabled');
                 $('#question').attr('hidden', '');
@@ -219,37 +214,8 @@
 </script>
 
 <script>
-    function matchStart(params, data) {
-        // If there are no search terms, return all of the data
-
-        // if ($.trim(params.term) === '') {
-        //     return data;
-        // }
-        // // Skip if there is no 'children' property
-        // if (typeof data.children === '') {
-        //     return null;
-        // }
-        // // `data.children` contains the actual options that we are matching against
-        // var filteredChildren = [];
-        // $.each(data.children, function(idx, child) {
-        //     if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
-        //         filteredChildren.push(child);
-        //     }
-        // });
-        // // If we matched any of the timezone group's children, then set the matched children on the group
-        // // and return the group object
-        // if (filteredChildren.length) {
-        //     var modifiedData = $.extend({}, data, true);
-        //     modifiedData.children = filteredChildren;
-        //     // You can return modified objects from here
-        //     // This includes matching the `children` how you want in nested data sets
-        //     return modifiedData;
-        // }
-        // // Return `null` if the term should not be displayed
-        // return null;
-    }
+    function matchStart(params, data) {}
     $(".js-example-basic-single").select2({
-        // matcher: matchStart
 
     });
 </script>
@@ -257,35 +223,35 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var counter = 3;
-    $("#rowAdder").click(function() {
-       
-        if (counter > 6) {
-            alert("Tối đa 5 câu trả lời được chấp nhận!");
-            return false;
-        }
-        counter++;
-        newRowAdd =
-            '<div class="row" id="row" >' +
-            '<div class="col-md-12">' +
-            '<label for="result">Câu trả lời tiếp theo</label>' +
-            '<div class="input-group">' +
-            '<input class="form-control" name="result[]" placeholder="Vd: A.Yes..." required>' +
-            '<button class="btn btn-danger" id="DeleteRow" type="button">' +
-            '<i class="bi bi-trash"></i> Xóa</button> </div> </div> ' +
-            '</div>';
+        $("#rowAdder").click(function() {
 
-        $('#newinput').append(newRowAdd);
-        
+            if (counter > 6) {
+                alert("Tối đa 5 câu trả lời được chấp nhận!");
+                return false;
+            }
+            counter++;
+            newRowAdd =
+                '<div class="row" id="row" >' +
+                '<div class="col-md-12">' +
+                '<label for="result">Câu trả lời tiếp theo</label>' +
+                '<div class="input-group">' +
+                '<input class="form-control" name="options[]" placeholder="Vd: A.Yes..." required>' +
+                '<button class="btn btn-danger" id="DeleteRow" type="button">' +
+                '<i class="bi bi-trash"></i> Xóa</button> </div> </div> ' +
+                '</div>';
+
+            $('#newinput').append(newRowAdd);
+
+        });
+
+        $("body").on("click", "#DeleteRow", function() {
+            const is_confirm = confirm(`Bạn muốn xóa câu trả lời ?`);
+            if (!is_confirm) {
+                return
+            }
+            counter--;
+            $(this).parents("#row").remove();
+        })
     });
-
-    $("body").on("click", "#DeleteRow", function() {
-        const is_confirm = confirm(`Bạn muốn xóa câu trả lời ?`);
-        if (!is_confirm) {
-            return
-        }
-        counter--;
-        $(this).parents("#row").remove();
-    })
-});
 </script>
 <?= $this->endSection() ?>

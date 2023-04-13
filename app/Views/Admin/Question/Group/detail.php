@@ -130,7 +130,7 @@
 																			<div class="col-md-12">
 																				<label for="question">Câu hỏi</label>
 																				<div class="input-group">
-																					<textarea type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="3" required autofocus></textarea>
+																					<textarea type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="3"  autofocus></textarea>
 																				</div>
 																			</div>
 																			<div class="col-md-12">
@@ -174,7 +174,7 @@
 																				<label for="question">Câu hỏi</label>
 																				<div class="input-group">
 																					<input type="hidden" name="old_questions[]" value="<?= $questions[0]['id'] ?>">
-																					<textarea type="text" class="form-control" name="questions[]" placeholder="Câu hỏi ..." rows="3" required autofocus><?= $questions[0]['question'] ?></textarea>
+																					<textarea type="text" class="form-control" name="questions[]" placeholder="Câu hỏi ..." rows="3" autofocus><?= $questions[0]['question'] ?></textarea>
 																				</div>
 																			</div>
 																			<div class="col-md-12">
@@ -219,7 +219,7 @@
 																							<input type="hidden" name="old_questions[]" value="<?= $question['id'] ?>">
 																							<div class="row">
 																								<div class="form-group col-md-11">
-																									<textarea style="height: 40px;" type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1" required autofocus><?= $question['question'] ?></textarea>
+																									<textarea style="height: 40px;" type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1"  autofocus><?= $question['question'] ?></textarea>
 																								</div>
 																								<div class="col-md-1 form-group">
 																									<button class="btn btn-danger" id="DeleteRow" type="button">
@@ -360,7 +360,7 @@
 										<label for="question">Câu hỏi</label>
 										<div class="row">
 											<div class="form-group col-md-11">
-												<textarea style="height: 40px;" type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1" required autofocus></textarea>
+												<textarea style="height: 40px;" type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1" autofocus></textarea>
 											</div>
 											<div class="col-md-1 form-group">
 												<button class="btn btn-danger " id="DeleteRow" type="button">

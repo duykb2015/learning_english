@@ -12,6 +12,8 @@ use App\Models\QuestionModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\Response;
 use Exception;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class QuestionGroup extends BaseController
 {
@@ -24,6 +26,7 @@ class QuestionGroup extends BaseController
         $datas['questionGroups'] = $questionGroups;
         return view('Admin/Question/Group/index', $datas);
     }
+
     public function detail()
     {
         $questionGroupModel = new QuestionGroupModel();
@@ -32,6 +35,9 @@ class QuestionGroup extends BaseController
         $questionGroupID = $this->request->getUri()->getSegment(4);
 
         $questionGroup = $questionGroupModel->where('id', $questionGroupID)->first();
+        if ($questionGroupID && !$questionGroup) {
+            return redirect()->to('/dashboard/question-group/');
+        }
         $data['examPart'] = $examPartModel->findAll();
 
         if (!$questionGroup) {
@@ -63,16 +69,16 @@ class QuestionGroup extends BaseController
     {
         $questionGroupIDPost = $this->request->getPost('question_group_id');
         $title               = $this->request->getPost('title');
-        $part_id             = $this->request->getPost('part_id');
+        $partID             = $this->request->getPost('part_id');
         $paragraph           = $this->request->getPost('paragraph');
         $questionGroupAudio  = $this->request->getFile('question_group_audio');
         $questions           = $this->request->getPost('questions');
         $oldQuestions        = $this->request->getPost('old_questions');
-        $right_option        = $this->request->getPost('right_option');
+        $rightOption        = $this->request->getPost('right_option');
         $oldOptions             = $this->request->getPost('old_options');
         $options             = $this->request->getPost('options');
         $data = [
-            'exam_part_id' =>  $part_id,
+            'exam_part_id' =>  $partID,
             'title'        =>  $title,
             'paragraph'    =>  $paragraph,
         ];
@@ -106,10 +112,10 @@ class QuestionGroup extends BaseController
         }
         foreach ($questions as $key => $question) {
             $data = [
-                'exam_part_id'      => $part_id,
+                'exam_part_id'      => $partID,
                 'question_group_id' => $questionGroupID,
                 'audio_id'          => $audioID != 0 ? $audioID : null,
-                'right_option'      => $right_option[$key],
+                'right_option'      => $rightOption[$key],
                 'question'          => $question,
                 'explain'           => 'No explain',
             ];
