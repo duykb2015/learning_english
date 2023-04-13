@@ -59,12 +59,15 @@ $routes->group('', function ($routes) {
         $routes->get('PracticeRead', 'PracticeController::PracticeRead');
     });
     $routes->group('User', function ($routes) {
+        $routes->get('Login','UserController::index');
+        $routes->post('userlogin','UserController::userlogin');
         $routes->get('Infor','UserController::Infor');
         $routes->get('Result','UserController::Result');
-        $routes->get('Login','UserController::Login');
         $routes->get('Register','UserController::Register');
-
+        $routes->post('save','UserController::save');
+        $routes->get('Logout','UserController::Logout');
     });
+
 
 
 });
