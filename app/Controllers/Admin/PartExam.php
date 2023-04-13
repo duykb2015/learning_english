@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\ExamPartModel;
+use Exception;
 
 class PartExam extends BaseController
 {

@@ -28,7 +28,7 @@ class Question extends Migration
             'question_group_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'null' => FALSE,
+                'null' => TRUE,
             ],
             'audio_id' => [
                 'type' => 'INT',
@@ -42,7 +42,7 @@ class Question extends Migration
             ],
             'question' => [
                 'type' => 'TEXT',
-                'null' => FALSE,
+                'null' => TRUE,
             ],
             'explain' => [
                 'type' => 'TEXT',
