@@ -51,6 +51,7 @@ $routes->group('', function ($routes) {
         $routes->get('ExamToeic','FullTestController::index');
         $routes->get('ExamListen','FullTestController::Testlisten');
         $routes->get('ExamRead', 'FullTestController::TestRead');
+        $routes->get('ExamToeicRandom', 'ExamToeicRandom::index');
     });
     $routes->group('Practice', function ($routes) {
         $routes->get('PracticeVocabulary','PracticeController::PracticeVocabulary');
@@ -117,6 +118,7 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
         $routes->get('detail', 'Admin\Exam::detail');
         $routes->get('part-exam', 'Admin\PartExam::index');
         $routes->get('part-exam/detail', 'Admin\PartExam::detail');
+
     });
     $routes->group('exam-part', function ($routes) {
         $routes->get('/', 'Admin\PartExam::index');
