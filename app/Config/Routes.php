@@ -59,13 +59,14 @@ $routes->group('', function ($routes) {
         $routes->get('PracticeRead', 'PracticeController::PracticeRead');
     });
     $routes->group('User', function ($routes) {
-        $routes->get('Login','UserController::index');
-        $routes->post('userlogin','UserController::userlogin');
-        $routes->get('Infor','UserController::Infor');
-        $routes->get('Result','UserController::Result');
-        $routes->get('Register','UserController::Register');
-        $routes->post('save','UserController::save');
-        $routes->get('Logout','UserController::Logout');
+        $routes->get('Login','User::index');
+        $routes->get('Infor','User::Infor');
+        $routes->get('Result','User::Result');
+        $routes->get('Register','User::Register');
+        $routes->get('Logout','User::Logout');
+
+        $routes->post('userlogin','User::userlogin');
+        $routes->post('save','User::save');
     });
 
 
@@ -99,7 +100,9 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
         $routes->get('/', 'Admin\Question::index');
         $routes->get('detail', 'Admin\Question::detail');
         $routes->get('detail/:any', 'Admin\Question::detail');
-        $routes->get('upload-excel', 'Admin\Question::upload_excel');
+        $routes->get('upload-excel', 'Admin\Question::uploadExcel');
+
+        $routes->post('upload-excels', 'Admin\Question::uploadExcelSave');
 
         $routes->post('detail/:any', 'Admin\Question::detail');
         $routes->post('save', 'Admin\Question::save');
