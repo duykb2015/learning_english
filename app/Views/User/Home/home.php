@@ -43,7 +43,7 @@
                                 <p class="lead">Chúng tôi cung cấp cho các bạn những kiến
                                     thức tốt nhất.</p>
 
-                                <a class="btn btn-large btn-primary openModalFunction" href="#" id="modal1">Tham gia</a>
+                                <a class="btn btn-large btn-primary openModalFunction" href="<?= base_url('User/Register') ?>" id="modal1">Tham gia</a>
 
 
                                 <a class="btn btn-large btn-primary openModalFunction" href="#" id="modal1">Xem ngay</a>

@@ -91,7 +91,7 @@
                         <div class="span5">
 
                             <div>
-                                <a id="btn" value="Show Alert" href="<?= base_url('user/Exam/ExamToeic') ?>" class="btn btn-primary">Tạo Đề Thi Ngẫu Nhiên</a>
+                                <a id="btn" value="Show Alert" href="<?= base_url('Exam/ExamToeicRandom') ?>" class="btn btn-primary">Tạo Đề Thi Ngẫu Nhiên</a>
                             </div>
                             <script language="javascript">
                                 var button = document.getElementById("btn");

@@ -32,36 +32,32 @@
                                             <tr>
                                                 <th style="width: 20px;">Loại câu hỏi</th>
                                                 <th>Câu hỏi</th>
-                                                <th style="width: 30px;">Trạng thái</th>
                                                 <th style="width: 70px;">Quản lý</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Nghe</td>
-                                                <td>Family</td>
-                                                <td>
-                                                    <div class="checkbox-fade fade-in-primary d-flex justify-content-center">
-                                                        <label>
-                                                            <input type="checkbox" id="checkbox2" name="status" value="">
-                                                            <span class="cr">
-                                                                <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group btn-group-sm">
-                                                        <a style="margin: 4px;" href="" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
-                                                            <span class="icofont icofont-ui-edit"></span>
-                                                        </a>
-                                                        <a style="margin: 4px;" href="" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
-                                                            <span class="icofont icofont-ui-delete"></span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            
+                                            <?php if (isset($questions) && !empty($questions)) :  ?>
+                                                <?php foreach ($questions as $question) : ?>
+                                                    <tr>
+                                                        <td><?= QUESTION_TYPE[$question['type']] ?></td>
+                                                        <td><?= $question['question'] ?></td>
+                                                        <td>
+                                                            <div class="btn-group btn-group-sm">
+                                                                <a style="margin: 4px;" href="<?= base_url('dashboard/question/detail') . '/' . $question['id'] ?>" class="tabledit-edit-button btn btn-primary waves-effect waves-light">
+                                                                    <span class="icofont icofont-ui-edit"></span>
+                                                                </a>
+                                                                <a style="margin: 4px;" onclick="delete_question(<?= $question['id'] ?>)" class="tabledit-delete-button btn btn-danger waves-effect waves-light">
+                                                                    <span class="icofont icofont-ui-delete"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            <?php else : ?>
+                                                <tr>
+                                                    <td colspan="3">Không có câu hỏi nào</td>
+                                                </tr>
+                                            <?php endif ?>
                                         </tbody>
                                     </table>
                                 </div>

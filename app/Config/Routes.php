@@ -51,6 +51,7 @@ $routes->group('', function ($routes) {
         $routes->get('ExamToeic','FullTestController::index');
         $routes->get('ExamListen','FullTestController::Testlisten');
         $routes->get('ExamRead', 'FullTestController::TestRead');
+        $routes->get('ExamToeicRandom', 'ExamToeicRandom::index');
     });
     $routes->group('Practice', function ($routes) {
         $routes->get('PracticeVocabulary','PracticeController::PracticeVocabulary');
@@ -59,10 +60,15 @@ $routes->group('', function ($routes) {
         $routes->get('PracticeRead', 'PracticeController::PracticeRead');
     });
     $routes->group('User', function ($routes) {
+        $routes->get('Login','UserController::index');
+        $routes->post('userlogin','UserController::userlogin');
         $routes->get('Infor','UserController::Infor');
         $routes->get('Result','UserController::Result');
-
+        $routes->get('Register','UserController::Register');
+        $routes->post('save','UserController::save');
+        $routes->get('Logout','UserController::Logout');
     });
+
 
 
 });
@@ -93,8 +99,10 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
     $routes->group('question', function ($routes) {
         $routes->get('/', 'Admin\Question::index');
         $routes->get('detail', 'Admin\Question::detail');
-
+        $routes->get('detail/:any', 'Admin\Question::detail');
         $routes->get('upload-excel', 'Admin\Question::upload_excel');
+
+        $routes->post('detail/:any', 'Admin\Question::detail');
         $routes->post('save', 'Admin\Question::save');
     });
     $routes->group('question-group', function ($routes) {
@@ -110,6 +118,7 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
         $routes->get('detail', 'Admin\Exam::detail');
         $routes->get('part-exam', 'Admin\PartExam::index');
         $routes->get('part-exam/detail', 'Admin\PartExam::detail');
+
     });
     $routes->group('exam-part', function ($routes) {
         $routes->get('/', 'Admin\PartExam::index');
