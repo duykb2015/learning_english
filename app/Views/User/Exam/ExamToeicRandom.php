@@ -37,8 +37,9 @@
     }
 
     .fix-scrolling {
-        max-height: 450px;
-        /*overflow-y: scroll;*/
+        max-height: 600px;
+        overflow-y: scroll;
+
     }
 
     .numberCircle {
@@ -97,6 +98,11 @@
         width: 100%;
         margin-bottom: 10px;
     }
+
+    .numberCircle.active {
+        background-color: #ffcccb;
+        /* Màu nền tô đậm khi câu hỏi được chọn */
+    }
 </style>
 
 <script type="text/javascript">
@@ -142,11 +148,52 @@
                                 <span id="time">120:00</span>
                             </div>
                             <hr width="60%">
+                            <?php $count = 0; ?>
 
-                            <?php for ($i = 1; $i <= 50; $i++) { ?>
-                                <div class="numberCircle" id="answer<?php echo $i ?><div">
-                                    <?php echo $i ?></div>
-                            <?php } ?>
+
+                            <?php foreach ($question1 as $value) : ?>
+                                <?php $count++; ?>
+                                <div class="numberCircle" id="answer<?= $value['id'] ?>">
+                                    <?= $count ?>
+                                </div>
+                            <?php endforeach ?>
+                            <?php foreach ($question2 as $value) : ?>
+                                <?php $count++; ?>
+                                <div class="numberCircle" id="answer<?= $value['id'] ?>">
+                                    <?= $count ?>
+                                </div>
+                            <?php endforeach ?>
+                            <?php foreach ($question3 as $value) : ?>
+                                <?php $count++; ?>
+                                <div class="numberCircle" id="answer<?= $value['id'] ?>">
+                                    <?= $count ?>
+                                </div>
+                            <?php endforeach ?>
+                            <?php foreach ($question4 as $value) : ?>
+                                <?php $count++; ?>
+                                <div class="numberCircle" id="answer<?= $value['id'] ?>">
+                                    <?= $count ?>
+                                </div>
+                            <?php endforeach ?>
+                            <?php foreach ($question5 as $value) : ?>
+                                <?php $count++; ?>
+                                <div class="numberCircle" id="answer<?= $value['id'] ?>">
+                                    <?= $count ?>
+                                </div>
+                            <?php endforeach ?>
+                            <?php foreach ($question6 as $value) : ?>
+                                <?php $count++; ?>
+                                <div class="numberCircle" id="answer<?= $value['id'] ?>">
+                                    <?= $count ?>
+                                </div>
+                            <?php endforeach ?>
+                            <?php foreach ($question7 as $value) : ?>
+                                <?php $count++; ?>
+                                <div class="numberCircle" id="answer<?= $value['id'] ?>">
+                                    <?= $count ?>
+                                </div>
+                            <?php endforeach ?>
+
 
                             <br> <br>
                             <!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
@@ -196,7 +243,7 @@
                                     <?php foreach ($question_answer as $answer) : ?>
                                         <?php if (($answer['question_id']) == ($value['id'])) { ?>
                                             <label class="radio-inline">
-                                                <br><input type="radio" name="answer" value="<?= $answer['id'] ?>"><?= $answer['text'] ?><br><br>
+                                                <br><input type="radio" name="answer" value="<?= $answer['id'] ?>" id="question.<?= $value['id'] ?>" onclick="markColor(this.id)"><?= $answer['text'] ?><br><br>
                                             </label>
                                         <?php } ?>
                                     <?php endforeach ?>
@@ -226,7 +273,7 @@
                                     <?php foreach ($question_answer as $answer) : ?>
                                         <?php if (($answer['question_id']) == ($value['id'])) { ?>
                                             <label class="radio-inline">
-                                                <input type="radio" name="answer" value="answer" /> <?= $answer['text']; ?> <br>
+                                                <input type="radio" name="answer" value="answer" id="question.<?= $value['id'] ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
                                             </label>
                                         <?php } ?>
                                     <?php endforeach ?>
@@ -253,7 +300,7 @@
                                     <p>
                                         <?php foreach ($question_answer as $answer) : ?>
                                             <?php if (($answer['question_id']) == ($value['id'])) { ?>
-                                                <input type="radio" name="answer" value="answer" /> <?= $answer['text']; ?> <br>
+                                                <input type="radio" name="answer" value="answer" id="question.<?= $value['id'] ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
                                             <?php } ?>
                                         <?php endforeach ?>
 
@@ -279,7 +326,7 @@
                                         <p>
                                             <?php foreach ($question_answer as $answer) : ?>
                                                 <?php if (($answer['question_id']) == ($value['id'])) { ?>
-                                                    <input type="radio" name="answer" value="answer" /> <?= $answer['text']; ?> <br>
+                                                    <input type="radio" name="answer" value="answer" id="question.<?= $value['id'] ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
                                                 <?php } ?>
                                             <?php endforeach ?>
 
@@ -300,7 +347,7 @@
                                             <p>
                                                 <?php foreach ($question_answer as $answer) : ?>
                                                     <?php if (($answer['question_id']) == ($value['id'])) { ?>
-                                                        <input type="radio" name="answer" value="answer" /> <?= $answer['text']; ?> <br>
+                                                        <input type="radio" name="answer" value="answer" id="question.<?= $value['id'] ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
                                                     <?php } ?>
                                                 <?php endforeach ?>
 
@@ -313,12 +360,22 @@
                                                     <p><b>Direction:</b> <?= $part6[0]['direction'] ?></p>
                                                 </div>
                                             </div>
+
                                             <?php $count = 130; ?>
                                             <?php foreach ($group6 as  $group) : ?>
                                                 <div class="panel panel-primary">
                                                     <div class="panel-body">
                                                         <p><b>Direction: </b><?= $group['title'] ?></p>
-                                                        <p><?= $group['paragraph'] ?></p>
+                                                        <?php
+                                                        $text = $group['paragraph'];
+                                                        // Thay thế các số 1,2,3,4 bằng số thứ tự câu hỏi
+                                                        $text = str_replace("----1---", "----".$count+1.."---",$text);
+                                                        $text = str_replace("----2---", "----".$count+2.."---", $text);
+                                                        $text = str_replace("----3---", "----".$count+3.."---", $text);
+                                                        $text = str_replace("----4---", "----".$count+4.."---", $text);
+                                                        ?>
+
+                                                        <p><?= $text ?></p>
                                                     </div>
                                                 </div>
                                                 <?php foreach ($question6 as $value) : ?>
@@ -326,15 +383,18 @@
                                                     <?php if (($value['question_group_id']) == ($group['id'])) { ?>
                                                         <?php $count++; ?>
                                                         <p><b>Question <?= $count ?>:</b> <?= $value['question'] ?></p>
+
                                                         <p>
                                                             <?php foreach ($question_answer as $answer) : ?>
                                                                 <?php if (($answer['question_id']) == ($value['id'])) { ?>
-                                                                    <input type="radio" name="answer" value="answer" /> <?= $answer['text']; ?> <br>
+                                                                    <input type="radio" name="answer" value="answer" id="question.<?= $count ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
                                                                 <?php } ?>
                                                             <?php endforeach ?>
                                                         <?php } ?>
                                                     <?php endforeach ?>
                                                 <?php endforeach ?>
+
+
                                                 <!--- part 7--->
                                                         <div class="panel panel-primary">
                                                             <div class="panel-body">
@@ -358,25 +418,15 @@
                                                                     <p>
                                                                         <?php foreach ($question_answer as $answer) : ?>
                                                                             <?php if (($answer['question_id']) == ($value['id'])) { ?>
-                                                                                <input type="radio" name="answer" value="answer" /> <?= $answer['text']; ?> <br>
+                                                                                <input type="radio" name="answer" value="answer" id="question.<?= $count ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
                                                                             <?php } ?>
                                                                         <?php endforeach ?>
                                                                     <?php } ?>
                                                                 <?php endforeach ?>
                                                             <?php endforeach ?>
-
                                                             <hr>
                         </div>
-
-
-
-
-
-
-
                     </div>
-
-
                 </div>
             </form>
         </div>
@@ -387,7 +437,29 @@
 ==========================-->
 
     <!--/.Footer-->
+    <script>
+        function highlightNumberCircle(questionId) {
+            // Xóa tất cả các đối tượng có class "active"
+            let numberCircles = document.getElementsByClassName("numberCircle");
+            for (let i = 0; i < numberCircles.length; i++) {
+                numberCircles[i].classList.remove("active");
+            }
 
+            // Thêm class "active" vào đối tượng có id tương ứng với câu hỏi được chọn
+            let selectedNumberCircle = document.getElementById("answer" + questionId);
+            if (selectedNumberCircle) {
+                selectedNumberCircle.classList.add("active");
+            }
+        }
+
+        function markColor(id) {
+            //tách lấy id của câu hỏi
+            var fields = id.split('.');
+            var answerId = fields[1];
+            document.getElementById("answer" + answerId).style.backgroundColor = "rgb(167,162,162)";
+
+        }
+    </script>
 </body>
 
 </html>
