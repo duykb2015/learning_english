@@ -369,10 +369,10 @@
                                                         <?php
                                                         $text = $group['paragraph'];
                                                         // Thay thế các số 1,2,3,4 bằng số thứ tự câu hỏi
-                                                        $text = str_replace("----1---", "----".$count+1.."---",$text);
-                                                        $text = str_replace("----2---", "----".$count+2.."---", $text);
-                                                        $text = str_replace("----3---", "----".$count+3.."---", $text);
-                                                        $text = str_replace("----4---", "----".$count+4.."---", $text);
+                                                        $text = str_replace("----1---", "----" . $count + 1. . "---", $text);
+                                                        $text = str_replace("----2---", "----" . $count + 2. . "---", $text);
+                                                        $text = str_replace("----3---", "----" . $count + 3. . "---", $text);
+                                                        $text = str_replace("----4---", "----" . $count + 4. . "---", $text);
                                                         ?>
 
                                                         <p><?= $text ?></p>
@@ -407,7 +407,16 @@
                                                             <div class="panel panel-primary">
                                                                 <div class="panel-body">
                                                                     <p><b>Direction: </b><?= $group['title'] ?></p>
-                                                                    <p><?= $group['paragraph'] ?></p>
+                                                                    <?php
+                                                                    $text = $group['paragraph'];
+                                                                    // Thay thế các số 1,2,3,4 bằng số thứ tự câu hỏi
+                                                                    $text = str_replace(". &mdash; [1] &mdash;.", " . &mdash; [" . $count + 1. . "] &mdash;.", $text);
+                                                                    $text = str_replace(". &mdash; [2] &mdash;.", " . &mdash; [" . $count + 2. . "] &mdash;.", $text);
+                                                                    $text = str_replace(". &mdash; [3] &mdash;.", " . &mdash; [" . $count + 3. . "] &mdash;.", $text);
+                                                                    $text = str_replace(". &mdash; [4] &mdash;.", " . &mdash; [" . $count + 4. . "] &mdash;.", $text);
+                                                                    ?>
+
+                                                                    <p><?= $text ?></p>
                                                                 </div>
                                                             </div>
                                                             <?php foreach ($question7 as $value) : ?>
