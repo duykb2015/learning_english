@@ -16,26 +16,27 @@
         <div>
             <div class="tab-content">
                 <div class="tab-pane active" id="information">
-                    <form class="form-profile" action="" method="post">
+                    <form class="form-profile" action="<?= base_url('User/save') ?>" method="post">
+                    <input type="hidden" name="id" value="">
                         <div style="display: flex;">
-                            <label><b>FirstName :</b></label>
-                            <input type="text" style="width: 500px;margin-left: 20px;" name="firstname" placeholder="FirstName...." size="15" required />
+                            <label for="first_name"><b>FirstName :</b></label>
+                            <input type="text" style="width: 500px;margin-left: 20px;" name="first_name" placeholder="FirstName...." size="15" required />
                         </div>
 
                         <div style="display: flex;">
-                            <label> <b>Lastname :</b> </label>
-                            <input type="text" style="width: 500px; margin-left: 24px;" name="lastname" placeholder="LastName...." size="15" required />
+                            <label for="last_name"> <b>Lastname :</b> </label>
+                            <input type="text" style="width: 500px; margin-left: 24px;" name="last_name" placeholder="LastName...." size="15" required />
                         </div>
                         <div style="display: flex;">
-                            <label> <b>UserName :</b></label>
+                            <label for="username"> <b>UserName :</b></label>
                             <input type="text" style="width: 500px;margin-left: 20px;" name="username" placeholder="UserName...." size="15" required />
                         </div>
                         <div  style="display: flex;">
-                            <label><b>Password :</b> </label>
+                            <label for="password"><b>Password :</b> </label>
                             <input type="password" style="width: 500px;margin-left: 24px;" name="password" placeholder="Password...." size="15" required />
                         </div>
                        <div style="display: flex;">
-                       <label><b>Email :</b></label>
+                       <label for="email"><b>Email :</b></label>
                         <input type="text" style="width: 500px;margin-left: 50px;" name="email" placeholder="Email...." size="15" required />
                        </div>
                         <br>

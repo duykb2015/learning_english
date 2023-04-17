@@ -12,21 +12,34 @@
             <li class="active"><a href="<?= base_url('User/Register') ?>">Đăng Ký</a></li>
             <li><a href="<?= base_url('User/Login') ?>">Đăng Nhập</a></li>
         </ul>
-
-        <div>
             <div class="tab-content">
 
 
-                <form class="form-login" action="" method="post">
+                <form class="form-login" action="<?= base_url('User/userlogin') ?>" method="post">
 
-
+                <div class="col-12">
+                                        <?php $errors = session()->getFlashdata('error_msg') ?>
+                                        <?php if (!empty($errors)) :  ?>
+                                            <?php if (!is_array($errors)) : ?>
+                                                <div class="alert alert-danger mb-1">
+                                                    <?= $errors ?>
+                                                </div>
+                                            <?php else : ?>
+                                                <?php foreach ($errors as $error) : ?>
+                                                    <div class="alert alert-danger mb-1">
+                                                        <?= $error ?>
+                                                    </div>
+                                                <?php endforeach ?>
+                                            <?php endif ?>
+                                        <?php endif ?>
+                                    </div>
 
                     <div class="container">
-                        <label for="uname"><b>Username</b></label>
-                        <input style="width: 500px;"   type="text" placeholder="Enter Username" name="uname" required>
+                        <label for="username"><b>Username</b></label>
+                        <input style="width: 500px;"   type="text" placeholder="Enter Username" name="username" required>
 
-                        <label for="psw"><b>Password</b></label>
-                        <input style="width: 500px;"  type="password" placeholder="Enter Password" name="psw" required>
+                        <label for="passsword"><b>Password</b></label>
+                        <input style="width: 500px;"  type="password" placeholder="Enter Password" name="password" required>
                         <br>
                         <button type="submit">Login</button>
 
