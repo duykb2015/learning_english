@@ -2,11 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\ExamModel;
+
 class ListExamController extends BaseController
 {
     public function index()
     {
-        return view('User/listexam/listexam');
+        $ExamModel=new ExamModel();
+        $exam=$ExamModel->findAll();
+        $data['exam']=$exam;
+
+        return view('User/listexam/listexam',$data);
     }
 
     public function listListen()

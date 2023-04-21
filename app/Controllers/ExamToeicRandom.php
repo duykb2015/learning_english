@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AdminModel;
 use App\Models\ExamPartModel;
 use App\Models\QuestionAnswerModel;
 use App\Models\QuestionAudioModel;
@@ -14,6 +15,7 @@ class ExamToeicRandom extends BaseController
 {
     public function index()
     {
+
         $ExamPartModel = new ExamPartModel();
         $exam_part = $ExamPartModel->findAll();
 
@@ -40,6 +42,7 @@ class ExamToeicRandom extends BaseController
         $data['group7'] = $group7;
 
         $QuestionModel = new QuestionModel();
+        $question = $QuestionModel->findAll();
         $question1 = $QuestionModel->where('exam_part_id', $part1[0]['id'])->findAll(6);
         //$question1 = $QuestionModel->where('exam_part_id', $part1[0]['id'])->orderBy('RAND()')->findAll(6);
         $question2 = $QuestionModel->where('exam_part_id', $part2[0]['id'])->findAll(25);
@@ -48,6 +51,7 @@ class ExamToeicRandom extends BaseController
         $question5 = $QuestionModel->where('exam_part_id', $part5[0]['id'])->orderBy('RAND()')->findAll(30);
         $question6 = $QuestionModel->where('exam_part_id', $part6[0]['id'])->findAll();
         $question7 = $QuestionModel->where('exam_part_id', $part7[0]['id'])->findAll();
+        $data['question'] = $question;
         $data['question1'] = $question1;
         $data['question2'] = $question2;
         $data['question3'] = $question3;
@@ -57,14 +61,8 @@ class ExamToeicRandom extends BaseController
         $data['question7'] = $question7;
 
         $QuestionAudioModel = new QuestionAudioModel();
-        $audios1 = $QuestionAudioModel->where('id', $question1[0]['audio_id'])->findAll();
-        $audios2 = $QuestionAudioModel->where('id', $question2[0]['audio_id'])->findAll();
-        $audios3 = $QuestionAudioModel->where('id', $question3[0]['audio_id'])->findAll();
-        $audios4 = $QuestionAudioModel->where('id', $question4[0]['audio_id'])->findAll();
-        $data['audios1'] = $audios1;
-        $data['audios2'] = $audios2;
-        $data['audios3'] = $audios3;
-        $data['audios4'] = $audios4;
+        $audios = $QuestionAudioModel->findAll();
+        $data['audios'] = $audios;
 
 
         $QuestionAnswerModel = new QuestionAnswerModel();
