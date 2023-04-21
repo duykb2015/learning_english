@@ -48,32 +48,32 @@ $routes->group('', function ($routes) {
         $routes->get('examrandom', 'ListExamController::ExamRandom');
     });
     $routes->group('Exam', function ($routes) {
-        $routes->get('ExamToeic','FullTestController::index');
-        $routes->get('ExamListen','FullTestController::Testlisten');
+        $routes->get('ExamToeic/:any', 'FullTestController::index');
+        $routes->get('ExamListen', 'FullTestController::Testlisten');
         $routes->get('ExamRead', 'FullTestController::TestRead');
         $routes->get('ExamToeicRandom', 'ExamToeicRandom::index');
+        $routes->post('InsertWrongAnswer', 'FullTestController::InsertWrongAnswer');
     });
     $routes->group('Practice', function ($routes) {
-        $routes->get('PracticeVocabulary','PracticeController::PracticeVocabulary');
-        $routes->get('PracticeGrammar','PracticeController::PracticeGrammar');
+        $routes->get('PracticeVocabulary', 'PracticeController::PracticeVocabulary');
+        $routes->get('PracticeGrammar', 'PracticeController::PracticeGrammar');
         $routes->get('PracticeListen', 'PracticeController::PracticeListen');
         $routes->get('PracticeRead', 'PracticeController::PracticeRead');
+        $routes->get('Listen/:any', 'PracticeController::Listen');
+        $routes->get('Read/:any', 'PracticeController::Read');
     });
     $routes->group('User', function ($routes) {
-        $routes->get('Login','UserController::index');
-        $routes->post('userlogin','UserController::userlogin');
-        $routes->get('Infor','UserController::Infor');
-        $routes->get('Result','UserController::Result');
-        $routes->get('Register','UserController::Register');
-        $routes->post('save','UserController::save');
-        $routes->get('Logout','UserController::Logout');
+        $routes->get('Login', 'UserController::index');
+        $routes->post('userlogin', 'UserController::userlogin');
+        $routes->get('Infor', 'UserController::Infor');
+        $routes->get('Result', 'UserController::Result');
+        $routes->get('Register', 'UserController::Register');
+        $routes->post('save', 'UserController::save');
+        $routes->get('Logout', 'UserController::Logout');
     });
-
-
-
 });
 
-$routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
+$routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
     $routes->get('', 'Admin\Home::index');
 
     $routes->group('admin', function ($routes) {
@@ -116,9 +116,12 @@ $routes->group('dashboard', ['filter'=> 'admin'], function ($routes) {
     $routes->group('exam', function ($routes) {
         $routes->get('/', 'Admin\Exam::index');
         $routes->get('detail', 'Admin\Exam::detail');
+        $routes->post('save', 'Admin\Exam::save');
+        $routes->post('update/:any', 'Admin\Exam::update');
+        $routes->get('edit/:any', 'Admin\Exam::edit');
+        $routes->get('delete/:any', 'Admin\Exam::delete');
         $routes->get('part-exam', 'Admin\PartExam::index');
         $routes->get('part-exam/detail', 'Admin\PartExam::detail');
-
     });
     $routes->group('exam-part', function ($routes) {
         $routes->get('/', 'Admin\PartExam::index');

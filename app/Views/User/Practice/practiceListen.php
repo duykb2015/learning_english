@@ -66,23 +66,45 @@
             <div class="row">
                 <div class="span9">
 
-                    <h3>Không tìm thấy dữ liệu</h3>
-
-
-                    <div class="span9">
-                        <div class="span3">
-                            <img class="imageExam" src="../../resources/file/images/baiNgheId=1.png" />
+                        <div class="span1.0">
+                            <div class="thumbnail well">
+                                <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                                <div class="caption">
+                                    <b>PART 1</b>
+                                    <a  href="<?= base_url('Practice/Listen/'.$part1[0]['id']) ?>" class="btn btn-primary">Exam now</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="span1"></div>
-                        <div class="span5">
-                            <h4 class="content-heading" id="namebaithithu">
-                                Ten Bai Nghe</h4>
-                            <a href="../../Practice/baiTapNghePart1.php"><button class="btn btn-primary openModalExam" value="" id="">
-                                    Chi tiết</button></a>
+                        <div class="span1.0">
+                            <div class="thumbnail well">
+                                <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                                <div class="caption">
+                                <b>PART 2</b>
+                                    <a  href="<?= base_url('Practice/Listen/'.$part2[0]['id']) ?>" class="btn btn-primary">Exam now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span1.0">
+                            <div class="thumbnail well">
+                                <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                                <div class="caption">
+                                <b>PART 3</b>
+                                    <a  href="<?= base_url('Practice/Listen/'.$part3[0]['id']) ?>" class="btn btn-primary">Exam now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span1.0">
+                            <div class="thumbnail well">
+                                <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                                <div class="caption">
+                                <b>PART 4</b>
+                                    <a  href="<?= base_url('Practice/Listen/'.$part4[0]['id']) ?>" class="btn btn-primary">Exam now</a>
+                                </div>
+                            </div>
                         </div>
 
 
-                    </div>
+
 
 
 
