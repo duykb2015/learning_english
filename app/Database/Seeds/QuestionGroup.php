@@ -26,13 +26,16 @@ class QuestionGroup extends Seeder
 		$this->saveQuestionPart2($part2);
 
 		$part3 = array_chunk(array_slice($sheetData, 14, 21), 3);
-		$this->saveQuestionPart3_n_4($part3);
+		$this->saveQuestionPartN($part3, 3);
 
 		$part4 = array_chunk(array_slice($sheetData, 35, 15), 3);
-		$this->saveQuestionPart3_n_4($part4);
+		$this->saveQuestionPartN($part4, 4);
 
 		$part5 = array_slice($sheetData, 50, 14);
 		$this->saveQuestionPart5($part5);
+
+		$part6 = array_chunk(array_slice($sheetData, 64, 12), 3);
+		$this->saveQuestionPartN($part6, 6, 2);
 	}
 
 	private function saveQuestionPart1($dataSet)
@@ -109,7 +112,7 @@ class QuestionGroup extends Seeder
 		$questionAudioModel  = new QuestionAudioModel();
 		$questionModel 	 	 = new QuestionModel();
 		$questionAnswerModel = new QuestionAnswerModel();
-		
+
 		foreach ($dataSet as $item) {
 			$audioID = $questionAudioModel->insert(['audio_name' => $item[1]], true);
 			$data = [
@@ -145,7 +148,7 @@ class QuestionGroup extends Seeder
 		}
 	}
 
-	private function saveQuestionPart3_n_4($dataSet)
+	private function saveQuestionPartN($dataSet, $part, $type = 1)
 	{
 		$questionAudioModel  = new QuestionAudioModel();
 		$questionModel 	 	 = new QuestionModel();
@@ -154,8 +157,8 @@ class QuestionGroup extends Seeder
 		$i = 0;
 		foreach ($dataSet as $key => $item) {
 			$data = [
-				'exam_part_id' =>  3,
-				'title'        =>  'Question Part 3 - Num ' . $key,
+				'exam_part_id' =>  $part,
+				'title'        =>  'Question Part' . $part . ' - Num ' . $key,
 				'paragraph'    =>  $item[$i][2] ?? '',
 			];
 			$questionGroupID = $questionGroupModel->insert($data, true);
@@ -163,8 +166,8 @@ class QuestionGroup extends Seeder
 
 			foreach ($item as $subItem) {
 				$data = [
-					'exam_part_id'      => 3,
-					'type'				=> 1,
+					'exam_part_id'      => $part,
+					'type'				=> $type,
 					'question_group_id' => $questionGroupID,
 					'audio_id'          => $audioID != 0 ? $audioID : null,
 					'right_option'      => QUESTION[$subItem[8]],
@@ -210,40 +213,39 @@ class QuestionGroup extends Seeder
 		$questionModel 	 	 = new QuestionModel();
 		$questionAnswerModel = new QuestionAnswerModel();
 		foreach ($dataSet as $item) {
-				$data = [
-					'exam_part_id'      => 5,
-					'type'				=> 2,
-					'right_option'      => QUESTION[$item[8]],
-					'question'          => $item[3],
-					'explain'           => 'No explain',
-				];
+			$data = [
+				'exam_part_id'      => 5,
+				'type'				=> 2,
+				'right_option'      => QUESTION[$item[8]],
+				'question'          => $item[3],
+				'explain'           => 'No explain',
+			];
 
-				$questionID = $questionModel->insert($data, true);
-				unset($data);
+			$questionID = $questionModel->insert($data, true);
+			unset($data);
 
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[4]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[5]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[6]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[7]
-				];
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[4]
+			];
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[5]
+			];
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[6]
+			];
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[7]
+			];
 
-				$questionAnswerModel->insertBatch($data);
+			$questionAnswerModel->insertBatch($data);
 		}
 	}
-
 }
