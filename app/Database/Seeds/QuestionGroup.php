@@ -162,7 +162,9 @@ class QuestionGroup extends Seeder
 				'paragraph'    =>  $item[$i][2] ?? '',
 			];
 			$questionGroupID = $questionGroupModel->insert($data, true);
-			$audioID = $questionAudioModel->insert(['audio_name' => $item[$i][1]], true);
+			$audioID = 0;
+			if ($item[$i][1])
+				$audioID = $questionAudioModel->insert(['audio_name' => $item[$i][1]], true);
 
 			foreach ($item as $subItem) {
 				$data = [
