@@ -7,14 +7,15 @@ namespace Composer\Autoload;
 class ComposerStaticInitc032960a7b42b8edf757614586dbf240
 {
     public static $files = array (
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'e8aa6e4b5a1db2f56ae794f1505391a8' => __DIR__ . '/..' . '/amphp/amp/lib/functions.php',
         '76cd0796156622033397994f25b0d8fc' => __DIR__ . '/..' . '/amphp/amp/lib/Internal/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -54,6 +55,7 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         array (
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
+            'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
@@ -175,6 +177,10 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
+        'Symfony\\Polyfill\\Php73\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -253,8 +259,8 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -2084,6 +2090,7 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         'HTMLPurifier_VarParser_Flexible' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Flexible.php',
         'HTMLPurifier_VarParser_Native' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
         'HTMLPurifier_Zipper' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
+        'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'JsonMapper' => __DIR__ . '/..' . '/netresearch/jsonmapper/src/JsonMapper.php',
         'JsonMapper_Exception' => __DIR__ . '/..' . '/netresearch/jsonmapper/src/JsonMapper/Exception.php',
         'Kint\\CallFinder' => __DIR__ . '/..' . '/kint-php/kint/src/CallFinder.php',
@@ -2356,6 +2363,8 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         'Nexus\\PHPUnit\\Extension\\Util\\TestCase' => __DIR__ . '/..' . '/nexusphp/tachycardia/src/Util/TestCase.php',
         'Nexus\\PHPUnit\\Extension\\Util\\TimeState' => __DIR__ . '/..' . '/nexusphp/tachycardia/src/Util/TimeState.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+        'PHPStan\\PhpDocParser\\Ast\\AbstractNodeVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/AbstractNodeVisitor.php',
+        'PHPStan\\PhpDocParser\\Ast\\Attribute' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Attribute.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayItemNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprFalseNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprFalseNode.php',
@@ -2366,8 +2375,12 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprStringNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprStringNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprTrueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprTrueNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstFetchNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstFetchNode.php',
+        'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\QuoteAwareConstExprStringNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/QuoteAwareConstExprStringNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Node' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Node.php',
         'PHPStan\\PhpDocParser\\Ast\\NodeAttributes' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeAttributes.php',
+        'PHPStan\\PhpDocParser\\Ast\\NodeTraverser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeTraverser.php',
+        'PHPStan\\PhpDocParser\\Ast\\NodeVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeVisitor.php',
+        'PHPStan\\PhpDocParser\\Ast\\NodeVisitor\\CloningVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeVisitor/CloningVisitor.php',
         'PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagMethodValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagMethodValueNode.php',
         'PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagPropertyValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagPropertyValueNode.php',
         'PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagValueNode.php',
@@ -2419,6 +2432,7 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         'PHPStan\\PhpDocParser\\Parser\\ConstExprParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/ConstExprParser.php',
         'PHPStan\\PhpDocParser\\Parser\\ParserException' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/ParserException.php',
         'PHPStan\\PhpDocParser\\Parser\\PhpDocParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/PhpDocParser.php',
+        'PHPStan\\PhpDocParser\\Parser\\StringUnescaper' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/StringUnescaper.php',
         'PHPStan\\PhpDocParser\\Parser\\TokenIterator' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TokenIterator.php',
         'PHPStan\\PhpDocParser\\Parser\\TypeParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TypeParser.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
@@ -6046,6 +6060,7 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         'Symfony\\Component\\EventDispatcher\\EventSubscriberInterface' => __DIR__ . '/..' . '/symfony/event-dispatcher/EventSubscriberInterface.php',
         'Symfony\\Component\\EventDispatcher\\GenericEvent' => __DIR__ . '/..' . '/symfony/event-dispatcher/GenericEvent.php',
         'Symfony\\Component\\EventDispatcher\\ImmutableEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/ImmutableEventDispatcher.php',
+        'Symfony\\Component\\EventDispatcher\\LegacyEventDispatcherProxy' => __DIR__ . '/..' . '/symfony/event-dispatcher/LegacyEventDispatcherProxy.php',
         'Symfony\\Component\\Filesystem\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/filesystem/Exception/ExceptionInterface.php',
         'Symfony\\Component\\Filesystem\\Exception\\FileNotFoundException' => __DIR__ . '/..' . '/symfony/filesystem/Exception/FileNotFoundException.php',
         'Symfony\\Component\\Filesystem\\Exception\\IOException' => __DIR__ . '/..' . '/symfony/filesystem/Exception/IOException.php',
@@ -6151,6 +6166,7 @@ class ComposerStaticInitc032960a7b42b8edf757614586dbf240
         'Symfony\\Polyfill\\Intl\\Grapheme\\Grapheme' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/Grapheme.php',
         'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
+        'Symfony\\Polyfill\\Php73\\Php73' => __DIR__ . '/..' . '/symfony/polyfill-php73/Php73.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',

@@ -65,7 +65,10 @@ $routes->group('', function ($routes) {
     $routes->group('User', function ($routes) {
         $routes->get('Login', 'UserController::index');
         $routes->post('userlogin', 'UserController::userlogin');
-        $routes->get('Infor', 'UserController::Infor');
+        $routes->get('Infor','UserController::ShowInforUser');
+        $routes->post('updateProfile', 'UserController::updateProfile');
+        $routes->get('EditPassWord/:any', 'UserController::EditPassWord');
+        $routes->post('changePassword', 'UserController::changePassword');
         $routes->get('Result', 'UserController::Result');
         $routes->get('Register', 'UserController::Register');
         $routes->post('save', 'UserController::save');

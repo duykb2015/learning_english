@@ -34,8 +34,8 @@ class ConfigBuilderGenerator implements ConfigBuilderGeneratorInterface
     /**
      * @var ClassBuilder[]
      */
-    private array $classes = [];
-    private string $outputDir;
+    private $classes;
+    private $outputDir;
 
     public function __construct(string $outputDir)
     {
@@ -145,7 +145,7 @@ public function NAME(): string
 /**
  * @return CLASS|$this
  */
-public function NAME(mixed $value = []): CLASS|static
+public function NAME($value = [])
 {
     if (!\is_array($value)) {
         $this->_usedProperties[\'PROPERTY\'] = true;
@@ -188,21 +188,16 @@ public function NAME(array $value = []): CLASS
 
         $body = '
 /**
-COMMENT *
- * @return $this
+COMMENT * @return $this
  */
-public function NAME(mixed $valueDEFAULT): static
+public function NAME($valueDEFAULT): self
 {
     $this->_usedProperties[\'PROPERTY\'] = true;
     $this->PROPERTY = $value;
 
     return $this;
 }';
-        $class->addMethod($node->getName(), $body, [
-            'PROPERTY' => $property->getName(),
-            'COMMENT' => $comment,
-            'DEFAULT' => $node->hasDefaultValue() ? ' = '.var_export($node->getDefaultValue(), true) : '',
-        ]);
+        $class->addMethod($node->getName(), $body, ['PROPERTY' => $property->getName(), 'COMMENT' => $comment, 'DEFAULT' => $node->hasDefaultValue() ? ' = '.var_export($node->getDefaultValue(), true) : '']);
     }
 
     private function handlePrototypedArrayNode(PrototypedArrayNode $node, ClassBuilder $class, string $namespace): void
@@ -210,7 +205,6 @@ public function NAME(mixed $valueDEFAULT): static
         $name = $this->getSingularName($node);
         $prototype = $node->getPrototype();
         $methodName = $name;
-        $hasNormalizationClosures = $this->hasNormalizationClosures($node) || $this->hasNormalizationClosures($prototype);
 
         $parameterType = $this->getParameterType($prototype);
         if (null !== $parameterType || $prototype instanceof ScalarNode) {
@@ -220,11 +214,10 @@ public function NAME(mixed $valueDEFAULT): static
                 // This is an array of values; don't use singular name
                 $body = '
 /**
- * @param PHPDOC_TYPE $value
- *
+ * @param ParamConfigurator|list<TYPE|ParamConfigurator> $value
  * @return $this
  */
-public function NAME(TYPE $value): static
+public function NAME($value): self
 {
     $this->_usedProperties[\'PROPERTY\'] = true;
     $this->PROPERTY = $value;
@@ -232,17 +225,14 @@ public function NAME(TYPE $value): static
     return $this;
 }';
 
-                $class->addMethod($node->getName(), $body, [
-                    'PROPERTY' => $property->getName(),
-                    'TYPE' => $hasNormalizationClosures ? 'mixed' : 'ParamConfigurator|array',
-                    'PHPDOC_TYPE' => $hasNormalizationClosures ? 'mixed' : sprintf('ParamConfigurator|list<ParamConfigurator|%s>', '' === $parameterType ? 'mixed' : $parameterType),
-                ]);
+                $class->addMethod($node->getName(), $body, ['PROPERTY' => $property->getName(), 'TYPE' => '' === $parameterType ? 'mixed' : $parameterType]);
             } else {
                 $body = '
 /**
+ * @param ParamConfigurator|TYPE $value
  * @return $this
  */
-public function NAME(string $VAR, TYPE $VALUE): static
+public function NAME(string $VAR, $VALUE): self
 {
     $this->_usedProperties[\'PROPERTY\'] = true;
     $this->PROPERTY[$VAR] = $VALUE;
@@ -250,12 +240,7 @@ public function NAME(string $VAR, TYPE $VALUE): static
     return $this;
 }';
 
-                $class->addMethod($methodName, $body, [
-                    'PROPERTY' => $property->getName(),
-                    'TYPE' => $hasNormalizationClosures || '' === $parameterType ? 'mixed' : 'ParamConfigurator|'.$parameterType,
-                    'VAR' => '' === $key ? 'key' : $key,
-                    'VALUE' => 'value' === $key ? 'data' : 'value',
-                ]);
+                $class->addMethod($methodName, $body, ['PROPERTY' => $property->getName(), 'TYPE' => '' === $parameterType ? 'mixed' : $parameterType, 'VAR' => '' === $key ? 'key' : $key, 'VALUE' => 'value' === $key ? 'data' : 'value']);
             }
 
             return;
@@ -268,6 +253,7 @@ public function NAME(string $VAR, TYPE $VALUE): static
         $class->addRequire($childClass);
         $this->classes[] = $childClass;
 
+        $hasNormalizationClosures = $this->hasNormalizationClosures($node) || $this->hasNormalizationClosures($prototype);
         $property = $class->addProperty(
             $node->getName(),
             $this->getType($childClass->getFqcn().'[]', $hasNormalizationClosures)
@@ -278,7 +264,7 @@ public function NAME(string $VAR, TYPE $VALUE): static
 /**
  * @return CLASS|$this
  */
-public function NAME(mixed $value = []): CLASS|static
+public function NAME($value = [])
 {
     $this->_usedProperties[\'PROPERTY\'] = true;
     if (!\is_array($value)) {
@@ -301,7 +287,7 @@ public function NAME(array $value = []): CLASS
 /**
  * @return CLASS|$this
  */
-public function NAME(string $VAR, mixed $VALUE = []): CLASS|static
+public function NAME(string $VAR, $VALUE = [])
 {
     if (!\is_array($VALUE)) {
         $this->_usedProperties[\'PROPERTY\'] = true;
@@ -331,12 +317,7 @@ public function NAME(string $VAR, array $VALUE = []): CLASS
     return $this->PROPERTY[$VAR];
 }';
             $class->addUse(InvalidConfigurationException::class);
-            $class->addMethod($methodName, $body, [
-                'PROPERTY' => $property->getName(),
-                'CLASS' => $childClass->getFqcn(),
-                'VAR' => '' === $key ? 'key' : $key,
-                'VALUE' => 'value' === $key ? 'data' : 'value',
-            ]);
+            $class->addMethod($methodName, $body, ['PROPERTY' => $property->getName(), 'CLASS' => $childClass->getFqcn(), 'VAR' => '' === $key ? 'key' : $key, 'VALUE' => 'value' === $key ? 'data' : 'value']);
         }
 
         $this->buildNode($prototype, $childClass, $namespace.'\\'.$childClass->getName());
@@ -352,7 +333,7 @@ public function NAME(string $VAR, array $VALUE = []): CLASS
 /**
 COMMENT * @return $this
  */
-public function NAME($value): static
+public function NAME($value): self
 {
     $this->_usedProperties[\'PROPERTY\'] = true;
     $this->PROPERTY = $value;
@@ -546,10 +527,9 @@ public function __construct(array $value = [])
         $class->addMethod('set', '
 /**
  * @param ParamConfigurator|mixed $value
- *
  * @return $this
  */
-public function NAME(string $key, mixed $value): static
+public function NAME(string $key, $value): self
 {
     $this->_extraKeys[$key] = $value;
 
