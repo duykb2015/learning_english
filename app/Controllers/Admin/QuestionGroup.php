@@ -10,10 +10,7 @@ use App\Models\QuestionAudioModel;
 use App\Models\QuestionGroupModel;
 use App\Models\QuestionModel;
 use CodeIgniter\API\ResponseTrait;
-use CodeIgniter\HTTP\Response;
 use Exception;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class QuestionGroup extends BaseController
 {
@@ -21,7 +18,7 @@ class QuestionGroup extends BaseController
     public function index()
     {
         $questionGroupModel = new QuestionGroupModel();
-        $questionGroups = $questionGroupModel->paginate(10);
+        $questionGroups = $questionGroupModel->findAll();
 
         $datas['questionGroups'] = $questionGroups;
         return view('Admin/Question/Group/index', $datas);

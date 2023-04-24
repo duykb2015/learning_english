@@ -173,250 +173,46 @@ class Question extends BaseController
 
     public function uploadExcelSave()
     {
-        pre($this->request->getFiles());
-        $fileExcel = $this->request->getFile('files_excel');
-        if (0 != $fileExcel->getError()) return redirect()->to('dashboard/question/upload-excel');
+        $allFiles = $this->request->getFiles();
+        $fileExcel = $allFiles['file_excel'][0];
+		$audioFile = $allFiles['question_audios'];
+		$imageFile = $allFiles['question_images'];
 
+
+        if (0 != $fileExcel->getError()) return redirectWithMessage('dashboard/question/upload-excel', 'Không thể tải lên tệp, thử lại sau!');
         if (!$fileExcel->isValid() || $fileExcel->hasMoved()) {
             return false;
         }
-        $newName = $fileExcel->getRandomName();
-        $fileName = $newName;
-        $fileExcel->move(UPLOAD_PATH, $newName);
+
+        // $newName = $fileExcel->getRandomName();
+        $fileName = '1682349310_b859165ee3e113dbbc5e.xlsx';
+        // $fileExcel->move(UPLOAD_PATH, $newName);
 
         $reader = IOFactory::createReader("Xlsx");
 		$spreadSheet = $reader->load(UPLOAD_PATH . '/' . $fileName);
 
-        if (!$spreadSheet) return redirect()->to('dashboard/question/upload-excel');
+        if (!$spreadSheet) return redirectWithMessage('dashboard/question/upload-excel', 'Có lỗi xảy ra, thử lại sau!');
 
-		$sheetData = $spreadSheet->getActiveSheet()->rangeToArray('B2:J103');
+		if ($spreadSheet->getSheetCount() != 8)
+		{
+			unlink(UPLOAD_PATH . '/' . $fileName);
+			return redirectWithMessage('dashboard/question/upload-excel', 'File exel không đúng định dạng');
+		}
+		$arrayCheck = ['image', 'audio', 'paragraph', 'question', 'option1', 'option2', 'option3', 'option4', 'correctanswer'];
+		for ($i = 0; $i < 8; $i++) {
+			$validateSheet = $spreadSheet->getSheet($i)->rangeToArray('A1:I1');
+			if (0 != array_diff($arrayCheck, $validateSheet[0]))
+			{
+				unlink(UPLOAD_PATH . '/' . $fileName);
+				return redirectWithMessage('dashboard/question/upload-excel', 'File exel không đúng định dạng');
+			}
+		}
 
-		$part1 = array_slice($sheetData, 0, 3);
-		$this->saveQuestionPart1($part1);
-
-		$part2 = array_slice($sheetData, 3, 10);
-		$this->saveQuestionPart2($part2);
-
-		$part3 = array_chunk(array_slice($sheetData, 14, 21), 3);
-		$this->saveQuestionPart3_n_4($part3);
-
-		$part4 = array_chunk(array_slice($sheetData, 35, 15), 3);
-		$this->saveQuestionPart3_n_4($part4);
-
-		$part5 = array_slice($sheetData, 50, 14);
-		$this->saveQuestionPart5($part5);
+		
+		
         
         return redirect()->to('dashboard/question');
     }
 	
-	private function saveQuestionPart1($dataSet)
-	{
-		$data = [
-			'exam_part_id' =>  1,
-			'title'        =>  'Question Part 1',
-			'paragraph'    =>  $dataSet[0][2],
-		];
-		$questionGroupModel = new QuestionGroupModel();
-		$questionGroupID = $questionGroupModel->insert($data, true);
 
-		$questionAudioModel  = new QuestionAudioModel();
-		$questionModel 	 	 = new QuestionModel();
-		$questionImageModel  = new QuestionImageModel();
-		$questionAnswerModel = new QuestionAnswerModel();
-
-		foreach ($dataSet as $item) {
-			$audioID = $questionAudioModel->insert(['audio_name' => $item[1]], true);
-			$data = [
-				'exam_part_id'      => 1,
-				'type'		        => 1,
-				'question_group_id' => $questionGroupID,
-				'audio_id'          => $audioID != 0 ? $audioID : null,
-				'right_option'      => QUESTION[$item[8]],
-				'question'          => $item[3],
-				'explain'           => 'No explain',
-			];
-
-			$questionID = $questionModel->insert($data, true);
-
-			$data = [
-				'question_id' => $questionID,
-				'image_name' => $item[0]
-			];
-			$questionImageModel->insert($data);
-			unset($data);
-
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[4]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[5]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[6]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[7]
-			];
-
-			$questionAnswerModel->insertBatch($data);
-		}
-	}
-
-	private function saveQuestionPart2($dataSet)
-	{
-		$data = [
-			'exam_part_id' =>  2,
-			'title'        =>  'Question Part 2',
-			'paragraph'    =>  $dataSet[0][2],
-		];
-		$questionGroupModel = new QuestionGroupModel();
-		$questionGroupID = $questionGroupModel->insert($data, true);
-
-		$questionAudioModel  = new QuestionAudioModel();
-		$questionModel 	 	 = new QuestionModel();
-		$questionAnswerModel = new QuestionAnswerModel();
-		
-		foreach ($dataSet as $item) {
-			$audioID = $questionAudioModel->insert(['audio_name' => $item[1]], true);
-			$data = [
-				'exam_part_id'      => 2,
-				'type'				=> 1,
-				'question_group_id' => $questionGroupID,
-				'audio_id'          => $audioID != 0 ? $audioID : null,
-				'right_option'      => QUESTION[$item[8]],
-				'question'          => $item[3],
-				'explain'           => 'No explain',
-			];
-
-			$questionID = $questionModel->insert($data, true);
-			unset($data);
-
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[4]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[5]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[6]
-			];
-
-			$questionAnswerModel->insertBatch($data);
-		}
-	}
-
-	private function saveQuestionPart3_n_4($dataSet)
-	{
-		$questionAudioModel  = new QuestionAudioModel();
-		$questionModel 	 	 = new QuestionModel();
-		$questionAnswerModel = new QuestionAnswerModel();
-		$questionGroupModel  = new QuestionGroupModel();
-		$i = 0;
-		foreach ($dataSet as $key => $item) {
-			$data = [
-				'exam_part_id' =>  3,
-				'title'        =>  'Question Part 3 - Num ' . $key,
-				'paragraph'    =>  $item[$i][2] ?? '',
-			];
-			$questionGroupID = $questionGroupModel->insert($data, true);
-			$audioID = $questionAudioModel->insert(['audio_name' => $item[$i][1]], true);
-
-			foreach ($item as $subItem) {
-				$data = [
-					'exam_part_id'      => 3,
-					'type'				=> 1,
-					'question_group_id' => $questionGroupID,
-					'audio_id'          => $audioID != 0 ? $audioID : null,
-					'right_option'      => QUESTION[$subItem[8]],
-					'question'          => $subItem[3],
-					'explain'           => 'No explain',
-				];
-
-				$questionID = $questionModel->insert($data, true);
-				unset($data);
-
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $subItem[4]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $subItem[5]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $subItem[6]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $subItem[7]
-				];
-
-				$questionAnswerModel->insertBatch($data);
-			}
-			$i += 1;
-			if (3 == $i) {
-				$i = 0;
-			}
-		}
-	}
-
-	private function saveQuestionPart5($dataSet)
-	{
-		$questionModel 	 	 = new QuestionModel();
-		$questionAnswerModel = new QuestionAnswerModel();
-		foreach ($dataSet as $item) {
-				$data = [
-					'exam_part_id'      => 5,
-					'type'				=> 2,
-					'right_option'      => QUESTION[$item[8]],
-					'question'          => $item[3],
-					'explain'           => 'No explain',
-				];
-
-				$questionID = $questionModel->insert($data, true);
-				unset($data);
-
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[4]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[5]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[6]
-				];
-				$data[] = [
-					'question_id' => $questionID,
-					'type' 		  => 1,
-					'text' 		  => $item[7]
-				];
-
-				$questionAnswerModel->insertBatch($data);
-		}
-	}
 }

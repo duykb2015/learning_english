@@ -17,20 +17,6 @@ class Login extends BaseController
 {
 	public function index()
 	{
-		$reader = IOFactory::createReader("Xlsx");
-		$spreadSheet = $reader->load(UPLOAD_PATH . '/exam1.xlsx');
-
-		$sheetData = $spreadSheet->getActiveSheet()->rangeToArray('B2:J103');
-
-		
-		
-
-		// die('SUGOIIIIII!!');
-
-		$part6 = array_chunk(array_slice($sheetData, 64, 12), 3);
-
-		$part7_1 = array_chunk(array_slice($sheetData, 73, 15), 5);
-		$part7_2 = array_chunk(array_slice($sheetData, 88, 12), 3);
 
 		return view('Admin/Login/index');
 	}

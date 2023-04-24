@@ -36,6 +36,12 @@ class QuestionGroup extends Seeder
 
 		$part6 = array_chunk(array_slice($sheetData, 64, 12), 3);
 		$this->saveQuestionPartN($part6, 6, 2);
+
+		$part7_1 = array_chunk(array_slice($sheetData, 73, 15), 5);
+		$this->saveQuestionPartN($part7_1, 7, 2, 5);
+
+		$part7_2 = array_chunk(array_slice($sheetData, 88, 12), 3);
+		$this->saveQuestionPartN($part7_2, 7, 2);
 	}
 
 	private function saveQuestionPart1($dataSet)
@@ -148,7 +154,7 @@ class QuestionGroup extends Seeder
 		}
 	}
 
-	private function saveQuestionPartN($dataSet, $part, $type = 1)
+	private function saveQuestionPartN($dataSet, $part, $type = 1, $question_per_paragraph = 3)
 	{
 		$questionAudioModel  = new QuestionAudioModel();
 		$questionModel 	 	 = new QuestionModel();
@@ -158,7 +164,7 @@ class QuestionGroup extends Seeder
 		foreach ($dataSet as $key => $item) {
 			$data = [
 				'exam_part_id' =>  $part,
-				'title'        =>  'Question Part' . $part . ' - Num ' . $key,
+				'title'        =>  'Question Part ' . $part . ' - Num ' . $key,
 				'paragraph'    =>  $item[$i][2] ?? '',
 			];
 			$questionGroupID = $questionGroupModel->insert($data, true);
@@ -172,7 +178,7 @@ class QuestionGroup extends Seeder
 					'type'				=> $type,
 					'question_group_id' => $questionGroupID,
 					'audio_id'          => $audioID != 0 ? $audioID : null,
-					'right_option'      => QUESTION[$subItem[8]],
+					'right_option'      => QUESTION[$subItem[8] ?? 'A'],
 					'question'          => $subItem[3],
 					'explain'           => 'No explain',
 				];
@@ -204,7 +210,7 @@ class QuestionGroup extends Seeder
 				$questionAnswerModel->insertBatch($data);
 			}
 			$i += 1;
-			if (3 == $i) {
+			if ($question_per_paragraph == $i) {
 				$i = 0;
 			}
 		}

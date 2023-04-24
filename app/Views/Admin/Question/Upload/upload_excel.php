@@ -66,17 +66,16 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-3">
                                                                         <label for="password">Upload tệp Excel</label>
-                                                                        <input type="file" name="files_excel" id="filer_input_exceln" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple" required>
+                                                                        <input type="file" name="file_excel" id="filer_input_exceln" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple" required>
                                                                     </div>
-                                                                    <!-- <div class="col-md-12 mb-3" id="question">
+                                                                    <div class="col-md-12 mb-3" id="question">
                                                                         <label for="password">Upload tệp hình ảnh</label>
-                                                                        <input type="file" name="question_image" id="filer_input_imagen" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" required>
+                                                                        <input type="file" name="question_images" id="filer_input_imagen" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" >
                                                                     </div>
                                                                     <div class="col-md-12 mb-3" id="question1">
                                                                         <label for="password">Upload tệp âm thanh</label>
-                                                                        <input type="file" name="question_audio" id="filer_input_audion" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
-                                                                    </div> -->
-
+                                                                        <input type="file" name="question_audios" id="filer_input_audion" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" >
+                                                                    </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
