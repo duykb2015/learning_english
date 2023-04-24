@@ -42,7 +42,6 @@ function validatePassword() {
                 khẩu
                 mới không khớp
             </div>
-
             <!-- <div class="form-group">
                 <label for="old_password">Mật khẩu cũ</label> <input type="password" value="<?= $user[0]['password'] ?>"
                     class="form-control" name="old_password" id="old_password" required="required" />

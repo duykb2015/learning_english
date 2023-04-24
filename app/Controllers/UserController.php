@@ -15,14 +15,9 @@ class UserController extends BaseController
 
     public function ShowInforUser()
     {		
-
-		// $userModel = new UserModel();
-        // $user = $userModel->getUserById($id);
-
-        // return view('User/inforUser/profile', ['user' => $user]);
-
 		$userModel = new UserModel();
     	$user = $userModel->find(session()->get('id'));
+		// $user = $userModel->find(session()->get('id'));
     	return view('User/inforUser/profile', ['user' => $user]);
     }
 
