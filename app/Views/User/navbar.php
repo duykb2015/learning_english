@@ -25,11 +25,16 @@
                                             <li><a href="<?= base_url('listExam/examrandom') ?>">Bài Thi Ngẫu Nhiên</a></li>
 										</ul>
 									</li>
-									<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tên User<b class="caret"></b></a>
+									<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo session()->get('last_name'); ?><b class="caret"></b></a>
 										<ul class="dropdown-menu">
+											<!-- <li><a href="User/Infor/<?php echo session()->get('id'); ?>">Tài khoản</a></li> -->
+
 											<li><a href="<?= base_url('User/Infor') ?>">Tài khoản</a></li>
+											<!-- <li><a href="<?= base_url('User/Infor') ?>">Tài khoản</a></li> -->
 											<li><a href="<?= base_url('User/Result') ?>">Kết Quả Thi</a></li>
-											<li><a href="#">Thoát</a></li>
+											<!-- <li><a href="<?= base_url('User/EditPassWord') ?>">Đổi mật khẩu</a></li> -->
+											<li><a href="User/EditPassWord/<?php echo session()->get('id'); ?>">Đổi mật khẩu</a></li>
+											<li><a href="<?= base_url('User/Logout') ?>">Thoát</a></li>
 										</ul>
 									</li>
 								</ul>

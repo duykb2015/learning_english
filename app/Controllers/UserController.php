@@ -2,22 +2,67 @@
 
 namespace App\Controllers;
 use App\Models\UserModel;
+use App\Models\UserrModel;
 use App\Controllers\BaseController;
 use CodeIgniter\I18n\Time;
 class UserController extends BaseController
 {
     public function index()
     {
+
         return view('User/inforUser/Login');
+    }	
+
+    public function ShowInforUser()
+    {		
+		$userModel = new UserModel();
+    	$user = $userModel->find(session()->get('id'));
+		// $user = $userModel->find(session()->get('id'));
+    	return view('User/inforUser/profile', ['user' => $user]);
     }
-    public function Infor()
-    {
-        return view('User/inforUser/Profile');
-    }
+
+	public function updateProfile()
+	{
+    	$userModel = new UserModel();
+    	$user = $userModel->find(session()->get('id'));
+
+    	$data = [
+      	  'first_name' => $this->request->getPost('first_name'),
+      	  'last_name' => $this->request->getPost('last_name')
+    	];
+
+    	$userModel->update($user['id'], $data);
+
+    	return redirect()->to(base_url('/'));
+}
+
+
     public function Result()
     {
         return view('User/Results/readingResult');
     }
+
+	public function EditPassWord()
+	{
+		// gia su id can sua
+
+		// $userModel = new UserModel();
+
+    	// $user = $userModel->find(session()->get('id'));
+
+    	// return view('User/inforUser/UpdatePass', ['user' => $user]);
+
+		$userModel = new UserModel();
+
+		$id = $this->request->getUri()->getSegment(3);
+
+        $user = $userModel->where('id',$id)->findALL();
+
+		$data['user']= $user;
+		
+		return view('User/inforUser/UpdatePass',$data);
+	}
+	
     public function userlogin()
     {
         $username = $this->request->getPost('username');
@@ -71,7 +116,7 @@ class UserController extends BaseController
 		}
 		//create new session and start to work
 		session()->set($sessionData);
-		return redirect()->to('User/Infor');
+		return redirect()->to('/');
     }
     public function Register()
     {
@@ -106,5 +151,28 @@ class UserController extends BaseController
 	{
 		session()->destroy();
 		return redirect()->to('User/Login/');
+	}
+	
+	public function changePassword()
+    {
+		
+
+        if ($this->request->getMethod() === 'post') {
+            // Lấy thông tin người dùng hiện tại
+            $id =  $this->request->getPost('iduser');
+
+            // Lấy thông tin mật khẩu cũ và mới
+            $old_password = $this->request->getPost('old_password');
+            $new_password = $this->request->getPost('new_password');
+            $confirm_password = $this->request->getPost('confirm_password');
+			$datas = [
+				'password' =>  md5((string) $new_password),
+			];
+			$userModel = new UserModel();
+			$userModel->find($id);
+			$userModel->update($id,$datas);
+           
+       }
+	   return redirect()->to('');
 	}
 }

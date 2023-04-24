@@ -9,22 +9,22 @@ use Exception;
 
 class ArrayToXml
 {
-    protected DOMDocument $document;
+    protected $document;
 
-    protected bool $replaceSpacesByUnderScoresInKeyNames = true;
+    protected $replaceSpacesByUnderScoresInKeyNames = true;
 
-    protected bool $addXmlDeclaration = true;
+    protected $addXmlDeclaration = true;
 
-    protected string $numericTagNamePrefix = 'numeric_';
+    protected $numericTagNamePrefix = 'numeric_';
 
     public function __construct(
         array $array,
-        string | array $rootElement = '',
-        bool $replaceSpacesByUnderScoresInKeyNames = true,
-        string | null $xmlEncoding = null,
-        string $xmlVersion = '1.0',
-        array $domProperties = [],
-        bool | null $xmlStandalone = null
+        $rootElement = '',
+        $replaceSpacesByUnderScoresInKeyNames = true,
+        $xmlEncoding = null,
+        $xmlVersion = '1.0',
+        $domProperties = [],
+        $xmlStandalone = null
     ) {
         $this->document = new DOMDocument($xmlVersion, $xmlEncoding ?? '');
 
@@ -49,7 +49,7 @@ class ArrayToXml
         $this->convertElement($root, $array);
     }
 
-    public function setNumericTagNamePrefix(string $prefix): void
+    public function setNumericTagNamePrefix(string $prefix)
     {
         $this->numericTagNamePrefix = $prefix;
     }
@@ -62,7 +62,7 @@ class ArrayToXml
         string $xmlVersion = '1.0',
         array $domProperties = [],
         bool $xmlStandalone = null
-    ): string {
+    ) {
         $converter = new static(
             $array,
             $rootElement,
@@ -88,7 +88,7 @@ class ArrayToXml
         return $this->document;
     }
 
-    protected function ensureValidDomProperties(array $domProperties): void
+    protected function ensureValidDomProperties(array $domProperties)
     {
         foreach ($domProperties as $key => $value) {
             if (! property_exists($this->document, $key)) {
@@ -97,7 +97,7 @@ class ArrayToXml
         }
     }
 
-    public function setDomProperties(array $domProperties): self
+    public function setDomProperties(array $domProperties)
     {
         $this->ensureValidDomProperties($domProperties);
 
@@ -108,7 +108,7 @@ class ArrayToXml
         return $this;
     }
 
-    public function prettify(): self
+    public function prettify()
     {
         $this->document->preserveWhiteSpace = false;
         $this->document->formatOutput = true;
@@ -116,14 +116,14 @@ class ArrayToXml
         return $this;
     }
 
-    public function dropXmlDeclaration(): self
+    public function dropXmlDeclaration()
     {
         $this->addXmlDeclaration = false;
 
         return $this;
     }
 
-    public function addProcessingInstruction(string $target, string $data): self
+    public function addProcessingInstruction($target, $data)
     {
         $elements = $this->document->getElementsByTagName('*');
 
@@ -136,7 +136,7 @@ class ArrayToXml
         return $this;
     }
 
-    protected function convertElement(DOMElement $element, mixed $value): void
+    private function convertElement(DOMElement $element, $value)
     {
         $sequential = $this->isArrayAllKeySequential($value);
 
@@ -164,7 +164,7 @@ class ArrayToXml
                     $element->appendChild($fragment);
                 } elseif ($key === '__numeric') {
                     $this->addNumericNode($element, $data);
-                } elseif (str_starts_with($key, '__custom:')) {
+                } elseif (substr($key, 0, 9) === '__custom:') {
                     $this->addNode($element, str_replace('\:', ':', preg_split('/(?<!\\\):/', $key)[1]), $data);
                 } else {
                     $this->addNode($element, $key, $data);
@@ -177,14 +177,14 @@ class ArrayToXml
         }
     }
 
-    protected function addNumericNode(DOMElement $element, mixed $value): void
+    protected function addNumericNode(DOMElement $element, $value)
     {
         foreach ($value as $key => $item) {
             $this->convertElement($element, [$this->numericTagNamePrefix.$key => $item]);
         }
     }
 
-    protected function addNode(DOMElement $element, string $key, mixed $value): void
+    protected function addNode(DOMElement $element, $key, $value)
     {
         if ($this->replaceSpacesByUnderScoresInKeyNames) {
             $key = str_replace(' ', '_', $key);
@@ -195,7 +195,7 @@ class ArrayToXml
         $this->convertElement($child, $value);
     }
 
-    protected function addCollectionNode(DOMElement $element, mixed $value): void
+    protected function addCollectionNode(DOMElement $element, $value)
     {
         if ($element->childNodes->length === 0 && $element->attributes->length === 0) {
             $this->convertElement($element, $value);
@@ -208,7 +208,7 @@ class ArrayToXml
         $this->convertElement($child, $value);
     }
 
-    protected function addSequentialNode(DOMElement $element, mixed $value): void
+    protected function addSequentialNode(DOMElement $element, $value)
     {
         if (empty($element->nodeValue) && ! is_numeric($element->nodeValue)) {
             $element->nodeValue = htmlspecialchars($value);
@@ -221,7 +221,7 @@ class ArrayToXml
         $element->parentNode->appendChild($child);
     }
 
-    protected function isArrayAllKeySequential(array | string | null $value): bool
+    protected function isArrayAllKeySequential($value)
     {
         if (! is_array($value)) {
             return false;
@@ -238,14 +238,14 @@ class ArrayToXml
         return array_unique(array_map('is_int', array_keys($value))) === [true];
     }
 
-    protected function addAttributes(DOMElement $element, array $data): void
+    protected function addAttributes(DOMElement $element, array $data)
     {
         foreach ($data as $attrKey => $attrVal) {
             $element->setAttribute($attrKey, $attrVal ?? '');
         }
     }
 
-    protected function createRootElement(string|array $rootElement): DOMElement
+    protected function createRootElement($rootElement): DOMElement
     {
         if (is_string($rootElement)) {
             $rootElementName = $rootElement ?: 'root';
