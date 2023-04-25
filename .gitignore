@@ -84,7 +84,7 @@ phpunit
 #-------------------------
 # Composer
 #-------------------------
-# vendor/
+vendor/
 # composer.lock
 
 #-------------------------
@@ -128,3 +128,5 @@ nb-configuration.xml
 /.phpunit.*.cache
 
 /.php-cs-fixer.php
+
+# vendor/*

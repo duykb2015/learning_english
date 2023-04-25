@@ -29,6 +29,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->post('getWebhook', 'Hook::index');
+
 $routes->get('/', 'Home::index');
 
 $routes->get('admin-login', 'Admin\Login::index');
@@ -104,7 +106,9 @@ $routes->group('dashboard', ['filter' => 'admin'], function ($routes) {
         $routes->get('/', 'Admin\Question::index');
         $routes->get('detail', 'Admin\Question::detail');
         $routes->get('detail/:any', 'Admin\Question::detail');
-        $routes->get('upload-excel', 'Admin\Question::upload_excel');
+        $routes->get('upload-excel', 'Admin\Question::uploadExcel');
+
+        $routes->post('upload-excels', 'Admin\Question::uploadExcelSave');
 
         $routes->post('detail/:any', 'Admin\Question::detail');
         $routes->post('save', 'Admin\Question::save');

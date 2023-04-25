@@ -55,6 +55,17 @@ class Upload
         return $file_name;
     }
 
+    function singleImages($img)
+    {
+        if (!$img->isValid() || $img->hasMoved()) {
+            return false;
+        }
+        $newName = $img->getRandomName();
+        $fileName[] = $newName;
+        $img->move(IMAGE_PATH, $newName);
+        return $fileName;
+    }
+
     /**
      * Used to upload multiple images to server
      *
@@ -64,13 +75,12 @@ class Upload
      */
     function audio($file)
     {
-
         if (!$file->isValid() || $file->hasMoved()) {
             return false;
         }
         $newName = $file->getRandomName();
         $file_name[] = $newName;
-        $file->move(IMAGE_PATH, $newName);
+        $file->move(AUDIO_PATH, $newName);
         return $file_name;
     }
 }

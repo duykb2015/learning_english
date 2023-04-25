@@ -34,14 +34,14 @@
                                     <div class="card">
                                         <div class="card-header">
 
-                                            <!-- <div class="alert alert-danger">
+                                            <div class="alert alert-danger">
                                                 <div class="col-10">
-                                                    Error
+                                                    <?= session()->getFlashdata('error_msg') ?? '' ?>
                                                 </div>
                                                 <div class="col-1 text-right">
                                                     <span aria-hidden="true" id="remove-alert">&times;</span>
                                                 </div>
-                                            </div> -->
+                                            </div>
 
                                             <!-- <div class="alert alert-danger mb-1">
                                                 <div class="row">
@@ -60,57 +60,90 @@
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="#" method="#" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('dashboard/question/upload-excels') ?>" method="POST" enctype="multipart/form-data">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
                                                                 <div class="row">
-
-                                                                    <div class="col-md-6">
-                                                                        <label for="status">Loại câu hỏi</label>
-                                                                        <div class="input-group">
-                                                                            <select name="group_question" class="form-control" require>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn loại câu hỏi--
-                                                                                </option>
-                                                                                <option value="0">Câu hỏi nghe</option>
-                                                                                <option value="1">Câu hỏi đọc</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-                                                                            <select name="status" class="form-control" required>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn trạng thái--
-                                                                                </option>
-                                                                                <option value="0">Hiển thị</option>
-                                                                                <option value="1">Ẩn</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-
                                                                     <div class="col-md-12 mb-3">
                                                                         <label for="password">Upload tệp Excel</label>
-                                                                        <input type="file" name="files_excel" id="filer_input_exceln" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple" required>
+                                                                        <input type="file" name="file_excel" id="filer_input_exceln" onchange="return fileValidation()" accept=".xlsx, .xls" multiple="multiple" required>
                                                                     </div>
                                                                     <div class="col-md-12 mb-3" id="question">
                                                                         <label for="password">Upload tệp hình ảnh</label>
-                                                                        <input type="file" name="question_image" id="filer_input_imagen" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" required>
+                                                                        <input type="file" name="question_images" id="filer_input_imagen" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" >
                                                                     </div>
                                                                     <div class="col-md-12 mb-3" id="question1">
                                                                         <label for="password">Upload tệp âm thanh</label>
-                                                                        <input type="file" name="question_audio" id="filer_input_audion" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" required>
+                                                                        <input type="file" name="question_audios" id="filer_input_audion" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple" >
                                                                     </div>
-
                                                                 </div>
-                                                                <!-- end of row -->
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
                                                                         <button type="submit" class="btn btn-primary btn-round waves-effect waves-light m-r-20">Lưu</button>
                                                                         <a href="<?= base_url('dashboard/question/upload-excel') ?>" id="edit-cancel" class="btn btn-default waves-effect">Huỷ</a>
                                                                     </div>
                                                                 </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Cách đặt tên các sheet</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/sheet_name.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Trong một sheet phải có đủ các cột sau, nếu không sẽ không thể đọc dữ liẹu</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/colname.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 1</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 2</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column2.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 3</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column3.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 4</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column4.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 5</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column5.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 6</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column6.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 7-1</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column7.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="password">Ví dụ về dữ liệu part 7-2</label>
+                                                                        <img src="<?= base_url() . '/uploads/images/column7-2.png' ?>" alt="" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end of row -->
                                                             </div>
                                                             <!-- end of edit info -->
                                                         </form>
@@ -124,7 +157,6 @@
                                     </div>
                                     <!-- personal card end-->
                                 </div>
-
                             </div>
                             <!-- tab content end -->
                         </div>
@@ -162,85 +194,85 @@
 <script>
     $(document).ready(function() {
 
-                'use-strict';
+        'use-strict';
 
-                //Example single
-                $('#filer_input_single').filer({
-                    extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
-                    changeInput: true,
-                    showThumbs: true,
-                    addMore: false
-                });
+        //Example single
+        $('#filer_input_single').filer({
+            extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+            changeInput: true,
+            showThumbs: true,
+            addMore: false
+        });
 
-                //Example 2
-                $('#filer_input_exceln').filer({
-                    limit: null,
-                    maxSize: null,
-                    // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
-                    extensions: ['xlsx', 'xls', 'csv'],
-                    changeInput: true,
-                    showThumbs: true,
-                    addMore: true,
+        //Example 2
+        $('#filer_input_exceln').filer({
+            limit: null,
+            maxSize: null,
+            // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+            extensions: ['xlsx', 'xls', 'csv'],
+            changeInput: true,
+            showThumbs: true,
+            addMore: true,
 
-                    captions: {
-                        button: "Chọn tệp Excel",
-                        feedback: "Chọn files để Upload",
-                        feedback2: "files đã được chọn",
-                        drop: "Drop file here to Upload",
-                        removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
-                        errors: {
-                            filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
-                            filesType: "Vui lòng chọn đúng định dạng file excel vd: *.xlsx,*.xls !",
-                            filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
-                            filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
-                        }
-                    }
-                });
-                $('#filer_input_audion').filer({
-                    limit: null,
-                    maxSize: null,
-                    // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
-                    extensions: ['mp3', 'aac', 'wav', 'flac', 'wma', 'ogg', 'aiff', 'alac'],
-                    changeInput: true,
-                    showThumbs: true,
-                    addMore: true,
+            captions: {
+                button: "Chọn tệp Excel",
+                feedback: "Chọn files để Upload",
+                feedback2: "files đã được chọn",
+                drop: "Drop file here to Upload",
+                removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+                errors: {
+                    filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                    filesType: "Vui lòng chọn đúng định dạng file excel vd: *.xlsx,*.xls !",
+                    filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                    filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+                }
+            }
+        });
+        $('#filer_input_audion').filer({
+            limit: null,
+            maxSize: null,
+            // extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+            extensions: ['mp3', 'aac', 'wav', 'flac', 'wma', 'ogg', 'aiff', 'alac'],
+            changeInput: true,
+            showThumbs: true,
+            addMore: true,
 
-                    captions: {
-                        button: "Chọn tệp âm thanh",
-                        feedback: "Chọn files để Upload",
-                        feedback2: "files đã được chọn",
-                        drop: "Drop file here to Upload",
-                        removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
-                        errors: {
-                            filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
-                            filesType: "Vui lòng chọn đúng định dạng file âm thanh vd: *.mp3,*.wav,... !",
-                            filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
-                            filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
-                        }
-                    }
-                });
-                $('#filer_input_imagen').filer({
-                    limit: null,
-                    maxSize: null,
-                    extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
-                    changeInput: true,
-                    showThumbs: true,
-                    addMore: true,
+            captions: {
+                button: "Chọn tệp âm thanh",
+                feedback: "Chọn files để Upload",
+                feedback2: "files đã được chọn",
+                drop: "Drop file here to Upload",
+                removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+                errors: {
+                    filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                    filesType: "Vui lòng chọn đúng định dạng file âm thanh vd: *.mp3,*.wav,... !",
+                    filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                    filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+                }
+            }
+        });
+        $('#filer_input_imagen').filer({
+            limit: null,
+            maxSize: null,
+            extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
+            changeInput: true,
+            showThumbs: true,
+            addMore: true,
 
-                    captions: {
-                        button: "Chọn tệp hình ảnh",
-                        feedback: "Chọn files để Upload",
-                        feedback2: "files đã được chọn",
-                        drop: "Drop file here to Upload",
-                        removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
-                        errors: {
-                            filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
-                            filesType: "Vui lòng chọn đúng định dạng file hình ảnh vd: *.jpg,*.png,.. !",
-                            filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
-                            filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
-                        }
-                    }
-                });
-            });
+            captions: {
+                button: "Chọn tệp hình ảnh",
+                feedback: "Chọn files để Upload",
+                feedback2: "files đã được chọn",
+                drop: "Drop file here to Upload",
+                removeConfirmation: "Bạn có muốn xóa file khỏi upload ?",
+                errors: {
+                    filesLimit: "Chỉ cho phép {{fi-limit}} files được upload lên hệ thống !.",
+                    filesType: "Vui lòng chọn đúng định dạng file hình ảnh vd: *.jpg,*.png,.. !",
+                    filesSize: "{{fi-name}} kích thước quá lớn! Vui lòng upload file dưới {{fi-maxSize}} MB.",
+                    filesSizeAll: "Tất cả các file tổng dung lượng quá lớn! Vui lòng upload dưới {{fi-maxSize}} MB."
+                }
+            }
+        });
+    });
 </script>
 <?= $this->endSection() ?>

@@ -150,10 +150,41 @@
                                                                 <div class="col-md-12 mb-3" id="question" <?= isset($question) && !empty($question) && $question['type'] == 2 ? 'hidden' : '' ?>>
                                                                     <label for="upload_image">Upload tệp hình ảnh</label>
                                                                     <input type="file" name="question_image" id="filer_input_image" onchange="return fileValidation()" accept=".jpg, .png, .jpeg, .gif, .psd" multiple="multiple">
+                                                                    <?php if (isset($image)) : ?>
+                                                                        <input type="hidden" name="old_image_id" value="<?= $image['id'] ?>">
+                                                                        <ul id="product-image" class="jFiler-items-list jFiler-items-default">
+                                                                            <li class="jFiler-item" data-jfiler-index="0" id="img-<?= $image['id'] ?>">
+                                                                                <div class="jFiler-item-container">
+                                                                                    <div class="jFiler-item-inner">
+                                                                                        <div class="jFiler-item-icon pull-left"><i class="icon-jfi-file-o jfi-file-type-image jfi-file-ext-png"></i></div>
+                                                                                        <div class="jFiler-item-info pull-left">
+                                                                                            <div class="jFiler-item-title" title="<?= $image['image_name'] ?>"><a href="<?= base_url('uploads/product/' . $image['image_name']) ?>" target="_blank" rel="noopener noreferrer"><?= $image['image_name'] ?></a></div>
+                                                                                            <div class="jFiler-item-others"><span>type: <?= @getimagesize(IMAGE_PATH . $image['image_name'])['mime'] ?? 'unknow' ?></span><span class="jFiler-item-status"></span></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    <?php endif ?>
                                                                 </div>
                                                                 <div class="col-md-12 mb-3" id="question1" <?= isset($question) && !empty($question) && $question['type'] == 2 ? 'hidden' : '' ?>>
                                                                     <label for="upload_audio">Upload tệp âm thanh</label>
                                                                     <input type="file" name="question_audio" id="filer_input_audio" onchange="return fileValidation()" accept=".mp3, .aac, .wav, .flac, .wma, .ogg, .aiff ,.alac" multiple="multiple">
+                                                                    <?php if (isset($audio)) : ?>
+                                                                        <input type="hidden" name="old_audio_id" value="<?= $audio['id'] ?>">
+                                                                        <ul id="product-image" class="jFiler-items-list jFiler-items-default">
+                                                                            <li class="jFiler-item" data-jfiler-index="0" id="img-<?= $audio['id'] ?>">
+                                                                                <div class="jFiler-item-container">
+                                                                                    <div class="jFiler-item-inner">
+                                                                                        <div class="jFiler-item-icon pull-left"><i class="icon-jfi-file-o jfi-file-type-image jfi-file-ext-png"></i></div>
+                                                                                        <div class="jFiler-item-info pull-left">
+                                                                                            <div class="jFiler-item-title" title="<?= $audio['audio_name'] ?>"><a href="<?= base_url('uploads/audios/' . $audio['audio_name']) ?>" target="_blank" rel="noopener noreferrer"><?= $audio['audio_name'] ?></a></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    <?php endif ?>
                                                                 </div>
                                                             </div>
                                                             <!-- end of row -->
@@ -196,7 +227,7 @@
 <!-- ajax hidden upload file -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('select[name="group_question"]').on('change', function() {
+        $('select[name="type"]').on('change', function() {
             var eins = $(this).val();
             if (eins == "2") {
                 $('#filer_input_image').attr('disabled', 'disabled');
