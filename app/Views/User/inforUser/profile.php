@@ -10,6 +10,7 @@
 		<ul class="nav nav-tabs" id="tabs">
 			<input type="hidden" class="form-control-plaintext nguoiDungId" value="" name="id">
 			<li class="active"><a href="">Cập nhật thông tin</a></li>
+            <li><a href="EditPassWord">Đổi mật khẩu</a></li>
 		</ul>
 		<div>
 			<div class="tab-content">

@@ -25,13 +25,12 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<?php $user_id = session()->get('last_name') ?>
-						<?php if (isset($user_id) && !empty($user_id)) : ?>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <b class="caret"></b></a>
+						<?php $session = session()->get() ?>
+						<?php if (isset($session['id']) && !empty($session['id'])) : ?>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $session['username'] ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<?= base_url('User/Infor') ?>">Tài khoản</a></li>
 								<li><a href="<?= base_url('User/Result') ?>">Kết Quả Thi</a></li>
-								<li><a href="User/EditPassWord/<?php echo session()->get('id'); ?>">Đổi mật khẩu</a></li>
 								<li><a href="<?= base_url('User/Logout') ?>">Thoát</a></li>
 							</ul>
 						<?php else : ?>

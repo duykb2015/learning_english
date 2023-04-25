@@ -16,16 +16,12 @@
 
     }
 </script>
-</head>
-
 
 <body>
-
-
-
     <div class="container">
         <h3 class="page-header">Thông tin cá nhân</h3>
         <ul class="nav nav-tabs" id="tabs">
+            <li><a href="Infor">Cập nhật thông tin</a></li>
             <li class="active"><a href="">Đổi mật khẩu</a></li>
         </ul>
         <div class="tab-pane" id="changePass">

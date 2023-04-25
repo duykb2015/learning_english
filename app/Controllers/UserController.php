@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\UserModel;
 use App\Models\UserrModel;
 use App\Controllers\BaseController;
@@ -9,65 +10,58 @@ use Exception;
 
 class UserController extends BaseController
 {
-    public function index()
-    {
+	public function index()
+	{
 
-        return view('User/inforUser/Login');
-    }	
+		return view('User/inforUser/Login');
+	}
 
-    public function ShowInforUser()
-    {		
+	public function ShowInforUser()
+	{
 		$userModel = new UserModel();
-    	$user = $userModel->find(session()->get('id'));
+		$user = $userModel->find(session()->get('id'));
 		// $user = $userModel->find(session()->get('id'));
-    	return view('User/inforUser/profile', ['user' => $user]);
-    }
+		return view('User/inforUser/profile', ['user' => $user]);
+	}
 
 	public function updateProfile()
 	{
-    	$userModel = new UserModel();
-    	$user = $userModel->find(session()->get('id'));
+		$userModel = new UserModel();
+		$user = $userModel->find(session()->get('id'));
 
-    	$data = [
-      	  'first_name' => $this->request->getPost('first_name'),
-      	  'last_name' => $this->request->getPost('last_name')
-    	];
+		$data = [
+			'first_name' => $this->request->getPost('first_name'),
+			'last_name' => $this->request->getPost('last_name')
+		];
 
-    	$userModel->update($user['id'], $data);
+		$userModel->update($user['id'], $data);
 
-    	return redirect()->to(base_url('/'));
-}
+		return redirect()->to(base_url('/'));
+	}
 
 
-    public function Result()
-    {
-        return view('User/Results/readingResult');
-    }
+	public function Result()
+	{
+		return view('User/Results/readingResult');
+	}
 
 	public function EditPassWord()
 	{
-		// gia su id can sua
-
-		// $userModel = new UserModel();
-
-    	// $user = $userModel->find(session()->get('id'));
-
-    	// return view('User/inforUser/UpdatePass', ['user' => $user]);
 
 		$userModel = new UserModel();
 
-		$id = $this->request->getUri()->getSegment(3);
+		$id = session()->get('id');
 
-        $user = $userModel->where('id',$id)->findALL();
+		$user = $userModel->where('id', $id)->findALL();
 
-		$data['user']= $user;
-		
-		return view('User/inforUser/UpdatePass',$data);
+		$data['user'] = $user;
+
+		return view('User/inforUser/UpdatePass', $data);
 	}
-	
-    public function userlogin()
-    {
-        $username = $this->request->getPost('username');
+
+	public function userlogin()
+	{
+		$username = $this->request->getPost('username');
 		$password = $this->request->getPost('password');
 		$inputs = array(
 			'username' => $username,
@@ -119,62 +113,61 @@ class UserController extends BaseController
 		//create new session and start to work
 		session()->set($sessionData);
 		return redirect()->to('/');
-    }
-    public function Register()
-    {
-        return view('User/inforUser/Register');
-    }
+	}
+	public function Register()
+	{
+		return view('User/inforUser/Register');
+	}
 	public function save()
 	{
 		$username = $this->request->getPost('username');
-        $password = $this->request->getPost('password');
-		$email=$this->request->getPost('email');
+		$password = $this->request->getPost('password');
+		$email = $this->request->getPost('email');
 		$firstname = $this->request->getPost('first_name');
-        $lastname = $this->request->getPost('last_name');
-	
-        $datas = [
+		$lastname = $this->request->getPost('last_name');
+
+		$datas = [
 			'username'       =>  $username,
-            'password'    =>md5((string) $password),
+			'password'    => md5((string) $password),
 			'email'    =>  $email,
-            'first_name' => $firstname,
-            'last_name'        =>  $lastname,
-          
-        ];
-      	// Khởi tạo model
-        $userModel = new UserModel;
-        // //Thêm dữ liệu
-        $isInsert = $userModel->insert($datas);
-        if (!$isInsert) {
-            throw new Exception(UNEXPECTED_ERROR_MESSAGE);
-        }
-        return redirect()->to('User/Login');
+			'first_name' => $firstname,
+			'last_name'        =>  $lastname,
+
+		];
+		// Khởi tạo model
+		$userModel = new UserModel;
+		// //Thêm dữ liệu
+		$isInsert = $userModel->insert($datas);
+		if (!$isInsert) {
+			throw new Exception(UNEXPECTED_ERROR_MESSAGE);
+		}
+		return redirect()->to('User/Login');
 	}
-    function logout()
+	function logout()
 	{
 		session()->destroy();
 		return redirect()->to('User/Login/');
 	}
-	
+
 	public function changePassword()
-    {
-		
+	{
 
-        if ($this->request->getMethod() === 'post') {
-            // Lấy thông tin người dùng hiện tại
-            $id =  $this->request->getPost('iduser');
 
-            // Lấy thông tin mật khẩu cũ và mới
-            $old_password = $this->request->getPost('old_password');
-            $new_password = $this->request->getPost('new_password');
-            $confirm_password = $this->request->getPost('confirm_password');
+		if ($this->request->getMethod() === 'post') {
+			// Lấy thông tin người dùng hiện tại
+			$id =  $this->request->getPost('iduser');
+
+			// Lấy thông tin mật khẩu cũ và mới
+			$old_password = $this->request->getPost('old_password');
+			$new_password = $this->request->getPost('new_password');
+			$confirm_password = $this->request->getPost('confirm_password');
 			$datas = [
 				'password' =>  md5((string) $new_password),
 			];
 			$userModel = new UserModel();
 			$userModel->find($id);
-			$userModel->update($id,$datas);
-           
-       }
-	   return redirect()->to('');
+			$userModel->update($id, $datas);
+		}
+		return redirect()->to('');
 	}
 }
