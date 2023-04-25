@@ -3,11 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title><?= isset($title) && !empty($title) ? $title : 'Document' ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Trang chủ</title>
 
     <link href="<?= base_url() ?>/resources/css/bootstrap.css" rel="stylesheet">
     <link href="<?= base_url() ?>/resources/css/bootstrap-responsive.css" rel="stylesheet">
@@ -21,15 +20,8 @@
     <link href="<?= base_url() ?>/resources/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="<?= base_url() ?>/resources/css/style.css" rel="stylesheet">
 
-
     <!-- ************ -->
-
-
     <!-- <link href="../resources/font/font.css" rel="stylesheet"> -->
-
-
-
-
     <style>
         .radio-inline {
             display: inline-flex;

@@ -39,21 +39,10 @@
                     <br>
                     <button type="submit">Login</button>
                 </div>
-
             </form>
-
         </div>
     </div>
-    </div>
-    </div>
-    </form>
-    </div>
-    </div>
-    </div>
-
-
-    <script src="<?= base_url() ?>resources/js/client/profileClient.js"></script>
 </body>
 
-</html>
+<script src="<?= base_url() ?>resources/js/client/profileClient.js"></script>
 <?= $this->endSection() ?>

@@ -3,18 +3,18 @@
 <input style="display:none;" id="baseUrl" value="" />
 
 <script>
-function validatePassword() {
-    var newPassword = document.getElementById("new_password").value;
-    var confirmPassword = document.getElementById("confirm_password").value;
-    if (newPassword != confirmPassword) {
-        document.getElementById("password-error").style.display = "block";
-        return false;
-    } else {
-        document.getElementById("password-error").style.display = "none";
-        return true;
-    }
+    function validatePassword() {
+        var newPassword = document.getElementById("new_password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
+        if (newPassword != confirmPassword) {
+            document.getElementById("password-error").style.display = "block";
+            return false;
+        } else {
+            document.getElementById("password-error").style.display = "none";
+            return true;
+        }
 
-}
+    }
 </script>
 </head>
 
@@ -32,15 +32,12 @@ function validatePassword() {
 
         </div>
 
-        <form class="formDoiMatKhau" action="<?= base_url('User/changePassword') ?>" method="post"
-            onsubmit="return validatePassword()">
+        <form class="formDoiMatKhau" action="<?= base_url('User/changePassword') ?>" method="post" onsubmit="return validatePassword()">
 
             <input type="hidden" id="iduser" name="iduser" value="<?= $user[0]['id'] ?>">
             <input type="hidden" id="name" name="name" value="<?= $user[0]['username'] ?>">
 
-            <div class="form-group alert alert-danger" id="password-error" style="display:none">Mật khẩu mới và nhập mật
-                khẩu
-                mới không khớp
+            <div class="form-group alert alert-danger" id="password-error" style="display:none">Mật khẩu mới và nhập mật khẩu mới không khớp
             </div>
             <!-- <div class="form-group">
                 <label for="old_password">Mật khẩu cũ</label> <input type="password" value="<?= $user[0]['password'] ?>"
@@ -52,25 +49,12 @@ function validatePassword() {
             </div>
             <div class="form-group">
                 <label for="confirm_password">Nhập lại mật khẩu mới</label>
-                <input type="password" class="form-control" name="confirm_password" id="confirm_password"
-                    required="required" />
+                <input type="password" class="form-control" name="confirm_password" id="confirm_password" required="required" />
             </div>
             <input class="btn btn-primary" type="submit" value="Xác nhận" />
         </form>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </form>
-    </div>
-    </div>
-    </div>
-
-
     <script src="<?= base_url() ?>resources/js/client/profileClient.js"></script>
-
 </body>
 
-</html>
 <?= $this->endSection() ?>

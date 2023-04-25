@@ -6,7 +6,7 @@
 
     <div class="container">
         <h3 class="page-header"></h3>
-        
+
         <ul class="nav nav-tabs" id="tabs">
             <li><a href="<?= base_url('User/Login') ?>">Đăng Nhập</a></li>
             <li class="active"><a>Đăng Ký</a></li>
@@ -38,14 +38,13 @@
                             <label for="email"><b>Email :</b></label>
                             <input type="text" style="width: 500px;" name="email" placeholder="Email...." required />
                         </div>
-                        
+
                         <button type="submit" class="registerbtn">Register</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    </form>
     <script src="<?= base_url() ?>resources/js/client/profileClient.js"></script>
 </body>
 
