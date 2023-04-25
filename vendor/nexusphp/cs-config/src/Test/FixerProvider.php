@@ -29,11 +29,27 @@ final class FixerProvider
     private static array $builtIn = [];
 
     /**
-     * @param array<int, string>                                      $configured configured fixers from a ruleset
-     * @param array<string, array<string, bool|string|string[]>|bool> $enabled    enabled fixers from a ruleset
+     * Configured fixers from a ruleset.
+     *
+     * @var array<int, string>
      */
-    private function __construct(private array $configured, private array $enabled)
+    private array $configured = [];
+
+    /**
+     * Enabled fixers from a ruleset.
+     *
+     * @var array<string, array<string, bool|string|string[]>|bool>
+     */
+    private array $enabled = [];
+
+    /**
+     * @param array<int, string>                                      $configured
+     * @param array<string, array<string, bool|string|string[]>|bool> $enabled
+     */
+    private function __construct(array $configured, array $enabled)
     {
+        $this->configured = $configured;
+        $this->enabled = $enabled;
     }
 
     public static function create(RulesetInterface $ruleset): self
@@ -43,15 +59,18 @@ final class FixerProvider
                 (new FixerFactory())->registerBuiltInFixers()->getFixers(),
                 static fn (FixerInterface $fixer): bool => ! $fixer instanceof DeprecatedFixerInterface,
             );
-            $names = array_map(static fn (FixerInterface $fixer): string => $fixer->getName(), $fixers);
 
-            self::$builtIn = array_combine($names, $fixers);
+            foreach ($fixers as $fixer) {
+                // workaround for using `array_combine` with PHPStan on PHP < 80000
+                self::$builtIn[$fixer->getName()] = $fixer;
+            }
         }
 
         $rules = $ruleset->getRules();
 
         $configured = array_map(static function ($ruleConfiguration): bool {
-            return true; // force enable all rules
+            // force enable all rules
+            return true;
         }, $rules);
 
         return new self(array_keys((new RuleSet($configured))->getRules()), $rules);

@@ -89,38 +89,21 @@
 		<!-- /. PAGE TITLE-->
 	<div id="resultsearchGrammar">
 		<div class="row">
-
 			<div class="span9">
-
-					<h3>Không tìm thấy dữ liệu</h3>
-
-
-
-					<div class="span9">
-						<div class="span3">
-							<img class="imageGrammar"
-								src="<?=base_url()?>resources/file/images/grammar/27.thi_htht_anhngumshoa.jpg" />
-
-						</div>
-						<div class="span1"></div>
-
-						<div class="span5">
-							<div class="content-heading">
-								<h4>Tên bài</h4>
-							</div>
-							<div>
-									<a href="<?=base_url('Exam/ExamToeic')?>"
-									class="btn btn-primary">Làm Bài</a>
-							</div>
-
-						</div>
-					</div>
-
-
+            <?php foreach ($exam as $value) { ?>
+                <div class="span1.0">
+                    <div class="thumbnail well">
+                        <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                        <div class="caption">
+                            <h4>ĐỀ: <?= $value['title'] ?></h4>
+                            <p><?= $value['updated_at'] ?></p>
+                            <a  href="<?= base_url('Exam/ExamToeic/'.$value['id']) ?>" class="btn btn-primary">Exam now</a>
+                        </div>
+                    </div>
+                </div>
+        <?php } ?>
 				<br>
 			</div>
-
-
 			<div class="span3">
 				<div class="side-bar">
 

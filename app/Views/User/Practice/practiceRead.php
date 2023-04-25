@@ -67,25 +67,33 @@
             <div class="row">
                 <div class="span9">
 
-                    <h3>Không tìm thấy dữ liệu</h3>
-
-
-
-
-                    <div class="span9">
-                        <div class="span3">
-                            <img class="imageExam" src="<?= base_url() ?>resources/file/images/baiDocId=15.png" />
+                <div class="span1.0">
+                            <div class="thumbnail well">
+                                <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                                <div class="caption">
+                                    <b>PART 5</b>
+                                    <a  href="<?= base_url('Practice/Read/'.$part5[0]['id']) ?>" class="btn btn-primary">Exam now</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="span1"></div>
-                        <div class="span5">
-                            <h4 class="content-heading" id="namebaithithu">
-                                tên bài đọc</h4>
-                            <a href="../Practice/baiTapDocPart5.php"> <button class="btn btn-primary openModalExam" value="${baiDoc.id}" id="openModalExam.${loop.index}">
-                                    Chi tiết</button></a>
+                        <div class="span1.0">
+                            <div class="thumbnail well">
+                                <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                                <div class="caption">
+                                <b>PART 6</b>
+                                    <a  href="<?= base_url('Practice/Read/'.$part6[0]['id']) ?>" class="btn btn-primary">Exam now</a>
+                                </div>
+                            </div>
                         </div>
-
-
-                    </div>
+                        <div class="span1.0">
+                            <div class="thumbnail well">
+                                <img width="100" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjojzDhbNMTBJAmtBMbFi_81QnabIKDSbQ&usqp=CAU" alt="Card image cap">
+                                <div class="caption">
+                                <b>PART 7</b>
+                                    <a  href="<?= base_url('Practice/Read/'.$part7[0]['id']) ?>" class="btn btn-primary">Exam now</a>
+                                </div>
+                            </div>
+                        </div>
 
 
 
