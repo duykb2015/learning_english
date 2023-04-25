@@ -251,11 +251,11 @@
 <body>
     <div id='bsw_popup'>
         <div class='bsw_popup_'>
-            <h2>kết quả bài thi toeic </h2>
-            <p><b>LISTEING 0/100 => Your score 0/495</b></p>
-            <p><b>READING 0/100 => Your score 0/495</b></p>
-            <h3>TOTAL SCORE: </h3>
-            <a class='close' href="<?= base_url('') ?>" title='Close'><i aria-hidden='true' class='fa fa-check'> Thoát bài thi</a>
+            <h2>Kết quả bài thi toeic </h2>
+            <p><b>LISTEING 0/100 - Your score 0/495</b></p>
+            <p><b>READING 0/100 - Your score 0/495</b></p>
+            <h3>Tổng điểm: </h3>
+            <a class='close' href="#" title='Close'><i aria-hidden='true' class='fa fa-check'>Đóng</a>
         </div>
     </div>
     <!--Header
@@ -265,25 +265,14 @@
             <br>
             <div style="display: block;">
                 <p>
-                    <a href="<?= base_url('user') ?>" id="backhome" style="display: inline;">
-                        Home</a> <span>Bài test Random</span>
+                    <a href="<?= base_url('user') ?>" id="backhome" >
+                        Home
+                    </a>
+                    <span>Bài Thi</span>
                 </p>
             </div>
-
-            <!--
-<div>
-		<c:forEach begin="1" end="50" varStatus="loop">
-			<div class="numberCircle" id="answer${loop.index}">${loop.index}</div>
-		</c:forEach>
-</div>
-
--->
-
-
         </div>
 
-
-        <!--/End Header-->
 
         <div id="content" class="container-fluid fill">
             <form action="" method="post" id="submitForm" name="submitForm">
@@ -360,8 +349,8 @@
                             <br> <br>
                             <!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
 
-                            <a href="#bsw_popup"><input type="button" class="btn btn-primary" id="#bsw_popup" value="Chấm điểm" onclick="result()" /></a> <br><br>
-
+                            <a href="#bsw_popup"><input type="button" class="btn btn-primary" id="#bsw_popup" value="Chấm điểm" onclick="result()" /></a>
+                            <a href="<?= base_url('listExam/examrandom')?>" class="btn btn-danger">Thoát</a>
                             <hr width="60%">
                         </div>
                     </div>
@@ -748,10 +737,10 @@
 
             }
             var scoreTotal = scoreListeing + scoreReading;
-            $("b:contains('LISTEING 0/100 => Your score 0/495')").text("LISTEING " + numberListeing + "/100 => Your score " + scoreListeing + "/495");
-            $("b:contains('READING 0/100 => Your score 0/495')").text("READING " + numberReading + "/100 => Your score " + scoreReading + "/495");
-            $("h3:contains('TOTAL SCORE: ')").text("TOTAL SCORE:  " + scoreTotal);
-            $("h2:contains('kết quả bài thi toeic ')").text("kết quả bài thi toeic:  " + scoreTotal);
+            $("b:contains('LISTEING 0/100 - Your score 0/495')").text("LISTEING " + numberListeing + "/100 => Your score " + scoreListeing + "/495");
+            $("b:contains('READING 0/100 - Your score 0/495')").text("READING " + numberReading + "/100 => Your score " + scoreReading + "/495");
+            $("h3:contains('Tổng điểm: ')").text("TOTAL SCORE:  " + scoreTotal);
+            $("h2:contains('Kết quả bài thi toeic ')").text("Kết quả bài thi toeic:  " + scoreTotal);
 
         }
     </script>

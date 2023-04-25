@@ -11,22 +11,17 @@
 						<ul class="dropdown-menu">
 							<li><a href="<?= base_url('Practice/PracticeListen') ?>">Luyện bài nghe</a></li>
 							<li><a href="<?= base_url('Practice/PracticeRead') ?>">Luyện bài đọc</a></li>
-							<li><a href="<?= base_url('Practice/PracticeGrammar') ?>">Ngữ pháp</a></li>
-							<li><a href="<?= base_url('Practice/PracticeVocabulary') ?>">Từ vựng</a></li>
-							<li><a href="../listExam/listExam.php">Thi thử</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Làm Bài Thi<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="<?= base_url('listExam/listlisten') ?>">Bài Thi Nghe</a></li>
-							<li><a href="<?= base_url('listExam/listread') ?>">Bài Thi Đọc</a></li>
 							<li><a href="<?= base_url('listExam/listtoeic') ?>">Bài Thi Toeic</a></li>
 							<li><a href="<?= base_url('listExam/examrandom') ?>">Bài Thi Ngẫu Nhiên</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
 						<?php $session = session()->get() ?>
-						<?php if (isset($session['id']) && !empty($session['id'])) : ?>
+						<?php if (isset($session['username']) && !empty($session['username'])) : ?>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $session['username'] ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<?= base_url('User/Infor') ?>">Tài khoản</a></li>
