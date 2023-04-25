@@ -5,6 +5,8 @@ use App\Models\UserModel;
 use App\Models\UserrModel;
 use App\Controllers\BaseController;
 use CodeIgniter\I18n\Time;
+use Exception;
+
 class UserController extends BaseController
 {
     public function index()
@@ -103,11 +105,11 @@ class UserController extends BaseController
 		}
 
 		$sessionData = [
-			'id' 	   => $user['id'],
-			'username'     => $user['username'],
-			'email'=>$user['email'],
-			'first_name'	   => $user['first_name'],
-			'last_name'	   => $user['last_name'],
+			'id' 	     => $user['id'],
+			'username'   => $user['username'],
+			'email'		 => $user['email'],
+			'first_name' => $user['first_name'],
+			'last_name'	 => $user['last_name'],
 		];
 
 		$is_update = $userModel->update($user['id'], ['last_login_at' => Time::now()]);
