@@ -154,6 +154,47 @@ class QuestionGroup extends Seeder
 		}
 	}
 
+	private function saveQuestionPart5($dataSet)
+	{
+		$questionModel 	 	 = new QuestionModel();
+		$questionAnswerModel = new QuestionAnswerModel();
+		foreach ($dataSet as $item) {
+			$data = [
+				'exam_part_id'      => 5,
+				'type'				=> 2,
+				'right_option'      => QUESTION[$item[8]],
+				'question'          => $item[3],
+				'explain'           => 'No explain',
+			];
+
+			$questionID = $questionModel->insert($data, true);
+			unset($data);
+
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[4]
+			];
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[5]
+			];
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[6]
+			];
+			$data[] = [
+				'question_id' => $questionID,
+				'type' 		  => 1,
+				'text' 		  => $item[7]
+			];
+
+			$questionAnswerModel->insertBatch($data);
+		}
+	}
+
 	private function saveQuestionPartN($dataSet, $part, $type = 1, $question_per_paragraph = 3)
 	{
 		$questionAudioModel  = new QuestionAudioModel();
@@ -216,44 +257,5 @@ class QuestionGroup extends Seeder
 		}
 	}
 
-	private function saveQuestionPart5($dataSet)
-	{
-		$questionModel 	 	 = new QuestionModel();
-		$questionAnswerModel = new QuestionAnswerModel();
-		foreach ($dataSet as $item) {
-			$data = [
-				'exam_part_id'      => 5,
-				'type'				=> 2,
-				'right_option'      => QUESTION[$item[8]],
-				'question'          => $item[3],
-				'explain'           => 'No explain',
-			];
 
-			$questionID = $questionModel->insert($data, true);
-			unset($data);
-
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[4]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[5]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[6]
-			];
-			$data[] = [
-				'question_id' => $questionID,
-				'type' 		  => 1,
-				'text' 		  => $item[7]
-			];
-
-			$questionAnswerModel->insertBatch($data);
-		}
-	}
 }

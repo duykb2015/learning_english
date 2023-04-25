@@ -18,15 +18,22 @@ class Hook extends BaseController
         if ( $x_hook_secret )
         {
             log_message('debug', 'Get X Hook Secret: ' . $x_hook_secret, []);
-            cache()->save('X-Hook-Secret', $x_hook_secret, 300);
             $this->response->setHeader('X-Hook-Secret', $x_hook_secret);
             $this->response->setStatusCode(201);
             $this->respond([]);
         } else if ( $x_hook_signature )
         {
             log_message('debug', 'Get X Hook Signature: ' . $x_hook_signature, []);
-            $computedSignature = hash_hmac('SHA256', (string) $body, cache()->get('X-Hook-Secret'));
-            log_message('debug', 'Create X Hook Signature: ' . $x_hook_secret, []);
+            $computedSignature = hash_hmac('SHA256', (string) $body, '2ca8950d5524b5761eb4aa6bad923605');
+            log_message('debug', 'Create X Hook Signature: ' . $computedSignature, []);
+            if ( 0 != strcmp($computedSignature, $x_hook_signature) )
+            {
+                log_message('debug', 'X Hook Signature: ' . $x_hook_signature, []);
+                log_message('debug', 'Computed Signature: ' . $computedSignature, []);
+                log_message('error', 'They are not equal!', []);
+                return $this->respond([], 401);
+            }
+            log_message('debug', 'Authorized successed!');
         }
         
         log_message('debug', $body);

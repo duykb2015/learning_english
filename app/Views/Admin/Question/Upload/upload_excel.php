@@ -34,14 +34,14 @@
                                     <div class="card">
                                         <div class="card-header">
 
-                                            <!-- <div class="alert alert-danger">
+                                            <div class="alert alert-danger">
                                                 <div class="col-10">
-                                                    Error
+                                                    <?= session()->getFlashdata('error_msg') ?? '' ?>
                                                 </div>
                                                 <div class="col-1 text-right">
                                                     <span aria-hidden="true" id="remove-alert">&times;</span>
                                                 </div>
-                                            </div> -->
+                                            </div>
 
                                             <!-- <div class="alert alert-danger mb-1">
                                                 <div class="row">
