@@ -25,47 +25,13 @@
         margin-bottom: 25px;
     }
 </style>
-<script type="text/javascript">
-    function Search() {
-
-        var baseUrl = document.getElementById('baseUrl').value;
-        var xhttp;
-        var search = document.getElementById('searchGrammar').value;
-
-        //remove special letters
-        var convertSearch = search.replace(/[^a-zA-Z0-9 ]/g, "");
-
-        var url;
-        if (!search == ' ') {
-            url = baseUrl + "/searchGrammar/" + convertSearch;
-        } else url = baseUrl + "/searchGrammar/all";
-
-
-        if (window.XMLHttpRequest) {
-            xhttp = new XMLHttpRequest();
-        } else {
-            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        xhttp.onreadystatechange = function() {
-            if (xhttp.readyState == 4) {
-                var data = xhttp.responseText;
-                document.getElementById("resultsearchGrammar").innerHTML = data;
-            }
-        }
-
-        xhttp.open("POST", url, true);
-        xhttp.send();
-
-    }
-</script>
 
 <input style="display:none;" id="baseUrl" value="" />
 <div class="container">
     <!--PAGE TITLE-->
     <div class="row">
         <div class="span9" style="text-align: center">
-            <div class="page-header">
+            <div class="page-header"></div>
                 <h4 style="font-weight: bold;">TIN TỨC</h4>
             </div>
         </div>
@@ -84,13 +50,13 @@
             <div class="span9">
 
                 <div class="span9" style="display:flex ;">
-                    <?php foreach ($posts as $item) { ?>
+                    <?php for ($x = 0; $x <= 2; $x++) {?>
                         <div class="item px-2">
                             <div class="fh5co_hover_news_img">
-                                <div class="fh5co_news_img"><img src="../resources/file/images/baiNgheId=9.png" alt="" /></div>
+                                <div class="fh5co_news_img"><img src="<?= base_url() ?>resources/file/images/baiNgheId=9.png" alt="" /></div>
                                 <div>
-                                    <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">123</span></a>
-                                    <div class="c_g"><i class="fa fa-clock-o"></i> <?= $item['created_at'] ?></div>
+                                    <a href="" class="d-block fh5co_small_post_heading"><span class="">123</span></a>
+                                    <div class="c_g"><i class="fa fa-clock-o">27012001</i> </div>
                                 </div>
                             </div>
                         </div>
