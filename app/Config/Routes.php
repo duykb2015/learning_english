@@ -42,6 +42,7 @@ $routes->group('', function ($routes) {
 
     $routes->group('blog', function ($routes) {
         $routes->get('/', 'BlogController::index');
+        $routes->get('detail/:any', 'BlogController::detail');
     });
     $routes->group('listExam', function ($routes) {
         $routes->get('listtoeic', 'ListExamController::index');

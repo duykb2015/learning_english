@@ -24,6 +24,21 @@
         width: 250px;
         margin-bottom: 25px;
     }
+
+    .card a {
+        color: black;
+    }
+
+
+
+    .card a:active {
+        background-color: blue;
+        color: white;
+    }
+    .article-content {
+  text-align: justify;
+  text-justify: inter-word;
+}
 </style>
 <script type="text/javascript">
     function Search() {
@@ -80,23 +95,30 @@
     <!-- /. PAGE TITLE-->
     <div id="resultsearchGrammar">
         <div class="row">
-
             <div class="span9">
-
-                <div class="span9" style="display:flex ;">
+                <div class="row">
                     <?php foreach ($posts as $item) { ?>
-                        <div class="item px-2">
-                            <div class="fh5co_hover_news_img">
-                                <div class="fh5co_news_img"><img src="../resources/file/images/baiNgheId=9.png" alt="" /></div>
-                                <div>
-                                    <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">123</span></a>
-                                    <div class="c_g"><i class="fa fa-clock-o"></i> <?= $item['created_at'] ?></div>
-                                </div>
+                        <div class="span3">
+                            <div class="card ">
+                                <a href="<?= base_url('blog/detail/' . $item['id']) ?>">
+                                    <img src="../resources/file/images/baiNgheId=9.png" alt="" class="card-img-top">
+                                    <div class="card-body" style="height: 200px;">
+                                            <div class="col-4">
+                                                <p><b><h4 class="card-title"><?= $item['title']  ?></h4></b></p>
+                                            </div>
+                                            <div class="article-content text-justify">
+                                                <p class="card-text"><?= $item['description']  ?></p>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="card-footer text-muted"><i class="fa fa-clock-o"></i> <?= date('d/m/Y', strtotime($item['created_at'])) ?></div>
+                                            </div>
+
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
-                <br>
             </div>
 
 
@@ -116,37 +138,17 @@
             </div>
 
         </div>
-
-
-
-
         <!--Pagination-->
-
-
-        <div class="paging">
+        <!-- <div class="paging">
 
             <a href="">Back</a>
-
-
             <a class="current">1</a>
-
-
-
             <a href="">2</a>
-
-
-
-
             <a class="current">3</a>
-
-
             <a href="">4</a>
-
-
-
             <a href="" class="pageNext">Next</a>
 
-        </div>
+        </div> -->
 
 
     </div>
