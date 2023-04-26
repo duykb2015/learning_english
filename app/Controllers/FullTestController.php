@@ -140,7 +140,12 @@ class FullTestController extends BaseController
     public function InsertWrongAnswer()
     {
         //goi id user
-        $user_id = 1111;
+        $user_id = session()->get('id');
+
+        if ( ! $user_id)
+        {
+            return;
+        }
         $question_id = $_POST['question_id'];
         $selected_answer = $_POST['selected_answer'];
         $data = [
