@@ -60,9 +60,6 @@
     }
 </script>
 
-
-
-
 <input style="display:none;" id="baseUrl" value="" />
 
 <div class="container">
