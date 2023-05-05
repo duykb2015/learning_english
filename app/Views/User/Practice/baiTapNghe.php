@@ -266,6 +266,10 @@
         font-size: 16px;
         color: #333;
     }
+
+    .explain {
+        font-weight: bold;
+    }
 </style>
 
 
@@ -390,7 +394,9 @@
                                 <?php } ?>
                             <?php endforeach ?>
 
+
                         </div>
+                        <div class="explain" id="explain<?= $value['id'] ?>"></div>
                         <!-- end answer  -->
                         <br>
                     <?php endforeach ?>
@@ -450,18 +456,25 @@
                         numberListeing++;
                         answerSelected = true; // Đánh dấu đã có answer được chọn
 
+
                     } else if (answers[i].checked && answers[i].value != a) {
                         answers[i].parentElement.classList.add("wrong-answer");
                         answerSelected = true; // Đánh dấu đã có answer được chọn
                         //$selected_answer = $answers[$i].value; // Lưu câu trả lời sai
+
 
                     }
                     if (answerSelected) { // Nếu đã có answer được chọn, disabled các answers còn lại
                         for (var j = 0; j < answers.length; j++) {
                             answers[j].disabled = true;
                         }
+                        let explain = document.getElementById("explain<?= $value['id'] ?>");
+                        explain.innerHTML = '<div class="panel panel-primary"><div class="panel-body">' + '<?= $value['explain'] ?>' + '</div></div>';
+
 
                     }
+
+
 
                 }
 

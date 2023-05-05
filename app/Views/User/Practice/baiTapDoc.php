@@ -129,7 +129,9 @@
         color: green;
         font-weight: bold;
     }
-
+    .explain{
+        font-weight: bold;
+    }
     #listeing-result {
         background-color: #f2f2f2;
         border: 1px solid #ccc;
@@ -225,6 +227,7 @@
         font-size: 16px;
         color: #333;
     }
+
 </style>
 
 <body>
@@ -325,6 +328,8 @@
                                                 <?php $i++; ?>
                                             <?php } ?>
                                         <?php endforeach ?>
+                                        <div id="explain<?= $value['id'] ?>"></div>
+
 
                                     <?php endforeach ?>
                                 <?php } else { ?><!--- part 6,7--->
@@ -357,12 +362,14 @@
                                                         <?php $i++; ?>
                                                     <?php } ?>
                                                 <?php endforeach ?>
-                                            <?php } ?>
-                                        <?php endforeach ?>
-                                    <?php endforeach ?>
-                                <?php } ?>
+                                            <div class="explain" id="explain<?= $value['id'] ?>"></div>
 
-                                <hr>
+                                        <?php } ?>
+                                    <?php endforeach ?>
+                                <?php endforeach ?>
+                            <?php } ?>
+
+                            <hr>
                         </div>
                     </div>
                 </div>
@@ -421,6 +428,8 @@
                         answerSelected = true; // Đánh dấu đã có answer được chọn
                     }
                     if (answerSelected) { // Nếu đã có answer được chọn, disabled các answers còn lại
+                        let explain = document.getElementById("explain<?= $value['id'] ?>");
+                        explain.innerHTML = '<div class="panel panel-primary"><div class="panel-body">' + '<?= $value['explain'] ?>' + '</div></div>';
                         for (var j = 0; j < answers.length; j++) {
                             answers[j].disabled = true;
                         }
