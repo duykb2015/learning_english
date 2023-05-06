@@ -231,6 +231,9 @@
         color: green;
         font-weight: bold;
     }
+    .explain {
+        font-weight: bold;
+    }
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -265,7 +268,7 @@
             <br>
             <div style="display: block;">
                 <p>
-                    <a href="<?= base_url('user') ?>" id="backhome" >
+                    <a href="<?= base_url('user') ?>" id="backhome">
                         Home
                     </a>
                     <span>Bài Thi</span>
@@ -350,7 +353,7 @@
                             <!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
 
                             <a href="#bsw_popup"><input type="button" class="btn btn-primary" id="#bsw_popup" value="Chấm điểm" onclick="result()" /></a>
-                            <a href="<?= base_url('listExam/examrandom')?>" class="btn btn-danger">Thoát</a>
+                            <a href="<?= base_url('listExam/examrandom') ?>" class="btn btn-danger">Thoát</a>
                             <hr width="60%">
                         </div>
                     </div>
@@ -410,6 +413,7 @@
                                 <?php } ?>
                             <?php endforeach ?>
                         </div>
+                        <div class="explain" id="explain<?= $value['id'] ?>"></div>
                         <!-- end answer  -->
 
                     <?php endforeach ?>
@@ -449,6 +453,7 @@
                         </label>
                     <?php } ?>
                 <?php endforeach ?>
+                <div class="explain" id="explain<?= $value['id'] ?>"></div>
 
             <?php endforeach ?>
 
@@ -485,7 +490,7 @@
                 <?php $i++; ?>
             <?php } ?>
         <?php endforeach ?>
-
+        <div class="explain" id="explain<?= $value['id'] ?>"></div>
     <?php endforeach ?>
 
     <!--- part 4--->
@@ -521,7 +526,7 @@
         <?php $i++; ?>
     <?php } ?>
 <?php endforeach ?>
-
+<div class="explain" id="explain<?= $value['id'] ?>"></div>
 <?php endforeach ?>
 
 <!--- part 5--->
@@ -543,90 +548,92 @@
                 <?php $i++; ?>
             <?php } ?>
         <?php endforeach ?>
+    <div class="explain" id="explain<?= $value['id'] ?>"></div>
+<?php endforeach ?>
 
-    <?php endforeach ?>
+<!--- part 6--->
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <h2><b style="font-weight: bold;">Part <?= $part6[0]['part_number'] ?></b></h2>
+        <p><b>Direction:</b> <?= $part6[0]['direction'] ?></p>
+    </div>
+</div>
 
-    <!--- part 6--->
+<?php $count = 130; ?>
+<?php foreach ($group6 as  $group) : ?>
     <div class="panel panel-primary">
         <div class="panel-body">
-            <h2><b style="font-weight: bold;">Part <?= $part6[0]['part_number'] ?></b></h2>
-            <p><b>Direction:</b> <?= $part6[0]['direction'] ?></p>
+            <p><b>Direction: </b><?= $group['title'] ?></p>
+            <?php
+            $text = $group['paragraph'];
+            // Thay thế các số 1,2,3,4 bằng số thứ tự câu hỏi
+            $text = str_replace("----1---", "----[" . $count + 1. . "]---", $text);
+            $text = str_replace("----2---", "----[" . $count + 2. . "]---", $text);
+            $text = str_replace("----3---", "----[" . $count + 3. . "]---", $text);
+            $text = str_replace("----4---", "----[" . $count + 4. . "]---", $text); ?>
+
+            <p><?= $text ?></p>
         </div>
     </div>
+    <?php foreach ($question6 as $value) : ?>
 
-    <?php $count = 130; ?>
-    <?php foreach ($group6 as  $group) : ?>
-        <div class="panel panel-primary">
-            <div class="panel-body">
-                <p><b>Direction: </b><?= $group['title'] ?></p>
-                <?php
-                $text = $group['paragraph'];
-                // Thay thế các số 1,2,3,4 bằng số thứ tự câu hỏi
-                $text = str_replace("----1---", "----[" . $count + 1. . "]---", $text);
-                $text = str_replace("----2---", "----[" . $count + 2. . "]---", $text);
-                $text = str_replace("----3---", "----[" . $count + 3. . "]---", $text);
-                $text = str_replace("----4---", "----[" . $count + 4. . "]---", $text); ?>
+        <?php if (($value['question_group_id']) == ($group['id'])) { ?>
+            <?php $count++; ?>
+            <p id="<?= $count ?>"><b>Question <?= $count ?>:</b> <?= $value['question'] ?></p>
 
-                <p><?= $text ?></p>
-            </div>
+            <p><?php $i = 1; ?>
+                <?php foreach ($question_answer as $answer) : ?>
+                    <?php if (($answer['question_id']) == ($value['id'])) { ?>
+                        <input type="radio" name="<?= $value['id'] ?>" value="<?= $i ?>" id="question.<?= $count ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
+                        <?php $i++; ?>
+                    <?php } ?>
+                <?php endforeach ?>
+            <div class="explain" id="explain<?= $value['id'] ?>"></div>
+        <?php } ?>
+    <?php endforeach ?>
+<?php endforeach ?>
+
+
+<!--- part 7--->
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <h2><b style="font-weight: bold;">Part <?= $part7[0]['part_number'] ?></b></h2>
+        <p><b>Direction:</b> <?= $part6[0]['direction'] ?></p>
+    </div>
+</div>
+<?php $count = 146; ?>
+<?php foreach ($group7 as  $group) : ?>
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <p><b>Direction: </b><?= $group['title'] ?></p>
+            <?php
+            $text = $group['paragraph'];
+            // Thay thế các số 1,2,3,4 bằng số thứ tự câu hỏi
+            $text = str_replace("----1---", "----[" . $count + 1. . "]---", $text);
+            $text = str_replace("----2---", "----[" . $count + 2. . "]---", $text);
+            $text = str_replace("----3---", "----[" . $count + 3. . "]---", $text);
+            $text = str_replace("----4---", "----[" . $count + 4. . "]---", $text); ?>
+
+            <p><?= $text ?></p>
         </div>
-        <?php foreach ($question6 as $value) : ?>
+    </div>
+    <?php foreach ($question7 as $value) : ?>
 
-            <?php if (($value['question_group_id']) == ($group['id'])) { ?>
-                <?php $count++; ?>
-                <p id="<?= $count ?>"><b>Question <?= $count ?>:</b> <?= $value['question'] ?></p>
-
-                <p><?php $i = 1; ?>
-                    <?php foreach ($question_answer as $answer) : ?>
-                        <?php if (($answer['question_id']) == ($value['id'])) { ?>
-                            <input type="radio" name="<?= $value['id'] ?>" value="<?= $i ?>" id="question.<?= $count ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
-                            <?php $i++; ?>
-                        <?php } ?>
-                    <?php endforeach ?>
-                <?php } ?>
-            <?php endforeach ?>
-        <?php endforeach ?>
-
-
-        <!--- part 7--->
-                <div class="panel panel-primary">
-                    <div class="panel-body">
-                        <h2><b style="font-weight: bold;">Part <?= $part7[0]['part_number'] ?></b></h2>
-                        <p><b>Direction:</b> <?= $part6[0]['direction'] ?></p>
-                    </div>
-                </div>
-                <?php $count = 146; ?>
-                <?php foreach ($group7 as  $group) : ?>
-                    <div class="panel panel-primary">
-                        <div class="panel-body">
-                            <p><b>Direction: </b><?= $group['title'] ?></p>
-                            <?php
-                            $text = $group['paragraph'];
-                            // Thay thế các số 1,2,3,4 bằng số thứ tự câu hỏi
-                            $text = str_replace("----1---", "----[" . $count + 1. . "]---", $text);
-                            $text = str_replace("----2---", "----[" . $count + 2. . "]---", $text);
-                            $text = str_replace("----3---", "----[" . $count + 3. . "]---", $text);
-                            $text = str_replace("----4---", "----[" . $count + 4. . "]---", $text); ?>
-
-                            <p><?= $text ?></p>
-                        </div>
-                    </div>
-                    <?php foreach ($question7 as $value) : ?>
-
-                        <?php if (($value['question_group_id']) == ($group['id'])) { ?>
-                            <?php $count++; ?>
-                            <p id="<?= $count ?>"><b>Question <?= $count ?>:</b> <?= $value['question'] ?></p>
-                            <p><?php $i = 1; ?>
-                                <?php foreach ($question_answer as $answer) : ?>
-                                    <?php if (($answer['question_id']) == ($value['id'])) { ?>
-                                        <input type="radio" name="<?= $value['id'] ?>" value="<?= $i ?>" id="question.<?= $count ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
-                                        <?php $i++; ?>
-                                    <?php } ?>
-                                <?php endforeach ?>
-                            <?php } ?>
-                        <?php endforeach ?>
-                    <?php endforeach ?>
-                    <hr>
+        <?php if (($value['question_group_id']) == ($group['id'])) { ?>
+            <?php $count++; ?>
+            <p id="<?= $count ?>"><b>Question <?= $count ?>:</b> <?= $value['question'] ?></p>
+            <p><?php $i = 1; ?>
+                <?php foreach ($question_answer as $answer) : ?>
+                    <?php if (($answer['question_id']) == ($value['id'])) { ?>
+                        <input type="radio" name="<?= $value['id'] ?>" value="<?= $i ?>" id="question.<?= $count ?>" onclick="markColor(this.id)" /> <?= $answer['text']; ?> <br>
+                        <?php $i++; ?>
+                    <?php } ?>
+                <?php endforeach ?>
+            <div class="explain" id="explain<?= $value['id'] ?>"></div>
+        <?php } ?>
+    <?php endforeach ?>
+<?php endforeach ?>
+<hr>
                         </div>
                     </div>
                 </div>
@@ -716,6 +723,8 @@
                     }
                     if (answerSelected) { // Nếu đã có answer được chọn, disabled các answers còn lại
                         answers[i].disabled = true;
+                        let explain = document.getElementById("explain<?= $value['id'] ?>");
+                        explain.innerHTML = '<div class="panel panel-primary"><div class="panel-body">' + '<?= $value['explain'] ?>' + '</div></div>';
                     }
                     answers[i].disabled = true;
                 }
