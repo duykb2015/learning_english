@@ -136,6 +136,21 @@ class UserController extends BaseController
 		];
 		// Khởi tạo model
 		$userModel = new UserModel;
+
+
+		$existingEmail = $userModel->where('email', $email)->first();
+		if ($existingEmail) {
+			// Nếu email đã tồn tại, hiển thị thông báo lỗi
+			return redirect()->back()->withInput()->with('error', 'Email bạn vừa nhập đã tồn tại !!!');
+		}
+
+		$existingUser = $userModel->where('username', $username)->first();
+		if ($existingUser) {
+			// Nếu username đã tồn tại, hiển thị thông báo lỗi
+			return redirect()->back()->withInput()->with('error', 'Username bạn vừa nhập đã tồn tại !!!');
+		}
+
+
 		// //Thêm dữ liệu
 		$isInsert = $userModel->insert($datas);
 		if (!$isInsert) {

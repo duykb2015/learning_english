@@ -4,9 +4,13 @@
 
 <script>
     function validatePassword() {
+        // var oldPassword = document.getElementById("old_password").value;
         var newPassword = document.getElementById("new_password").value;
         var confirmPassword = document.getElementById("confirm_password").value;
-        if (newPassword != confirmPassword) {
+        // if(md5((string) newPassword)==oldPassword){
+        //     document.getElementById("password-error").style.display = "block";
+        // }else
+         if (newPassword != confirmPassword) {
             document.getElementById("password-error").style.display = "block";
             return false;
         } else {

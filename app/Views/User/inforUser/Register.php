@@ -15,16 +15,19 @@
         <div>
             <div class="tab-content">
                 <div class="tab-pane active" id="information">
+                    
+                    <i style="color: red"> <?php echo session()->get('error'); ?> </i>    
+                      
                     <form class="form-profile" action="<?= base_url('User/save') ?>" method="post">
                         <input type="hidden" name="id" value="">
                         <div>
                             <label for="first_name"><b>FirstName :</b></label>
-                            <input type="text" style="width: 500px;" name="first_name" placeholder="FirstName...." required />
+                            <input type="text" style="width: 500px;" name="first_name" pattern="[a-zA-ZÀ-ỹ\s]+" placeholder="FirstName...." required />
                         </div>
 
                         <div>
                             <label for="last_name"> <b>Lastname :</b> </label>
-                            <input type="text" style="width: 500px;" name="last_name" placeholder="LastName...." required />
+                            <input type="text" style="width: 500px;" name="last_name" pattern="[a-zA-ZÀ-ỹ\s]+" placeholder="LastName...." required />
                         </div>
                         <div>
                             <label for="username"> <b>UserName :</b></label>
@@ -36,7 +39,7 @@
                         </div>
                         <div>
                             <label for="email"><b>Email :</b></label>
-                            <input type="text" style="width: 500px;" name="email" placeholder="Email...." required />
+                            <input type="email" style="width: 500px;" name="email" placeholder="Email...." required />
                         </div>
 
                         <button type="submit" class="registerbtn">Register</button>
