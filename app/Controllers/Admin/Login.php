@@ -3,15 +3,8 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Database\Migrations\QuestionAudio;
 use App\Models\AdminModel;
-use App\Models\QuestionAnswerModel;
-use App\Models\QuestionAudioModel;
-use App\Models\QuestionGroupModel;
-use App\Models\QuestionImageModel;
-use App\Models\QuestionModel;
 use CodeIgniter\I18n\Time;
-use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class Login extends BaseController
 {

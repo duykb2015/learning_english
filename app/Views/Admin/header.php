@@ -19,7 +19,7 @@
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<?= base_url() ?>\templates\libraries\assets\images\avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                            <span><?= session()->get('name') ?></span>
+                            <span><?= session()->get('adminName') ?></span>
                             <i class="feather icon-chevron-down"></i>
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
