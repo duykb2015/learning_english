@@ -66,14 +66,15 @@ class QuestionGroup extends BaseController
     {
         $questionGroupIDPost = $this->request->getPost('question_group_id');
         $title               = $this->request->getPost('title');
-        $partID             = $this->request->getPost('part_id');
+        $partID              = $this->request->getPost('part_id');
         $paragraph           = $this->request->getPost('paragraph');
         $questionGroupAudio  = $this->request->getFile('question_group_audio');
         $questions           = $this->request->getPost('questions');
         $oldQuestions        = $this->request->getPost('old_questions');
-        $rightOption        = $this->request->getPost('right_option');
-        $oldOptions             = $this->request->getPost('old_options');
+        $rightOption         = $this->request->getPost('right_option');
+        $oldOptions          = $this->request->getPost('old_options');
         $options             = $this->request->getPost('options');
+        $type                = $this->request->getPost('type');
         $data = [
             'exam_part_id' =>  $partID,
             'title'        =>  $title,
@@ -115,6 +116,7 @@ class QuestionGroup extends BaseController
                 'right_option'      => $rightOption[$key],
                 'question'          => $question,
                 'explain'           => 'No explain',
+                'type'              => $type
             ];
             if (isset($oldQuestions[$key])) {
                 $data['id'] = $oldQuestions[$key];

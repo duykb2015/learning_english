@@ -89,6 +89,18 @@
 																			</select>
 																		</div>
 																	</div>
+																	<div class="col-md-12">
+																		<label for="type">Loại câu hỏi</label>
+																		<div class="input-group">
+																			<select name="type" class="form-control" required>
+																				<option value="" disabled selected>
+																					--Chọn loại câu hỏi--
+																				</option>
+																				<option value="1" <?= isset($question) && !empty($question) && $question['type'] == 1 ? 'selected' : '' ?>>Câu hỏi nghe</option>
+																				<option value="2" <?= isset($question) && !empty($question) && $question['type'] == 2 ? 'selected' : '' ?>>Câu hỏi đọc</option>
+																			</select>
+																		</div>
+																	</div>
 																</div>
 																<div class="row">
 																	<div class="col-md-12 mb-3">
@@ -97,6 +109,7 @@
 																	</div>
 																</div>
 															</div>
+
 															<div class="row">
 																<div class="col-md-12 mb-3" id="question1">
 																	<label for="upload_audio">Upload tệp âm thanh cho nhóm câu hỏi</label>
@@ -130,7 +143,7 @@
 																			<div class="col-md-12">
 																				<label for="question">Câu hỏi</label>
 																				<div class="input-group">
-																					<textarea type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="3"  autofocus></textarea>
+																					<textarea type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="3" autofocus></textarea>
 																				</div>
 																			</div>
 																			<div class="col-md-12">
@@ -219,7 +232,7 @@
 																							<input type="hidden" name="old_questions[]" value="<?= $question['id'] ?>">
 																							<div class="row">
 																								<div class="form-group col-md-11">
-																									<textarea style="height: 40px;" type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1"  autofocus><?= $question['question'] ?></textarea>
+																									<textarea style="height: 40px;" type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1" autofocus><?= $question['question'] ?></textarea>
 																								</div>
 																								<div class="col-md-1 form-group">
 																									<button class="btn btn-danger" id="DeleteRow" type="button">

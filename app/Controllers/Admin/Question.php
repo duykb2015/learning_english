@@ -68,10 +68,15 @@ class Question extends BaseController
             'explain'      => 'No explain',
         ];
 
+		if (2 < count($options))
+		{
+			return redirect()->to('dashboard/question/detail');
+		}
+
         $uploader = new Upload();
 
         $questionAudio = $this->request->getFile('question_audio');
-        if (0 == $questionAudio->getError())
+        if (isset($questionAudio) && 0 == $questionAudio->getError())
         {
             $audioName = $uploader->audio($questionAudio);
             if ($audioName)
@@ -113,7 +118,7 @@ class Question extends BaseController
             $questionAnswerModel->updateBatch($data, 'id');
 
 
-            if (0 == $questionImage->getError())
+            if (isset($questionImage) && 0 == $questionImage->getError())
             {
                 if ($uploader->validation_image($questionImage->getName()))
                 {
@@ -138,7 +143,7 @@ class Question extends BaseController
 
         $questionID = $questionModel->getInsertID();
 
-        if (0 == $questionImage->getError())
+        if (isset($questionImage) && 0 == $questionImage->getError())
         {
             if ($uploader->validation_image($questionImage->getName()))
             {
