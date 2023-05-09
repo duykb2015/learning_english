@@ -104,6 +104,7 @@ class UserController extends BaseController
 			'email'		 => $user['email'],
 			'first_name' => $user['first_name'],
 			'last_name'	 => $user['last_name'],
+			'isUserLogin' => true,
 		];
 
 		$is_update = $userModel->update($user['id'], ['last_login_at' => Time::now()]);
