@@ -43,14 +43,18 @@
 									<div class="card">
 										<div class="card-header">
 
-											<!-- <div class="alert alert-danger">
-												<div class="col-10">
-													Error
+											<?php if (session()->getFlashdata('error')) : ?>
+												<div class="alert alert-danger">
+													<div class="row">
+														<div class="col-10">
+															<p><?= session()->getFlashdata('error') ?></p>
+														</div>
+														<div class="col-1">
+															<span aria-hidden="true" id="remove-alert">&times;</span>
+														</div>
+													</div>
 												</div>
-												<div class="col-1 text-right">
-													<span aria-hidden="true" id="remove-alert">&times;</span>
-												</div>
-											</div> -->
+											<?php endif ?>
 
 											<!-- <div class="alert alert-danger mb-1">
 												<div class="row">
@@ -74,7 +78,7 @@
 																	<div class="col-md-12">
 																		<label for="title">Tiêu đề</label>
 																		<div class="input-group">
-																			<input type="text" class="form-control" value="<?= isset($questionGroup) && !empty($questionGroup) ? $questionGroup['title'] : '' ?>" name="title" placeholder="Tiêu đề ..." required autofocus>
+																			<input type="text" class="form-control field" value="<?= isset($questionGroup) && !empty($questionGroup) ? $questionGroup['title'] : set_value('title') ?>" name="title" placeholder="Tiêu đề ..." required autofocus>
 																		</div>
 																	</div>
 																	<div class="col-md-12 mb-4">
@@ -105,7 +109,7 @@
 																<div class="row">
 																	<div class="col-md-12 mb-3">
 																		<label for="paragraph">Đoạn văn</label>
-																		<textarea class="form-control" id="editor1" name="paragraph" required><?= isset($questionGroup) && !empty($questionGroup) ? $questionGroup['paragraph'] : '' ?></textarea>
+																		<textarea class="form-control field" id="editor1" name="paragraph" required><?= isset($questionGroup) && !empty($questionGroup) ? $questionGroup['paragraph'] : set_value('paragraph') ?></textarea>
 																	</div>
 																</div>
 															</div>
@@ -143,7 +147,7 @@
 																			<div class="col-md-12">
 																				<label for="question">Câu hỏi</label>
 																				<div class="input-group">
-																					<textarea type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="3" autofocus></textarea>
+																					<textarea type="text" class="form-control field" value="" name="questions[]" placeholder="Câu hỏi ..." rows="3" autofocus><?= set_value('questions')[0] ?></textarea>
 																				</div>
 																			</div>
 																			<div class="col-md-12">
@@ -165,7 +169,7 @@
 																			<label for="questions">Câu trả lời</label>
 																			<div class="form-row" style="padding-top: 5px;" id="someId1">
 																				<div class="input-group">
-																					<input style="height: 41px;" type="text" name="options[0][]" class="form-control" placeholder="Answer..." required>
+																					<input style="height: 41px;" type="text" name="options[0][]" value="<?= set_value('options')[0][0] ?>" class="form-control field" placeholder="Answer..." required>
 																					<button type="button" class="btn btn-success" onclick="addFormElements(this)">Thêm</button>
 																					<button type="button" class="btn btn-danger" onclick="removeFormElements(this)">Xóa</button>
 																				</div>
@@ -373,7 +377,7 @@
 										<label for="question">Câu hỏi</label>
 										<div class="row">
 											<div class="form-group col-md-11">
-												<textarea style="height: 40px;" type="text" class="form-control" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1" autofocus></textarea>
+												<textarea style="height: 40px;" type="text" class="form-control field" value="" name="questions[]" placeholder="Câu hỏi ..." rows="1" autofocus></textarea>
 											</div>
 											<div class="col-md-1 form-group">
 												<button class="btn btn-danger " id="DeleteRow" type="button">
@@ -401,7 +405,7 @@
 									<label for="questions">Câu trả lời</label>
 									<div class="form-row" style="padding-top: 5px;" id="someId1">
 										<div class="input-group">
-											<input style="height: 41px;" type="text" name="options[${index}][]" class="form-control" placeholder="Answer..." required>
+											<input style="height: 41px;" type="text" name="options[${index}][]" class="form-control field" placeholder="Answer..." required>
 											<button type="button" class="btn btn-success" onclick="addFormElements(this)">Thêm</button>
 											<button type="button" class="btn btn-danger" onclick="removeFormElements(this)">Xóa</button>
 										</div>
@@ -440,6 +444,14 @@
 		}
 		$(current).parents('.form-row').remove();
 	}
+
+	function testInput(event) {
+		var value = String.fromCharCode(event.which);
+		var pattern = new RegExp(/[a-zåäö ]/i);
+		return pattern.test(value);
+	}
+
+	$('.field').bind('keypress', testInput);
 </script>
 
 <?= $this->endSection() ?>

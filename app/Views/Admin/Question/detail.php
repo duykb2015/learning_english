@@ -40,14 +40,18 @@
                                     <div class="card">
                                         <div class="card-header">
 
-                                            <!-- <div class="alert alert-danger">
-                                                <div class="col-10">
-                                                    Error
+                                            <?php if (session()->getFlashdata('error')) : ?>
+                                                <div class="alert alert-danger">
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p><?= session()->getFlashdata('error') ?></p>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <span aria-hidden="true" id="remove-alert">&times;</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-1 text-right">
-                                                    <span aria-hidden="true" id="remove-alert">&times;</span>
-                                                </div>
-                                            </div> -->
+                                            <?php endif ?>
 
                                             <!-- <div class="alert alert-danger mb-1">
                                                 <div class="row">
@@ -73,7 +77,7 @@
                                                                     <div class="col-md-12">
                                                                         <label for="question">Câu hỏi</label>
                                                                         <div class="input-group">
-                                                                            <textarea type="text" class="form-control" name="question" placeholder="Câu hỏi ..." rows="5" autofocus><?= isset($question) && !empty($question) ? $question['question'] : '' ?></textarea>
+                                                                            <textarea type="text" class="form-control field" name="question" placeholder="Câu hỏi ..." rows="5" autofocus><?= isset($question) && !empty($question) ? $question['question'] : set_value('question') ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -125,7 +129,7 @@
                                                                             <div class="col-md-12">
                                                                                 <label for="result">Câu trả lời</label>
                                                                                 <div class="input-group">
-                                                                                    <input style="height: 40px;" class="form-control" value="<?= $item['text'] ?>" name="options[]" placeholder="Vd: Some thing big..." required>
+                                                                                    <input style="height: 40px;" class="form-control field" value="<?= $item['text'] ?>" name="options[]" placeholder="Vd: Some thing big..." required>
                                                                                 </div>
                                                                             </div>
                                                                         <?php endforeach ?>
@@ -133,7 +137,7 @@
                                                                         <div class="col-md-12">
                                                                             <label for="result">Câu trả lời</label>
                                                                             <div class="input-group">
-                                                                                <input style="height: 40px;" class="form-control" name="options[]" placeholder="Vd: Some thing big..." required>
+                                                                                <input style="height: 40px;" class="form-control field" name="options[]" value="<?= set_value('options')[0] ?? null ?>" placeholder="Vd: Some thing big..." required>
                                                                             </div>
                                                                         </div>
                                                                     <?php endif ?>
@@ -266,7 +270,7 @@
                 '<div class="col-md-12">' +
                 '<label for="result">Câu trả lời tiếp theo</label>' +
                 '<div class="input-group">' +
-                '<input class="form-control" name="options[]" placeholder="Vd: A.Yes..." required>' +
+                '<input class="form-control field" name="options[]" placeholder="Vd: A.Yes..." required>' +
                 '<button class="btn btn-danger" id="DeleteRow" type="button">' +
                 '<i class="bi bi-trash"></i> Xóa</button> </div> </div> ' +
                 '</div>';
@@ -284,5 +288,13 @@
             $(this).parents("#row").remove();
         })
     });
+
+    function testInput(event) {
+        var value = String.fromCharCode(event.which);
+        var pattern = new RegExp(/[a-zåäö ]/i);
+        return pattern.test(value);
+    }
+
+    $('.field').bind('keypress', testInput);
 </script>
 <?= $this->endSection() ?>

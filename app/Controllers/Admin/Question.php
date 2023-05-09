@@ -102,6 +102,10 @@ class Question extends BaseController
         }
 
         $questionModel = new QuestionModel();
+		if ($questionModel->where('question', $question)->first() && !$oldQuestionID)
+		{
+			return redirect()->withInput()->with('error', 'Câu hỏi đã tồn tại!')->to('dashboard/question/detail');
+		}
         $questionModel->save($data);
         unset($data);
 

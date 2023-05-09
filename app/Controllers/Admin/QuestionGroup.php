@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Libraries\Upload;
 use App\Models\ExamPartModel;
 use App\Models\QuestionAnswerModel;
 use App\Models\QuestionAudioModel;
@@ -84,6 +83,11 @@ class QuestionGroup extends BaseController
         //Khởi tạo model
         $questionGroupModel = new QuestionGroupModel();
 
+        if ($questionGroupModel->where('title', $title)->first() && !$questionGroupIDPost)
+        {
+            return redirect()->withInput()->with('error', 'Title nhóm câu hỏi đã tồn tại!')->to('dashboard/question-group/detail');
+        }
+
         //Lưu dữ liệu
         if ($questionGroupIDPost) {
             $data['id'] = $questionGroupIDPost;
@@ -109,6 +113,10 @@ class QuestionGroup extends BaseController
             $optionType = $audioID == 0 ? 1 : 2;
         }
         foreach ($questions as $key => $question) {
+            if ($questionModel->where('question', $question)->first())
+            {
+                return redirect()->withInput()->with('error', 'Câu hỏi đã tồn tại!')->to('dashboard/question-group/detail');
+            }
             $data = [
                 'exam_part_id'      => $partID,
                 'question_group_id' => $questionGroupID,
