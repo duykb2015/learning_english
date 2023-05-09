@@ -33,31 +33,12 @@
                                     <!-- personal card start -->
                                     <div class="card">
                                         <div class="card-header">
-
-                                            <!-- <div class="alert alert-danger">
-                                                <div class="col-10">
-                                                    Error
-                                                </div>
-                                                <div class="col-1 text-right">
-                                                    <span aria-hidden="true" id="remove-alert">&times;</span>
-                                                </div>
-                                            </div> -->
-
-                                            <!-- <div class="alert alert-danger mb-1">
-                                                <div class="row">
-                                                    <div class="col-11">
-                                                        Error
-                                                    </div>
-                                                    <div class="col-1 text-right">
-                                                        <span aria-hidden="true" id="remove-alert">&times;</span>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                         </div>
                                         <div class="card-block">
                                             <div class="edit-info">
                                                 <div class="row">
                                                     <div class="col-lg-12">
+                            
                                                         <form action="<?= base_url('dashboard/exam-part/save') ?>" method="post">
                                                             <input type="hidden" name="id" value="">
                                                             <div class="general-info">
@@ -71,13 +52,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="partnumber">Phần đề thi</label>
                                                                         <div class="input-group">
-                                                                            <input type="number" name="part_number" class="form-control" placeholder="nhập số part" required>
-                                                                            <!-- <select name="part_number" class="form-control">
-                                                                                <option value="">Chọn Part</option>
-                                                                                <?php for ($i = 1; $i <= PART_LIMIT; $i++) : ?>
-                                                                                    <option value="<?= $i ?>">Part <?= $i ?></option>
-                                                                                <?php endfor ?>
-                                                                            </select> -->
+                                                                            <input type="number" name="part_number" min="1" max="15"class="form-control" placeholder="nhập số part" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -88,17 +63,7 @@
                                                                     </div>
                                                                     <!-- Import -->
                                                                     <div class="col-md-6">
-                                                                        <!-- <label for="status">Trạng thái</label>
-                                                                        <div class="input-group">
-                                                                            <select name="status" class="form-control" required>
-                                                                                <option value="" disabled selected>
-                                                                                    --Chọn trạng thái--
-                                                                                </option>
-                                                                                <option value="1">Hiển thị</option>
-                                                                                <option value="0">Ẩn</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <input type="text" class="form-control" value="" name="status" placeholder="Trang thai..." required autofocus> -->
+                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <!-- end of row -->

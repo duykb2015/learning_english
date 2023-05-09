@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\Admin;
+use App\Filters\User;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -22,7 +23,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'admin'         => Admin::class
+        'admin'         => Admin::class,
+        'user'          => User::class
     ];
 
     /**
@@ -62,5 +64,10 @@ class Filters extends BaseConfig
      * Example:
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
-    public array $filters = [];
+    public array $filters = ['user' => [
+        'before' => [
+            'listExam/examrandom',
+            'listExam/listtoeic' // Thêm đường dẫn của trang cần bắt buộc đăng nhập
+        ],
+    ],];
 }
