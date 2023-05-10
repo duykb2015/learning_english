@@ -71,7 +71,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="partnumber">Phần đề thi</label>
                                                                         <div class="input-group">
-                                                                            <input type="number" name="part_number" value="<?= $examPart['part_number'] ?>" class="form-control" placeholder="nhập số part" required>
+                                                                            <input type="number" name="part_number"min="1" max="15" value="<?= $examPart['part_number'] ?>" class="form-control" placeholder="nhập số part" required>
                                                              
                                                                         </div>
                                                                     </div>
